@@ -18,6 +18,12 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { environment } from '../environments/environment';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsModule } from '@ngxs/store';
 
 const appRoutes: Routes = [
   {
@@ -53,6 +59,15 @@ const appRoutes: Routes = [
     FuseSharedModule,
     FuseSidebarModule,
     FuseThemeOptionsModule,
+
+    // NgXS
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production,
+    }),
+    NgxsDispatchPluginModule.forRoot(),
+    NgxsRouterPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    environment.production ? [] : NgxsLoggerPluginModule.forRoot(),
 
     // App modules
     LayoutModule,
