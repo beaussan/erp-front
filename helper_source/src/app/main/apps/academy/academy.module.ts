@@ -16,48 +16,40 @@ import { AcademyCourseService } from 'app/main/apps/academy/course.service';
 import { FuseSidebarModule } from '@fuse/components';
 
 const routes = [
-    {
-        path     : 'courses',
-        component: AcademyCoursesComponent,
-        resolve  : {
-            academy: AcademyCoursesService
-        }
+  {
+    path: 'courses',
+    component: AcademyCoursesComponent,
+    resolve: {
+      academy: AcademyCoursesService,
     },
-    {
-        path     : 'courses/:courseId/:courseSlug',
-        component: AcademyCourseComponent,
-        resolve  : {
-            academy: AcademyCourseService
-        }
+  },
+  {
+    path: 'courses/:courseId/:courseSlug',
+    component: AcademyCourseComponent,
+    resolve: {
+      academy: AcademyCourseService,
     },
-    {
-        path      : '**',
-        redirectTo: 'courses'
-    }
+  },
+  {
+    path: '**',
+    redirectTo: 'courses',
+  },
 ];
 
 @NgModule({
-    declarations: [
-        AcademyCoursesComponent,
-        AcademyCourseComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [AcademyCoursesComponent, AcademyCourseComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatSelectModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
 
-        FuseSharedModule,
-        FuseSidebarModule
-    ],
-    providers   : [
-        AcademyCoursesService,
-        AcademyCourseService
-    ]
+    FuseSharedModule,
+    FuseSidebarModule,
+  ],
+  providers: [AcademyCoursesService, AcademyCourseService],
 })
-export class AcademyModule
-{
-}
+export class AcademyModule {}

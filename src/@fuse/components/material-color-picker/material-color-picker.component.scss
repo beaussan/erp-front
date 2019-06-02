@@ -1,39 +1,39 @@
 .fuse-material-color-picker-menu {
-    width: 245px;
+  width: 245px;
 
-    .mat-menu-content {
-        padding: 0;
+  .mat-menu-content {
+    padding: 0;
 
-        .views {
-            display: flex;
-            flex-direction: column;
-            min-height: 165px;
+    .views {
+      display: flex;
+      flex-direction: column;
+      min-height: 165px;
 
-            .view {
-                overflow: hidden;
+      .view {
+        overflow: hidden;
 
-                .colors {
-                    padding: 1px 0 0 0;
-                    margin-left: -1px;
+        .colors {
+          padding: 1px 0 0 0;
+          margin-left: -1px;
 
-                    .color {
-                        width: 40px;
-                        height: 40px;
-                        margin: 0 0 1px 1px;
-                        border-radius: 0;
-                        cursor: pointer;
-                        transition: border-radius .4s cubic-bezier(.25, .8, .25, 1);
+          .color {
+            width: 40px;
+            height: 40px;
+            margin: 0 0 1px 1px;
+            border-radius: 0;
+            cursor: pointer;
+            transition: border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-                        &:hover {
-                            border-radius: 20%;
-                        }
-
-                        &.selected {
-                            border-radius: 50% !important;
-                        }
-                    }
-                }
+            &:hover {
+              border-radius: 20%;
             }
+
+            &.selected {
+              border-radius: 50% !important;
+            }
+          }
         }
+      }
     }
+  }
 }

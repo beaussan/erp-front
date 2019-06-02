@@ -6,22 +6,14 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { MaintenanceComponent } from 'app/main/pages/maintenance/maintenance.component';
 
 const routes = [
-    {
-        path     : 'maintenance',
-        component: MaintenanceComponent
-    }
+  {
+    path: 'maintenance',
+    component: MaintenanceComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        MaintenanceComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
-
-        FuseSharedModule
-    ]
+  declarations: [MaintenanceComponent],
+  imports: [RouterModule.forChild(routes), FuseSharedModule],
 })
-export class MaintenanceModule
-{
-}
+export class MaintenanceModule {}

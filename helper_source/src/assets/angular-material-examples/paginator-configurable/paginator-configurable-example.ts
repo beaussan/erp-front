@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {PageEvent} from '@angular/material/paginator';
+import { Component } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 
 /**
  * @title Configurable paginator

@@ -11,28 +11,24 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { IconsComponent } from 'app/main/ui/icons/icons.component';
 
 const routes: Routes = [
-    {
-        path     : 'icons',
-        component: IconsComponent
-    }
+  {
+    path: 'icons',
+    component: IconsComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        IconsComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [IconsComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatProgressSpinnerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
 
-        FuseSharedModule
-    ]
+    FuseSharedModule,
+  ],
 })
-export class UIIconsModule
-{
-}
+export class UIIconsModule {}

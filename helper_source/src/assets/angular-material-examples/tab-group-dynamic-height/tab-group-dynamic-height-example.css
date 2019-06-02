@@ -1,4 +1,5 @@
-.example-small-box, .example-large-box {
+.example-small-box,
+.example-large-box {
   display: flex;
   align-items: center;
   justify-content: center;

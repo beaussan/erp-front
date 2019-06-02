@@ -10,27 +10,23 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { ResetPasswordComponent } from 'app/main/pages/authentication/reset-password/reset-password.component';
 
 const routes = [
-    {
-        path     : 'auth/reset-password',
-        component: ResetPasswordComponent
-    }
+  {
+    path: 'auth/reset-password',
+    component: ResetPasswordComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        ResetPasswordComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [ResetPasswordComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
 
-        FuseSharedModule
-    ]
+    FuseSharedModule,
+  ],
 })
-export class ResetPasswordModule
-{
-}
+export class ResetPasswordModule {}

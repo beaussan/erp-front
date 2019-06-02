@@ -24,51 +24,48 @@ import { FaqModule } from 'app/main/pages/faq/faq.module';
 import { KnowledgeBaseModule } from 'app/main/pages/knowledge-base/knowledge-base.module';
 
 @NgModule({
-    imports: [
-        // Authentication
-        LoginModule,
-        Login2Module,
-        RegisterModule,
-        Register2Module,
-        ForgotPasswordModule,
-        ForgotPassword2Module,
-        ResetPasswordModule,
-        ResetPassword2Module,
-        LockModule,
-        MailConfirmModule,
+  imports: [
+    // Authentication
+    LoginModule,
+    Login2Module,
+    RegisterModule,
+    Register2Module,
+    ForgotPasswordModule,
+    ForgotPassword2Module,
+    ResetPasswordModule,
+    ResetPassword2Module,
+    LockModule,
+    MailConfirmModule,
 
-        // Coming-soon
-        ComingSoonModule,
+    // Coming-soon
+    ComingSoonModule,
 
-        // Errors
-        Error404Module,
-        Error500Module,
+    // Errors
+    Error404Module,
+    Error500Module,
 
-        // Invoices
-        InvoiceModernModule,
-        InvoiceCompactModule,
+    // Invoices
+    InvoiceModernModule,
+    InvoiceCompactModule,
 
-        // Maintenance
-        MaintenanceModule,
+    // Maintenance
+    MaintenanceModule,
 
-        // Pricing
-        PricingModule,
+    // Pricing
+    PricingModule,
 
-        // Profile
-        ProfileModule,
+    // Profile
+    ProfileModule,
 
-        // Search
-        SearchClassicModule,
-        SearchModernModule,
+    // Search
+    SearchClassicModule,
+    SearchModernModule,
 
-        // Faq
-        FaqModule,
+    // Faq
+    FaqModule,
 
-        // Knowledge base
-        KnowledgeBaseModule
-    ]
+    // Knowledge base
+    KnowledgeBaseModule,
+  ],
 })
-export class PagesModule
-{
-
-}
+export class PagesModule {}

@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {Transaction} from '../table-footer-row/table-footer-row-example';
+import { Component } from '@angular/core';
+import { Transaction } from '../table-footer-row/table-footer-row-example';
 
 export interface Transaction {
   item: string;
@@ -17,12 +17,12 @@ export interface Transaction {
 export class TableMultipleHeaderFooterExample {
   displayedColumns: string[] = ['item', 'cost'];
   transactions: Transaction[] = [
-    {item: 'Beach ball', cost: 4},
-    {item: 'Towel', cost: 5},
-    {item: 'Frisbee', cost: 2},
-    {item: 'Sunscreen', cost: 4},
-    {item: 'Cooler', cost: 25},
-    {item: 'Swim suit', cost: 15},
+    { item: 'Beach ball', cost: 4 },
+    { item: 'Towel', cost: 5 },
+    { item: 'Frisbee', cost: 2 },
+    { item: 'Sunscreen', cost: 4 },
+    { item: 'Cooler', cost: 25 },
+    { item: 'Swim suit', cost: 15 },
   ];
 
   /** Gets the total cost of all transactions. */

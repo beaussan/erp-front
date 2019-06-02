@@ -20,82 +20,80 @@ import { IconsFakeDb } from 'app/fake-db/icons';
 import { ChatPanelFakeDb } from 'app/fake-db/chat-panel';
 import { QuickPanelFakeDb } from 'app/fake-db/quick-panel';
 
-export class FakeDbService implements InMemoryDbService
-{
-    createDb(): any
-    {
-        return {
-            // Dashboards
-            'project-dashboard-projects' : ProjectDashboardDb.projects,
-            'project-dashboard-widgets'  : ProjectDashboardDb.widgets,
-            'analytics-dashboard-widgets': AnalyticsDashboardDb.widgets,
+export class FakeDbService implements InMemoryDbService {
+  createDb(): any {
+    return {
+      // Dashboards
+      'project-dashboard-projects': ProjectDashboardDb.projects,
+      'project-dashboard-widgets': ProjectDashboardDb.widgets,
+      'analytics-dashboard-widgets': AnalyticsDashboardDb.widgets,
 
-            // Calendar
-            'calendar': CalendarFakeDb.data,
+      // Calendar
+      calendar: CalendarFakeDb.data,
 
-            // E-Commerce
-            'e-commerce-products' : ECommerceFakeDb.products,
-            'e-commerce-orders'   : ECommerceFakeDb.orders,
+      // E-Commerce
+      'e-commerce-products': ECommerceFakeDb.products,
+      'e-commerce-orders': ECommerceFakeDb.orders,
 
-            // Academy
-            'academy-categories': AcademyFakeDb.categories,
-            'academy-courses'   : AcademyFakeDb.courses,
-            'academy-course'    : AcademyFakeDb.course,
+      // Academy
+      'academy-categories': AcademyFakeDb.categories,
+      'academy-courses': AcademyFakeDb.courses,
+      'academy-course': AcademyFakeDb.course,
 
-            // Mail
-            'mail-mails'  : MailFakeDb.mails,
-            'mail-folders': MailFakeDb.folders,
-            'mail-filters': MailFakeDb.filters,
-            'mail-labels' : MailFakeDb.labels,
+      // Mail
+      'mail-mails': MailFakeDb.mails,
+      'mail-folders': MailFakeDb.folders,
+      'mail-filters': MailFakeDb.filters,
+      'mail-labels': MailFakeDb.labels,
 
-            // Chat
-            'chat-contacts': ChatFakeDb.contacts,
-            'chat-chats'   : ChatFakeDb.chats,
-            'chat-user'    : ChatFakeDb.user,
+      // Chat
+      'chat-contacts': ChatFakeDb.contacts,
+      'chat-chats': ChatFakeDb.chats,
+      'chat-user': ChatFakeDb.user,
 
-            // File Manager
-            'file-manager': FileManagerFakeDb.files,
+      // File Manager
+      'file-manager': FileManagerFakeDb.files,
 
-            // Contacts
-            'contacts-contacts': ContactsFakeDb.contacts,
-            'contacts-user'    : ContactsFakeDb.user,
+      // Contacts
+      'contacts-contacts': ContactsFakeDb.contacts,
+      'contacts-user': ContactsFakeDb.user,
 
-            // Todo
-            'todo-todos'  : TodoFakeDb.todos,
-            'todo-filters': TodoFakeDb.filters,
-            'todo-tags'   : TodoFakeDb.tags,
+      // Todo
+      'todo-todos': TodoFakeDb.todos,
+      'todo-filters': TodoFakeDb.filters,
+      'todo-tags': TodoFakeDb.tags,
 
-            // Scrumboard
-            'scrumboard-boards': ScrumboardFakeDb.boards,
+      // Scrumboard
+      'scrumboard-boards': ScrumboardFakeDb.boards,
 
-            // Invoice
-            'invoice': InvoiceFakeDb.invoice,
+      // Invoice
+      invoice: InvoiceFakeDb.invoice,
 
-            // Profile
-            'profile-timeline'     : ProfileFakeDb.timeline,
-            'profile-photos-videos': ProfileFakeDb.photosVideos,
-            'profile-about'        : ProfileFakeDb.about,
+      // Profile
+      'profile-timeline': ProfileFakeDb.timeline,
+      'profile-photos-videos': ProfileFakeDb.photosVideos,
+      'profile-about': ProfileFakeDb.about,
 
-            // Search
-            'search': SearchFakeDb.search,
+      // Search
+      search: SearchFakeDb.search,
 
-            // FAQ
-            'faq': FaqFakeDb.data,
+      // FAQ
+      faq: FaqFakeDb.data,
 
-            // Knowledge base
-            'knowledge-base': KnowledgeBaseFakeDb.data,
+      // Knowledge base
+      'knowledge-base': KnowledgeBaseFakeDb.data,
 
-            // Icons
-            'icons': IconsFakeDb.icons,
+      // Icons
+      icons: IconsFakeDb.icons,
 
-            // Chat Panel
-            'chat-panel-contacts' : ChatPanelFakeDb.contacts,
-            'chat-panel-chats': ChatPanelFakeDb.chats,
-            'chat-panel-user': ChatPanelFakeDb.user,
+      // Chat Panel
+      'chat-panel-contacts': ChatPanelFakeDb.contacts,
+      'chat-panel-chats': ChatPanelFakeDb.chats,
+      'chat-panel-user': ChatPanelFakeDb.user,
 
-            // Quick Panel
-            'quick-panel-notes' : QuickPanelFakeDb.notes,
-            'quick-panel-events': QuickPanelFakeDb.events
-        };
-    }
+      // Quick Panel
+      'quick-panel-notes': QuickPanelFakeDb.notes,
+      'quick-panel-events': QuickPanelFakeDb.events,
+    };
+  }
 }

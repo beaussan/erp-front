@@ -12,37 +12,30 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { SearchClassicComponent } from 'app/main/pages/search/classic/search-classic.component';
 import { SearchClassicService } from 'app/main/pages/search/classic/search-classic.service';
 
-
 const routes = [
-    {
-        path     : 'search/classic',
-        component: SearchClassicComponent,
-        resolve  : {
-            search: SearchClassicService
-        }
-    }
+  {
+    path: 'search/classic',
+    component: SearchClassicComponent,
+    resolve: {
+      search: SearchClassicService,
+    },
+  },
 ];
 
 @NgModule({
-    declarations: [
-        SearchClassicComponent,
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [SearchClassicComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatTableModule,
-        MatTabsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatTableModule,
+    MatTabsModule,
 
-        FuseSharedModule
-    ],
-    providers   : [
-        SearchClassicService
-    ]
+    FuseSharedModule,
+  ],
+  providers: [SearchClassicService],
 })
-export class SearchClassicModule
-{
-}
+export class SearchClassicModule {}

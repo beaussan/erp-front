@@ -22,222 +22,171 @@ export const ADD_LABEL_ON_SELECTED_MAILS = '[MAILS] ADD LABEL ON SELECTED MAILS'
 /**
  * Get Mails
  */
-export class GetMails implements Action
-{
-    readonly type = GET_MAILS;
+export class GetMails implements Action {
+  readonly type = GET_MAILS;
 
-    constructor()
-    {
-    }
+  constructor() {}
 }
 
 /**
  * Get Mails Success
  */
-export class GetMailsSuccess implements Action
-{
-    readonly type = GET_MAILS_SUCCESS;
+export class GetMailsSuccess implements Action {
+  readonly type = GET_MAILS_SUCCESS;
 
-    constructor(public payload: any)
-    {
-    }
+  constructor(public payload: any) {}
 }
 
 /**
  * Get Mails Failed
  */
-export class GetMailsFailed implements Action
-{
-    readonly type = GET_MAILS_FAILED;
+export class GetMailsFailed implements Action {
+  readonly type = GET_MAILS_FAILED;
 
-    constructor(public payload: string)
-    {
-    }
+  constructor(public payload: string) {}
 }
 
 /**
  * Set Current Mail
  */
-export class SetCurrentMail implements Action
-{
-    readonly type = SET_CURRENT_MAIL;
+export class SetCurrentMail implements Action {
+  readonly type = SET_CURRENT_MAIL;
 
-    constructor(public payload: string)
-    {
-    }
+  constructor(public payload: string) {}
 }
 
 /**
  * Set Current Mail Success
  */
-export class SetCurrentMailSuccess implements Action
-{
-    readonly type = SET_CURRENT_MAIL_SUCCESS;
+export class SetCurrentMailSuccess implements Action {
+  readonly type = SET_CURRENT_MAIL_SUCCESS;
 
-    constructor(public payload: any)
-    {
-    }
+  constructor(public payload: any) {}
 }
 
 /**
  * Check Current Mail
  */
-export class CheckCurrentMail implements Action
-{
-    readonly type = CHECK_CURRENT_MAIL;
+export class CheckCurrentMail implements Action {
+  readonly type = CHECK_CURRENT_MAIL;
 
-    constructor()
-    {
-    }
+  constructor() {}
 }
 
 /**
  * Update Mail
  */
-export class UpdateMail implements Action
-{
-    readonly type = UPDATE_MAIL;
+export class UpdateMail implements Action {
+  readonly type = UPDATE_MAIL;
 
-    constructor(public payload: any)
-    {
-    }
+  constructor(public payload: any) {}
 }
 
 /**
  * Update Mail Success
  */
-export class UpdateMailSuccess implements Action
-{
-    readonly type = UPDATE_MAIL_SUCCESS;
+export class UpdateMailSuccess implements Action {
+  readonly type = UPDATE_MAIL_SUCCESS;
 
-    constructor(public payload: Mail)
-    {
-    }
+  constructor(public payload: Mail) {}
 }
 
 /**
  * Update Mails
  */
-export class UpdateMails implements Action
-{
-    readonly type = UPDATE_MAILS;
+export class UpdateMails implements Action {
+  readonly type = UPDATE_MAILS;
 
-    constructor(public payload: Mail[])
-    {
-    }
+  constructor(public payload: Mail[]) {}
 }
 
 /**
  * Update Mails Success
  */
-export class UpdateMailsSuccess implements Action
-{
-    readonly type = UPDATE_MAILS_SUCCESS;
+export class UpdateMailsSuccess implements Action {
+  readonly type = UPDATE_MAILS_SUCCESS;
 
-    constructor()
-    {
-    }
+  constructor() {}
 }
 
 /**
  * Set Search Text
  */
-export class SetSearchText implements Action
-{
-    readonly type = SET_SEARCH_TEXT;
+export class SetSearchText implements Action {
+  readonly type = SET_SEARCH_TEXT;
 
-    constructor(public payload: string)
-    {
-    }
+  constructor(public payload: string) {}
 }
 
 /**
  * Select All Mails
  */
-export class SelectAllMails implements Action
-{
-    readonly type = SELECT_ALL_MAILS;
+export class SelectAllMails implements Action {
+  readonly type = SELECT_ALL_MAILS;
 
-    constructor()
-    {
-    }
+  constructor() {}
 }
 
 /**
  * Deselect All Mails
  */
-export class DeselectAllMails implements Action
-{
-    readonly type = DESELECT_ALL_MAILS;
+export class DeselectAllMails implements Action {
+  readonly type = DESELECT_ALL_MAILS;
 
-    constructor()
-    {
-    }
+  constructor() {}
 }
 
 /**
  * Toggle In Selected Mails
  */
-export class ToggleInSelectedMails implements Action
-{
-    readonly type = TOGGLE_IN_SELECTED_MAILS;
+export class ToggleInSelectedMails implements Action {
+  readonly type = TOGGLE_IN_SELECTED_MAILS;
 
-    constructor(public payload: string)
-    {
-    }
+  constructor(public payload: string) {}
 }
 
 /**
  * Select Mails by Parameter
  */
-export class SelectMailsByParameter implements Action
-{
-    readonly type = SELECT_MAILS_BY_PARAMETER;
+export class SelectMailsByParameter implements Action {
+  readonly type = SELECT_MAILS_BY_PARAMETER;
 
-    constructor(public payload: any)
-    {
-    }
+  constructor(public payload: any) {}
 }
 
 /**
  * Set Folder on Selected Mails
  */
-export class SetFolderOnSelectedMails implements Action
-{
-    readonly type = SET_FOLDER_ON_SELECTED_MAILS;
+export class SetFolderOnSelectedMails implements Action {
+  readonly type = SET_FOLDER_ON_SELECTED_MAILS;
 
-    constructor(public payload: string)
-    {
-    }
+  constructor(public payload: string) {}
 }
 
 /**
  * Add label on Selected Mails
  */
-export class AddLabelOnSelectedMails implements Action
-{
-    readonly type = ADD_LABEL_ON_SELECTED_MAILS;
+export class AddLabelOnSelectedMails implements Action {
+  readonly type = ADD_LABEL_ON_SELECTED_MAILS;
 
-    constructor(public payload: string)
-    {
-    }
+  constructor(public payload: string) {}
 }
 
-export type MailsActionsAll
-    = GetMails
-    | GetMailsSuccess
-    | GetMailsFailed
-    | SetCurrentMail
-    | SetCurrentMailSuccess
-    | CheckCurrentMail
-    | UpdateMail
-    | UpdateMailSuccess
-    | UpdateMails
-    | UpdateMailsSuccess
-    | SetSearchText
-    | SelectAllMails
-    | DeselectAllMails
-    | ToggleInSelectedMails
-    | SelectMailsByParameter
-    | SetFolderOnSelectedMails
-    | AddLabelOnSelectedMails;
+export type MailsActionsAll =
+  | GetMails
+  | GetMailsSuccess
+  | GetMailsFailed
+  | SetCurrentMail
+  | SetCurrentMailSuccess
+  | CheckCurrentMail
+  | UpdateMail
+  | UpdateMailSuccess
+  | UpdateMails
+  | UpdateMailsSuccess
+  | SetSearchText
+  | SelectAllMails
+  | DeselectAllMails
+  | ToggleInSelectedMails
+  | SelectMailsByParameter
+  | SetFolderOnSelectedMails
+  | AddLabelOnSelectedMails;

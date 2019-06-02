@@ -26,78 +26,73 @@ import { MailNgrxComposeDialogComponent } from 'app/main/apps/mail-ngrx/dialogs/
 import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 const routes: Routes = [
-    {
-        path       : 'label/:labelHandle',
-        component  : MailNgrxComponent,
-        canActivate: [fromGuards.ResolveGuard]
-    },
-    {
-        path       : 'label/:labelHandle/:mailId',
-        component  : MailNgrxComponent,
-        canActivate: [fromGuards.ResolveGuard]
-    },
-    {
-        path       : 'filter/:filterHandle',
-        component  : MailNgrxComponent,
-        canActivate: [fromGuards.ResolveGuard]
-    },
-    {
-        path       : 'filter/:filterHandle/:mailId',
-        component  : MailNgrxComponent,
-        canActivate: [fromGuards.ResolveGuard]
-    },
-    {
-        path       : ':folderHandle',
-        component  : MailNgrxComponent,
-        canActivate: [fromGuards.ResolveGuard]
-    },
-    {
-        path       : ':folderHandle/:mailId',
-        component  : MailNgrxComponent,
-        canActivate: [fromGuards.ResolveGuard]
-    },
-    {
-        path      : '**',
-        redirectTo: 'inbox'
-    }
+  {
+    path: 'label/:labelHandle',
+    component: MailNgrxComponent,
+    canActivate: [fromGuards.ResolveGuard],
+  },
+  {
+    path: 'label/:labelHandle/:mailId',
+    component: MailNgrxComponent,
+    canActivate: [fromGuards.ResolveGuard],
+  },
+  {
+    path: 'filter/:filterHandle',
+    component: MailNgrxComponent,
+    canActivate: [fromGuards.ResolveGuard],
+  },
+  {
+    path: 'filter/:filterHandle/:mailId',
+    component: MailNgrxComponent,
+    canActivate: [fromGuards.ResolveGuard],
+  },
+  {
+    path: ':folderHandle',
+    component: MailNgrxComponent,
+    canActivate: [fromGuards.ResolveGuard],
+  },
+  {
+    path: ':folderHandle/:mailId',
+    component: MailNgrxComponent,
+    canActivate: [fromGuards.ResolveGuard],
+  },
+  {
+    path: '**',
+    redirectTo: 'inbox',
+  },
 ];
 
 @NgModule({
-    declarations   : [
-        MailNgrxComponent,
-        MailNgrxListComponent,
-        MailNgrxListItemComponent,
-        MailNgrxDetailsComponent,
-        MailNgrxMainSidebarComponent,
-        MailNgrxComposeDialogComponent
-    ],
-    imports        : [
-        RouterModule.forChild(routes),
+  declarations: [
+    MailNgrxComponent,
+    MailNgrxListComponent,
+    MailNgrxListItemComponent,
+    MailNgrxDetailsComponent,
+    MailNgrxMainSidebarComponent,
+    MailNgrxComposeDialogComponent,
+  ],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatCheckboxModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatMenuModule,
-        MatRippleModule,
-        MatSelectModule,
-        MatToolbarModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatToolbarModule,
 
-        TranslateModule,
+    TranslateModule,
 
-        FuseSharedModule,
-        FuseSidebarModule,
+    FuseSharedModule,
+    FuseSidebarModule,
 
-        MailNgrxStoreModule
-    ],
-    providers      : [
-        MailNgrxService,
-        fromGuards.ResolveGuard
-    ],
-    entryComponents: [MailNgrxComposeDialogComponent]
+    MailNgrxStoreModule,
+  ],
+  providers: [MailNgrxService, fromGuards.ResolveGuard],
+  entryComponents: [MailNgrxComposeDialogComponent],
 })
-export class MailNgrxModule
-{
-}
+export class MailNgrxModule {}

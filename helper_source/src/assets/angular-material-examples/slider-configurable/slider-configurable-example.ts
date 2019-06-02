@@ -1,5 +1,5 @@
-import {coerceNumberProperty} from '@angular/cdk/coercion';
-import {Component} from '@angular/core';
+import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { Component } from '@angular/core';
 
 /**
  * @title Configurable slider

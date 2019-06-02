@@ -1,54 +1,54 @@
-@import "src/@fuse/scss/fuse";
+@import 'src/@fuse/scss/fuse';
 
 toolbar {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  z-index: 4;
+
+  &.below {
+    z-index: 2;
+  }
+
+  .mat-toolbar {
     position: relative;
+    background: inherit !important;
+    color: inherit !important;
+  }
+
+  .logo {
     display: flex;
-    flex: 0 0 auto;
-    z-index: 4;
+    align-items: center;
 
-    &.below {
-        z-index: 2;
+    .logo-icon {
+      width: 38px;
     }
+  }
 
-    .mat-toolbar {
-        position: relative;
-        background: inherit !important;
-        color: inherit !important;
+  .user-button,
+  fuse-search-bar,
+  .language-button,
+  .chat-panel-toggle-button,
+  .quick-panel-toggle-button {
+    min-width: 64px;
+    height: 64px;
+
+    @include media-breakpoint('xs') {
+      height: 56px;
     }
+  }
 
-    .logo {
-        display: flex;
-        align-items: center;
+  .navbar-toggle-button {
+    min-width: 56px;
+    height: 56px;
+  }
 
-        .logo-icon {
-            width: 38px;
-        }
+  .toolbar-separator {
+    height: 64px;
+    width: 1px;
+
+    @include media-breakpoint('xs') {
+      height: 56px;
     }
-
-    .user-button,
-    fuse-search-bar,
-    .language-button,
-    .chat-panel-toggle-button,
-    .quick-panel-toggle-button {
-        min-width: 64px;
-        height: 64px;
-
-        @include media-breakpoint('xs') {
-            height: 56px;
-        }
-    }
-
-    .navbar-toggle-button {
-        min-width: 56px;
-        height: 56px;
-    }
-
-    .toolbar-separator {
-        height: 64px;
-        width: 1px;
-
-        @include media-breakpoint('xs') {
-            height: 56px;
-        }
-    }
+  }
 }

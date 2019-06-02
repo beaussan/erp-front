@@ -12,30 +12,26 @@ import { FuseHighlightModule } from '@fuse/components/index';
 import { DocsComponentsThirdPartyGoogleMapsComponent } from './google-maps.component';
 
 const routes = [
-    {
-        path     : 'google-maps',
-        component: DocsComponentsThirdPartyGoogleMapsComponent
-    }
+  {
+    path: 'google-maps',
+    component: DocsComponentsThirdPartyGoogleMapsComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        DocsComponentsThirdPartyGoogleMapsComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [DocsComponentsThirdPartyGoogleMapsComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatIconModule,
+    MatButtonModule,
+    MatIconModule,
 
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
-        }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8',
+    }),
 
-        FuseSharedModule,
-        FuseHighlightModule
-    ],
+    FuseSharedModule,
+    FuseHighlightModule,
+  ],
 })
-export class GoogleMapsModule
-{
-}
+export class GoogleMapsModule {}

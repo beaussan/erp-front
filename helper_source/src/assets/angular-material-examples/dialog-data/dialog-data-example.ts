@@ -1,5 +1,5 @@
-import {Component, Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -19,8 +19,8 @@ export class DialogDataExample {
   openDialog() {
     this.dialog.open(DialogDataExampleDialog, {
       data: {
-        animal: 'panda'
-      }
+        animal: 'panda',
+      },
     });
   }
 }

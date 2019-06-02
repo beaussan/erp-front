@@ -18,7 +18,9 @@
   text-align: center;
 }
 
-.mat-header-cell, .mat-footer-cell, .mat-cell {
+.mat-header-cell,
+.mat-footer-cell,
+.mat-cell {
   min-width: 80px;
   box-sizing: border-box;
 }

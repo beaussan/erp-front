@@ -1,23 +1,18 @@
 <mat-form-field>
   List length:
-  <input matInput [(ngModel)]="length">
+  <input matInput [(ngModel)]="length" />
 </mat-form-field>
 
 <mat-form-field>
   Page size:
-  <input matInput [(ngModel)]="pageSize">
+  <input matInput [(ngModel)]="pageSize" />
 </mat-form-field>
 <mat-form-field>
   Page size options:
-  <input matInput
-         [ngModel]="pageSizeOptions"
-         (ngModelChange)="setPageSizeOptions($event)">
+  <input matInput [ngModel]="pageSizeOptions" (ngModelChange)="setPageSizeOptions($event)" />
 </mat-form-field>
 
-<mat-paginator [length]="length"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="pageSizeOptions"
-              (page)="pageEvent = $event">
+<mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event">
 </mat-paginator>
 
 <div *ngIf="pageEvent">

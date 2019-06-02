@@ -7,24 +7,14 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { Error404Component } from 'app/main/pages/errors/404/error-404.component';
 
 const routes = [
-    {
-        path     : 'errors/error-404',
-        component: Error404Component
-    }
+  {
+    path: 'errors/error-404',
+    component: Error404Component,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        Error404Component
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
-
-        MatIconModule,
-
-        FuseSharedModule
-    ]
+  declarations: [Error404Component],
+  imports: [RouterModule.forChild(routes), MatIconModule, FuseSharedModule],
 })
-export class Error404Module
-{
-}
+export class Error404Module {}

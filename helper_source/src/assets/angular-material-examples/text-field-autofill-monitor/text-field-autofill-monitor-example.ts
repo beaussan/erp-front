@@ -1,5 +1,5 @@
-import {AutofillMonitor} from '@angular/cdk/text-field';
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import { AutofillMonitor } from '@angular/cdk/text-field';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 
 /** @title Monitoring autofill state with AutofillMonitor */
 @Component({
@@ -16,10 +16,8 @@ export class TextFieldAutofillMonitorExample implements AfterViewInit, OnDestroy
   constructor(private _autofill: AutofillMonitor) {}
 
   ngAfterViewInit() {
-    this._autofill.monitor(this.firstName)
-        .subscribe(e => this.firstNameAutofilled = e.isAutofilled);
-    this._autofill.monitor(this.lastName)
-        .subscribe(e => this.lastNameAutofilled = e.isAutofilled);
+    this._autofill.monitor(this.firstName).subscribe(e => (this.firstNameAutofilled = e.isAutofilled));
+    this._autofill.monitor(this.lastName).subscribe(e => (this.lastNameAutofilled = e.isAutofilled));
   }
 
   ngOnDestroy() {

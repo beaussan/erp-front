@@ -5,7 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components';
+import {
+  FuseCountdownModule,
+  FuseHighlightModule,
+  FuseMaterialColorPickerModule,
+  FuseWidgetModule,
+} from '@fuse/components';
 import { DocsComponentsCountdownComponent } from 'app/main/documentation/components/countdown/countdown.component';
 import { DocsComponentsHighlightComponent } from 'app/main/documentation/components/highlight/highlight.component';
 import { DocsComponentsMaterialColorPickerComponent } from 'app/main/documentation/components/material-color-picker/material-color-picker.component';
@@ -17,70 +22,68 @@ import { DocsComponentsShortcutsComponent } from 'app/main/documentation/compone
 import { DocsComponentsWidgetComponent } from 'app/main/documentation/components/widget/widget.component';
 
 const routes = [
-    {
-        path     : 'countdown',
-        component: DocsComponentsCountdownComponent
-    },
-    {
-        path     : 'highlight',
-        component: DocsComponentsHighlightComponent
-    },
-    {
-        path     : 'material-color-picker',
-        component: DocsComponentsMaterialColorPickerComponent
-    },
-    {
-        path     : 'navigation',
-        component: DocsComponentsNavigationComponent
-    },
-    {
-        path     : 'progress-bar',
-        component: DocsComponentsProgressBarComponent
-    },
-    {
-        path     : 'search-bar',
-        component: DocsComponentsSearchBarComponent
-    },
-    {
-        path     : 'sidebar',
-        component: DocsComponentsSidebarComponent
-    },
-    {
-        path     : 'shortcuts',
-        component: DocsComponentsShortcutsComponent
-    },
-    {
-        path     : 'widget',
-        component: DocsComponentsWidgetComponent
-    }
+  {
+    path: 'countdown',
+    component: DocsComponentsCountdownComponent,
+  },
+  {
+    path: 'highlight',
+    component: DocsComponentsHighlightComponent,
+  },
+  {
+    path: 'material-color-picker',
+    component: DocsComponentsMaterialColorPickerComponent,
+  },
+  {
+    path: 'navigation',
+    component: DocsComponentsNavigationComponent,
+  },
+  {
+    path: 'progress-bar',
+    component: DocsComponentsProgressBarComponent,
+  },
+  {
+    path: 'search-bar',
+    component: DocsComponentsSearchBarComponent,
+  },
+  {
+    path: 'sidebar',
+    component: DocsComponentsSidebarComponent,
+  },
+  {
+    path: 'shortcuts',
+    component: DocsComponentsShortcutsComponent,
+  },
+  {
+    path: 'widget',
+    component: DocsComponentsWidgetComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        DocsComponentsCountdownComponent,
-        DocsComponentsHighlightComponent,
-        DocsComponentsMaterialColorPickerComponent,
-        DocsComponentsNavigationComponent,
-        DocsComponentsProgressBarComponent,
-        DocsComponentsSearchBarComponent,
-        DocsComponentsSidebarComponent,
-        DocsComponentsShortcutsComponent,
-        DocsComponentsWidgetComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [
+    DocsComponentsCountdownComponent,
+    DocsComponentsHighlightComponent,
+    DocsComponentsMaterialColorPickerComponent,
+    DocsComponentsNavigationComponent,
+    DocsComponentsProgressBarComponent,
+    DocsComponentsSearchBarComponent,
+    DocsComponentsSidebarComponent,
+    DocsComponentsShortcutsComponent,
+    DocsComponentsWidgetComponent,
+  ],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatIconModule,
+    MatButtonModule,
+    MatIconModule,
 
-        FuseSharedModule,
+    FuseSharedModule,
 
-        FuseCountdownModule,
-        FuseHighlightModule,
-        FuseMaterialColorPickerModule,
-        FuseWidgetModule
-    ]
+    FuseCountdownModule,
+    FuseHighlightModule,
+    FuseMaterialColorPickerModule,
+    FuseWidgetModule,
+  ],
 })
-export class ComponentsModule
-{
-}
+export class ComponentsModule {}

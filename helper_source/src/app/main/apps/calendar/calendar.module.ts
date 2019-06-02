@@ -21,50 +21,41 @@ import { CalendarService } from 'app/main/apps/calendar/calendar.service';
 import { CalendarEventFormDialogComponent } from 'app/main/apps/calendar/event-form/event-form.component';
 
 const routes: Routes = [
-    {
-        path     : '**',
-        component: CalendarComponent,
-        children : [],
-        resolve  : {
-            chat: CalendarService
-        }
-    }
+  {
+    path: '**',
+    component: CalendarComponent,
+    children: [],
+    resolve: {
+      chat: CalendarService,
+    },
+  },
 ];
 
 @NgModule({
-    declarations   : [
-        CalendarComponent,
-        CalendarEventFormDialogComponent
-    ],
-    imports        : [
-        RouterModule.forChild(routes),
+  declarations: [CalendarComponent, CalendarEventFormDialogComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatSlideToggleModule,
-        MatToolbarModule,
-        MatTooltipModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatTooltipModule,
 
-        AngularCalendarModule.forRoot({
-            provide   : DateAdapter,
-            useFactory: adapterFactory
-        }),
-        ColorPickerModule,
+    AngularCalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    ColorPickerModule,
 
-        FuseSharedModule,
-        FuseConfirmDialogModule
-    ],
-    providers      : [
-        CalendarService
-    ],
-    entryComponents: [
-        CalendarEventFormDialogComponent
-    ]
+    FuseSharedModule,
+    FuseConfirmDialogModule,
+  ],
+  providers: [CalendarService],
+  entryComponents: [CalendarEventFormDialogComponent],
 })
-export class CalendarModule
-{
-}
+export class CalendarModule {}

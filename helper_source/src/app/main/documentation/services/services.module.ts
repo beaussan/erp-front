@@ -9,31 +9,18 @@ import { FuseConfigServiceDocsComponent } from 'app/main/documentation/services/
 import { FuseSplashScreenServiceDocsComponent } from 'app/main/documentation/services/fuse-splash-screen/fuse-splash-screen.component';
 
 const routes = [
-    {
-        path     : 'fuse-config',
-        component: FuseConfigServiceDocsComponent
-    },
-    {
-        path     : 'fuse-splash-screen',
-        component: FuseSplashScreenServiceDocsComponent
-    }
+  {
+    path: 'fuse-config',
+    component: FuseConfigServiceDocsComponent,
+  },
+  {
+    path: 'fuse-splash-screen',
+    component: FuseSplashScreenServiceDocsComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        FuseConfigServiceDocsComponent,
-        FuseSplashScreenServiceDocsComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
-
-        MatIconModule,
-
-        FuseSharedModule,
-        FuseHighlightModule
-    ]
+  declarations: [FuseConfigServiceDocsComponent, FuseSplashScreenServiceDocsComponent],
+  imports: [RouterModule.forChild(routes), MatIconModule, FuseSharedModule, FuseHighlightModule],
 })
-
-export class ServicesModule
-{
-}
+export class ServicesModule {}

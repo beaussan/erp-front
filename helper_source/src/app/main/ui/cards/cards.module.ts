@@ -17,35 +17,31 @@ import { CardsComponent } from 'app/main/ui/cards/cards.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const routes: Routes = [
-    {
-        path     : 'cards',
-        component: CardsComponent
-    }
+  {
+    path: 'cards',
+    component: CardsComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        CardsComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [CardsComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatIconModule,
-        MatListModule,
-        MatMenuModule,
-        MatSelectModule,
-        MatSlideToggleModule,
-        MatTabsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatTabsModule,
 
-        NgxChartsModule,
+    NgxChartsModule,
 
-        FuseSharedModule,
-        FuseDemoModule,
-        FuseHighlightModule,
-    ]
+    FuseSharedModule,
+    FuseDemoModule,
+    FuseHighlightModule,
+  ],
 })
-export class UICardsModule
-{
-}
+export class UICardsModule {}

@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 /**
  * @title Dialog with header, scrollable content and actions

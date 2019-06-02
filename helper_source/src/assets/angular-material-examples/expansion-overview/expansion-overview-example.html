@@ -10,15 +10,14 @@
     </mat-expansion-panel-header>
 
     <mat-form-field>
-      <input matInput placeholder="First name">
+      <input matInput placeholder="First name" />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Age">
+      <input matInput placeholder="Age" />
     </mat-form-field>
   </mat-expansion-panel>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Self aware panel

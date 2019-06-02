@@ -35,72 +35,67 @@ import { ScrumboardBoardSettingsSidenavComponent } from 'app/main/apps/scrumboar
 import { ScrumboardBoardColorSelectorComponent } from 'app/main/apps/scrumboard/board/sidenavs/settings/board-color-selector/board-color-selector.component';
 
 const routes: Routes = [
-    {
-        path     : 'boards',
-        component: ScrumboardComponent,
-        resolve  : {
-            scrumboard: ScrumboardService
-        }
+  {
+    path: 'boards',
+    component: ScrumboardComponent,
+    resolve: {
+      scrumboard: ScrumboardService,
     },
-    {
-        path     : 'boards/:boardId/:boardUri',
-        component: ScrumboardBoardComponent,
-        resolve  : {
-            board: BoardResolve
-        }
+  },
+  {
+    path: 'boards/:boardId/:boardUri',
+    component: ScrumboardBoardComponent,
+    resolve: {
+      board: BoardResolve,
     },
-    {
-        path      : '**',
-        redirectTo: 'boards'
-    }
+  },
+  {
+    path: '**',
+    redirectTo: 'boards',
+  },
 ];
 
 @NgModule({
-    declarations   : [
-        ScrumboardComponent,
-        ScrumboardBoardComponent,
-        ScrumboardBoardListComponent,
-        ScrumboardBoardCardComponent,
-        ScrumboardBoardEditListNameComponent,
-        ScrumboardBoardAddCardComponent,
-        ScrumboardBoardAddListComponent,
-        ScrumboardCardDialogComponent,
-        ScrumboardLabelSelectorComponent,
-        ScrumboardEditBoardNameComponent,
-        ScrumboardBoardSettingsSidenavComponent,
-        ScrumboardBoardColorSelectorComponent
-    ],
-    imports        : [
-        RouterModule.forChild(routes),
+  declarations: [
+    ScrumboardComponent,
+    ScrumboardBoardComponent,
+    ScrumboardBoardListComponent,
+    ScrumboardBoardCardComponent,
+    ScrumboardBoardEditListNameComponent,
+    ScrumboardBoardAddCardComponent,
+    ScrumboardBoardAddListComponent,
+    ScrumboardCardDialogComponent,
+    ScrumboardLabelSelectorComponent,
+    ScrumboardEditBoardNameComponent,
+    ScrumboardBoardSettingsSidenavComponent,
+    ScrumboardBoardColorSelectorComponent,
+  ],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatCheckboxModule,
-        MatChipsModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatListModule,
-        MatMenuModule,
-        MatProgressBarModule,
-        MatRippleModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatTooltipModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTooltipModule,
 
-        NgxDnDModule,
+    NgxDnDModule,
 
-        FuseSharedModule,
-        FuseConfirmDialogModule,
-        FuseMaterialColorPickerModule
-    ],
-    providers      : [
-        ScrumboardService,
-        BoardResolve
-    ],
-    entryComponents: [ScrumboardCardDialogComponent]
+    FuseSharedModule,
+    FuseConfirmDialogModule,
+    FuseMaterialColorPickerModule,
+  ],
+  providers: [ScrumboardService, BoardResolve],
+  entryComponents: [ScrumboardCardDialogComponent],
 })
-export class ScrumboardModule
-{
-}
+export class ScrumboardModule {}

@@ -15,31 +15,23 @@ import { CookieService } from 'ngx-cookie-service';
 import { FuseShortcutsComponent } from './shortcuts.component';
 
 @NgModule({
-    declarations: [
-        FuseShortcutsComponent
-    ],
-    imports     : [
-        CommonModule,
-        RouterModule,
+  declarations: [FuseShortcutsComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
 
-        FlexLayoutModule,
+    FlexLayoutModule,
 
-        MatButtonModule,
-        MatDividerModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatMenuModule,
-        MatListModule,
-        MatTooltipModule
-    ],
-    exports     : [
-        FuseShortcutsComponent
-    ],
-    providers   : [
-        CookieService
-    ]
+    MatButtonModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatListModule,
+    MatTooltipModule,
+  ],
+  exports: [FuseShortcutsComponent],
+  providers: [CookieService],
 })
-export class FuseShortcutsModule
-{
-}
+export class FuseShortcutsModule {}

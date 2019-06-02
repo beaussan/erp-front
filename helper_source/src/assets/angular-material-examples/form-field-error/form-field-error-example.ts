@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 /** @title Form field with error messages */
 @Component({
@@ -11,8 +11,10 @@ export class FormFieldErrorExample {
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
-            '';
+    return this.email.hasError('required')
+      ? 'You must enter a value'
+      : this.email.hasError('email')
+      ? 'Not a valid email'
+      : '';
   }
 }

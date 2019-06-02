@@ -5,7 +5,6 @@
 <p>Slide Toggle inside of a Template-driven form</p>
 
 <form class="example-form" #form="ngForm" (ngSubmit)="onFormSubmit()" ngNativeValidate>
-
   <mat-slide-toggle ngModel name="enableWifi">Enable Wifi</mat-slide-toggle>
   <mat-slide-toggle ngModel name="acceptTerms" required>Accept Terms of Service</mat-slide-toggle>
 
@@ -15,7 +14,6 @@
 <p>Slide Toggle inside of a Reactive form</p>
 
 <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onFormSubmit()" ngNativeValidate>
-
   <mat-slide-toggle formControlName="enableWifi">Enable Wifi</mat-slide-toggle>
   <mat-slide-toggle formControlName="acceptTerms">Accept Terms of Service</mat-slide-toggle>
 

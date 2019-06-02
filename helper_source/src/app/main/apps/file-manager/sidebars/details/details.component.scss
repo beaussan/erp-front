@@ -1,73 +1,70 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
 
-    > .header {
-        flex: 0 1 auto;
-        height: 160px;
-        min-height: 160px;
-        max-height: 160px;
-    }
+  > .header {
+    flex: 0 1 auto;
+    height: 160px;
+    min-height: 160px;
+    max-height: 160px;
+  }
 
-    > .content {
-        flex: 1;
+  > .content {
+    flex: 1;
 
-        .file-details {
+    .file-details {
+      .preview {
+        height: 240px;
+      }
 
-            .preview {
-                height: 240px;
-            }
+      .offline-switch {
+        padding-bottom: 16px;
+        font-weight: 600;
+      }
 
-            .offline-switch {
-                padding-bottom: 16px;
-                font-weight: 600;
-            }
+      .title {
+        padding: 16px 0;
+      }
 
-            .title {
-                padding: 16px 0;
-            }
+      table {
+        width: 100%;
+        text-align: left;
 
-            table {
-                width: 100%;
-                text-align: left;
+        tr {
+          th,
+          td {
+            padding: 16px 0;
+          }
 
-                tr {
+          th {
+          }
 
-                    th, td {
-                        padding: 16px 0;
-                    }
+          td {
+          }
 
-                    th {
+          &.type {
+            text-transform: capitalize;
+          }
 
-                    }
+          &.size {
+          }
 
-                    td {
+          &.location {
+          }
 
-                    }
+          &.owner {
+            text-transform: capitalize;
+          }
 
-                    &.type {
-                        text-transform: capitalize;
-                    }
+          &.opened {
+          }
 
-                    &.size {
-                    }
-
-                    &.location {
-                    }
-
-                    &.owner {
-                        text-transform: capitalize;
-                    }
-
-                    &.opened {
-                    }
-
-                    &.created {
-                    }
-                }
-            }
+          &.created {
+          }
         }
+      }
     }
+  }
 }

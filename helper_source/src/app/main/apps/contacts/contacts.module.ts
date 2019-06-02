@@ -22,48 +22,42 @@ import { ContactsMainSidebarComponent } from 'app/main/apps/contacts/sidebars/ma
 import { ContactsContactFormDialogComponent } from 'app/main/apps/contacts/contact-form/contact-form.component';
 
 const routes: Routes = [
-    {
-        path     : '**',
-        component: ContactsComponent,
-        resolve  : {
-            contacts: ContactsService
-        }
-    }
+  {
+    path: '**',
+    component: ContactsComponent,
+    resolve: {
+      contacts: ContactsService,
+    },
+  },
 ];
 
 @NgModule({
-    declarations   : [
-        ContactsComponent,
-        ContactsContactListComponent,
-        ContactsSelectedBarComponent,
-        ContactsMainSidebarComponent,
-        ContactsContactFormDialogComponent
-    ],
-    imports        : [
-        RouterModule.forChild(routes),
+  declarations: [
+    ContactsComponent,
+    ContactsContactListComponent,
+    ContactsSelectedBarComponent,
+    ContactsMainSidebarComponent,
+    ContactsContactFormDialogComponent,
+  ],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatCheckboxModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatMenuModule,
-        MatRippleModule,
-        MatTableModule,
-        MatToolbarModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatRippleModule,
+    MatTableModule,
+    MatToolbarModule,
 
-        FuseSharedModule,
-        FuseConfirmDialogModule,
-        FuseSidebarModule
-    ],
-    providers      : [
-        ContactsService
-    ],
-    entryComponents: [
-        ContactsContactFormDialogComponent
-    ]
+    FuseSharedModule,
+    FuseConfirmDialogModule,
+    FuseSidebarModule,
+  ],
+  providers: [ContactsService],
+  entryComponents: [ContactsContactFormDialogComponent],
 })
-export class ContactsModule
-{
-}
+export class ContactsModule {}

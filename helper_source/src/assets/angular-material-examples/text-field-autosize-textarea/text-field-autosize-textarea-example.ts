@@ -1,6 +1,6 @@
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
-import {Component, NgZone, ViewChild} from '@angular/core';
-import {take} from 'rxjs/operators';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { Component, NgZone, ViewChild } from '@angular/core';
+import { take } from 'rxjs/operators';
 
 /** @title Auto-resizing textarea */
 @Component({
@@ -11,11 +11,10 @@ import {take} from 'rxjs/operators';
 export class TextFieldAutosizeTextareaExample {
   constructor(private _ngZone: NgZone) {}
 
-  @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
+  @ViewChild('autosize', { static: false }) autosize: CdkTextareaAutosize;
 
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
-    this._ngZone.onStable.pipe(take(1))
-        .subscribe(() => this.autosize.resizeToFitContent(true));
+    this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
   }
 }

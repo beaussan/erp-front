@@ -11,28 +11,14 @@ import { HelperClassesPaddingMarginComponent } from 'app/main/ui/helper-classes/
 import { HelperClassesWidthHeightComponent } from 'app/main/ui/helper-classes/tabs/width-height/width-height.component';
 
 const routes: Routes = [
-    {
-        path     : 'helper-classes',
-        component: HelperClassesComponent
-    }
+  {
+    path: 'helper-classes',
+    component: HelperClassesComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        HelperClassesComponent,
-        HelperClassesPaddingMarginComponent,
-        HelperClassesWidthHeightComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
-
-        MatIconModule,
-        MatTabsModule,
-
-        FuseSharedModule,
-        FuseHighlightModule,
-    ],
+  declarations: [HelperClassesComponent, HelperClassesPaddingMarginComponent, HelperClassesWidthHeightComponent],
+  imports: [RouterModule.forChild(routes), MatIconModule, MatTabsModule, FuseSharedModule, FuseHighlightModule],
 })
-export class UIHelperClassesModule
-{
-}
+export class UIHelperClassesModule {}

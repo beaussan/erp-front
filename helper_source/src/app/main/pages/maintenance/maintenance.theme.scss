@@ -1,22 +1,18 @@
 @mixin maintenance-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
 
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
+  maintenance {
+    #maintenance {
+      #maintenance-form-wrapper {
+        #maintenance-form {
+          background: map-get($background, card);
 
-    maintenance {
-
-        #maintenance {
-
-            #maintenance-form-wrapper {
-
-                #maintenance-form {
-                    background: map-get($background, card);
-
-                    .subtitle {
-                        color: map-get($foreground, secondary-text);
-                    }
-                }
-            }
+          .subtitle {
+            color: map-get($foreground, secondary-text);
+          }
         }
+      }
     }
+  }
 }

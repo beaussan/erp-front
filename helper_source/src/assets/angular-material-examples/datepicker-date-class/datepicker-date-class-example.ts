@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 /** @title Datepicker with custom date classes */
 @Component({
@@ -9,10 +9,9 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class DatepickerDateClassExample {
   dateClass = (d: any) => {
-
     const date = d.date();
 
     // Highlight the 1st and 20th day of each month.
-    return (date === 1 || date === 20) ? 'example-custom-date-class' : undefined;
-  }
+    return date === 1 || date === 20 ? 'example-custom-date-class' : undefined;
+  };
 }

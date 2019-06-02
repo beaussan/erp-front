@@ -1,6 +1,6 @@
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component} from '@angular/core';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component } from '@angular/core';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 export interface Fruit {
   name: string;
@@ -20,11 +20,7 @@ export class ChipsInputExample {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruits: Fruit[] = [
-    {name: 'Lemon'},
-    {name: 'Lime'},
-    {name: 'Apple'},
-  ];
+  fruits: Fruit[] = [{ name: 'Lemon' }, { name: 'Lime' }, { name: 'Apple' }];
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -32,7 +28,7 @@ export class ChipsInputExample {
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.fruits.push({name: value.trim()});
+      this.fruits.push({ name: value.trim() });
     }
 
     // Reset the input value

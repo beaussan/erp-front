@@ -1,11 +1,10 @@
 :host {
+  .content {
+    max-width: 960px;
+  }
 
-    .content{
-        max-width: 960px;
-    }
-
-    agm-map {
-        width: 100%;
-        height: 300px;
-    }
+  agm-map {
+    width: 100%;
+    height: 300px;
+  }
 }

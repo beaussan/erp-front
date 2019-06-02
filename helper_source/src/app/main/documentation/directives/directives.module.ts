@@ -12,41 +12,31 @@ import { DocsDirectivesFuseMatSidenavComponent } from 'app/main/documentation/di
 import { DocsDirectivesFusePerfectScrollbarComponent } from 'app/main/documentation/directives/fusePerfectScrollbar/fuse-perfect-scrollbar.component';
 
 const routes = [
-    {
-        path     : 'fuse-if-on-dom',
-        component: DocsDirectivesFuseIfOnDomComponent
-    },
-    {
-        path     : 'fuse-inner-scroll',
-        component: DocsDirectivesFuseInnerScrollComponent
-    },
-    {
-        path     : 'fuse-mat-sidenav',
-        component: DocsDirectivesFuseMatSidenavComponent
-    },
-    {
-        path     : 'fuse-perfect-scrollbar',
-        component: DocsDirectivesFusePerfectScrollbarComponent
-    }
+  {
+    path: 'fuse-if-on-dom',
+    component: DocsDirectivesFuseIfOnDomComponent,
+  },
+  {
+    path: 'fuse-inner-scroll',
+    component: DocsDirectivesFuseInnerScrollComponent,
+  },
+  {
+    path: 'fuse-mat-sidenav',
+    component: DocsDirectivesFuseMatSidenavComponent,
+  },
+  {
+    path: 'fuse-perfect-scrollbar',
+    component: DocsDirectivesFusePerfectScrollbarComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        DocsDirectivesFuseIfOnDomComponent,
-        DocsDirectivesFuseInnerScrollComponent,
-        DocsDirectivesFuseMatSidenavComponent,
-        DocsDirectivesFusePerfectScrollbarComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
-
-        MatButtonModule,
-        MatIconModule,
-
-        FuseSharedModule,
-        FuseHighlightModule
-    ]
+  declarations: [
+    DocsDirectivesFuseIfOnDomComponent,
+    DocsDirectivesFuseInnerScrollComponent,
+    DocsDirectivesFuseMatSidenavComponent,
+    DocsDirectivesFusePerfectScrollbarComponent,
+  ],
+  imports: [RouterModule.forChild(routes), MatButtonModule, MatIconModule, FuseSharedModule, FuseHighlightModule],
 })
-export class DirectivesModule
-{
-}
+export class DirectivesModule {}

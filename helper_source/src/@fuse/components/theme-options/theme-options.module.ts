@@ -19,34 +19,28 @@ import { FuseSidebarModule } from '@fuse/components/sidebar/sidebar.module';
 import { FuseThemeOptionsComponent } from '@fuse/components/theme-options/theme-options.component';
 
 @NgModule({
-    declarations: [
-        FuseThemeOptionsComponent
-    ],
-    imports     : [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+  declarations: [FuseThemeOptionsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-        FlexLayoutModule,
+    FlexLayoutModule,
 
-        MatButtonModule,
-        MatCheckboxModule,
-        MatDividerModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatOptionModule,
-        MatRadioModule,
-        MatSelectModule,
-        MatSlideToggleModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSlideToggleModule,
 
-        FuseDirectivesModule,
-        FuseMaterialColorPickerModule,
-        FuseSidebarModule
-    ],
-    exports     : [
-        FuseThemeOptionsComponent
-    ]
+    FuseDirectivesModule,
+    FuseMaterialColorPickerModule,
+    FuseSidebarModule,
+  ],
+  exports: [FuseThemeOptionsComponent],
 })
-export class FuseThemeOptionsModule
-{
-}
+export class FuseThemeOptionsModule {}

@@ -8,103 +8,92 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 import { ContactsService } from 'app/main/apps/contacts/contacts.service';
 
 @Component({
-    selector   : 'selected-bar',
-    templateUrl: './selected-bar.component.html',
-    styleUrls  : ['./selected-bar.component.scss']
+  selector: 'selected-bar',
+  templateUrl: './selected-bar.component.html',
+  styleUrls: ['./selected-bar.component.scss'],
 })
-export class ContactsSelectedBarComponent implements OnInit, OnDestroy
-{
-    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
-    hasSelectedContacts: boolean;
-    isIndeterminate: boolean;
-    selectedContacts: string[];
+export class ContactsSelectedBarComponent implements OnInit, OnDestroy {
+  confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
+  hasSelectedContacts: boolean;
+  isIndeterminate: boolean;
+  selectedContacts: string[];
 
-    // Private
-    private _unsubscribeAll: Subject<any>;
+  // Private
+  private _unsubscribeAll: Subject<any>;
 
-    /**
-     * Constructor
-     *
-     * @param {ContactsService} _contactsService
-     * @param {MatDialog} _matDialog
-     */
-    constructor(
-        private _contactsService: ContactsService,
-        public _matDialog: MatDialog
-    )
-    {
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-    }
+  /**
+   * Constructor
+   *
+   * @param {ContactsService} _contactsService
+   * @param {MatDialog} _matDialog
+   */
+  constructor(private _contactsService: ContactsService, public _matDialog: MatDialog) {
+    // Set the private defaults
+    this._unsubscribeAll = new Subject();
+  }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------
+  // @ Lifecycle hooks
+  // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
-        this._contactsService.onSelectedContactsChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(selectedContacts => {
-                this.selectedContacts = selectedContacts;
-                setTimeout(() => {
-                    this.hasSelectedContacts = selectedContacts.length > 0;
-                    this.isIndeterminate = (selectedContacts.length !== this._contactsService.contacts.length && selectedContacts.length > 0);
-                }, 0);
-            });
-    }
+  /**
+   * On init
+   */
+  ngOnInit(): void {
+    this._contactsService.onSelectedContactsChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(selectedContacts => {
+        this.selectedContacts = selectedContacts;
+        setTimeout(() => {
+          this.hasSelectedContacts = selectedContacts.length > 0;
+          this.isIndeterminate =
+            selectedContacts.length !== this._contactsService.contacts.length && selectedContacts.length > 0;
+        }, 0);
+      });
+  }
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
+  /**
+   * On destroy
+   */
+  ngOnDestroy(): void {
+    // Unsubscribe from all subscriptions
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
+  }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Select all
-     */
-    selectAll(): void
-    {
-        this._contactsService.selectContacts();
-    }
+  /**
+   * Select all
+   */
+  selectAll(): void {
+    this._contactsService.selectContacts();
+  }
 
-    /**
-     * Deselect all
-     */
-    deselectAll(): void
-    {
-        this._contactsService.deselectContacts();
-    }
+  /**
+   * Deselect all
+   */
+  deselectAll(): void {
+    this._contactsService.deselectContacts();
+  }
 
-    /**
-     * Delete selected contacts
-     */
-    deleteSelectedContacts(): void
-    {
-        this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
-            disableClose: false
-        });
+  /**
+   * Delete selected contacts
+   */
+  deleteSelectedContacts(): void {
+    this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
+      disableClose: false,
+    });
 
-        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete all selected contacts?';
+    this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete all selected contacts?';
 
-        this.confirmDialogRef.afterClosed()
-            .subscribe(result => {
-                if ( result )
-                {
-                    this._contactsService.deleteSelectedContacts();
-                }
-                this.confirmDialogRef = null;
-            });
-    }
+    this.confirmDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this._contactsService.deleteSelectedContacts();
+      }
+      this.confirmDialogRef = null;
+    });
+  }
 }

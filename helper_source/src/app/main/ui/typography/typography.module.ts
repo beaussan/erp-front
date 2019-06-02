@@ -14,31 +14,21 @@ import { TypographyMessageBoxesComponent } from 'app/main/ui/typography/tabs/mes
 import { TypographyHelpersComponent } from 'app/main/ui/typography/tabs/helpers/helpers.component';
 
 const routes: Routes = [
-    {
-        path     : 'typography',
-        component: TypographyComponent
-    }
+  {
+    path: 'typography',
+    component: TypographyComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        TypographyComponent,
-        TypographyHeadingsComponent,
-        TypographyInlineTextElementsComponent,
-        TypographyBlockquotesListsComponent,
-        TypographyMessageBoxesComponent,
-        TypographyHelpersComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
-
-        MatIconModule,
-        MatTabsModule,
-
-        FuseSharedModule,
-        FuseHighlightModule
-    ]
+  declarations: [
+    TypographyComponent,
+    TypographyHeadingsComponent,
+    TypographyInlineTextElementsComponent,
+    TypographyBlockquotesListsComponent,
+    TypographyMessageBoxesComponent,
+    TypographyHelpersComponent,
+  ],
+  imports: [RouterModule.forChild(routes), MatIconModule, MatTabsModule, FuseSharedModule, FuseHighlightModule],
 })
-export class UITypographyModule
-{
-}
+export class UITypographyModule {}

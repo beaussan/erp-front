@@ -14,26 +14,20 @@ import { ToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
 import { VerticalLayout1Component } from 'app/layout/vertical/layout-1/layout-1.component';
 
 @NgModule({
-    declarations: [
-        VerticalLayout1Component
-    ],
-    imports     : [
-        RouterModule,
+  declarations: [VerticalLayout1Component],
+  imports: [
+    RouterModule,
 
-        FuseSharedModule,
-        FuseSidebarModule,
+    FuseSharedModule,
+    FuseSidebarModule,
 
-        ChatPanelModule,
-        ContentModule,
-        FooterModule,
-        NavbarModule,
-        QuickPanelModule,
-        ToolbarModule
-    ],
-    exports     : [
-        VerticalLayout1Component
-    ]
+    ChatPanelModule,
+    ContentModule,
+    FooterModule,
+    NavbarModule,
+    QuickPanelModule,
+    ToolbarModule,
+  ],
+  exports: [VerticalLayout1Component],
 })
-export class VerticalLayout1Module
-{
-}
+export class VerticalLayout1Module {}

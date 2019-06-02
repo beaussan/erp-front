@@ -8,223 +8,204 @@ import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
 @Component({
-    selector   : 'fuse-shortcuts',
-    templateUrl: './shortcuts.component.html',
-    styleUrls  : ['./shortcuts.component.scss']
+  selector: 'fuse-shortcuts',
+  templateUrl: './shortcuts.component.html',
+  styleUrls: ['./shortcuts.component.scss'],
 })
-export class FuseShortcutsComponent implements OnInit, AfterViewInit, OnDestroy
-{
-    shortcutItems: any[];
-    navigationItems: any[];
-    filteredNavigationItems: any[];
-    searching: boolean;
-    mobileShortcutsPanelActive: boolean;
+export class FuseShortcutsComponent implements OnInit, AfterViewInit, OnDestroy {
+  shortcutItems: any[];
+  navigationItems: any[];
+  filteredNavigationItems: any[];
+  searching: boolean;
+  mobileShortcutsPanelActive: boolean;
 
-    @Input()
-    navigation: any;
+  @Input()
+  navigation: any;
 
-    @ViewChild('searchInput', {static: false})
-    searchInputField;
+  @ViewChild('searchInput', { static: false })
+  searchInputField;
 
-    @ViewChild('shortcuts', {static: false})
-    shortcutsEl: ElementRef;
+  @ViewChild('shortcuts', { static: false })
+  shortcutsEl: ElementRef;
 
-    // Private
-    private _unsubscribeAll: Subject<any>;
+  // Private
+  private _unsubscribeAll: Subject<any>;
 
-    /**
-     * Constructor
-     *
-     * @param {CookieService} _cookieService
-     * @param {FuseMatchMediaService} _fuseMatchMediaService
-     * @param {FuseNavigationService} _fuseNavigationService
-     * @param {MediaObserver} _mediaObserver
-     * @param {Renderer2} _renderer
-     */
-    constructor(
-        private _cookieService: CookieService,
-        private _fuseMatchMediaService: FuseMatchMediaService,
-        private _fuseNavigationService: FuseNavigationService,
-        private _mediaObserver: MediaObserver,
-        private _renderer: Renderer2
-    )
-    {
-        // Set the defaults
-        this.shortcutItems = [];
-        this.searching = false;
-        this.mobileShortcutsPanelActive = false;
+  /**
+   * Constructor
+   *
+   * @param {CookieService} _cookieService
+   * @param {FuseMatchMediaService} _fuseMatchMediaService
+   * @param {FuseNavigationService} _fuseNavigationService
+   * @param {MediaObserver} _mediaObserver
+   * @param {Renderer2} _renderer
+   */
+  constructor(
+    private _cookieService: CookieService,
+    private _fuseMatchMediaService: FuseMatchMediaService,
+    private _fuseNavigationService: FuseNavigationService,
+    private _mediaObserver: MediaObserver,
+    private _renderer: Renderer2,
+  ) {
+    // Set the defaults
+    this.shortcutItems = [];
+    this.searching = false;
+    this.mobileShortcutsPanelActive = false;
 
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
-    }
+    // Set the private defaults
+    this._unsubscribeAll = new Subject();
+  }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------
+  // @ Lifecycle hooks
+  // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
-        // Get the navigation items and flatten them
-        this.filteredNavigationItems = this.navigationItems = this._fuseNavigationService.getFlatNavigation(this.navigation);
+  /**
+   * On init
+   */
+  ngOnInit(): void {
+    // Get the navigation items and flatten them
+    this.filteredNavigationItems = this.navigationItems = this._fuseNavigationService.getFlatNavigation(
+      this.navigation,
+    );
 
-        if ( this._cookieService.check('FUSE2.shortcuts') )
+    if (this._cookieService.check('FUSE2.shortcuts')) {
+      this.shortcutItems = JSON.parse(this._cookieService.get('FUSE2.shortcuts'));
+    } else {
+      // User's shortcut items
+      this.shortcutItems = [
         {
-            this.shortcutItems = JSON.parse(this._cookieService.get('FUSE2.shortcuts'));
-        }
-        else
+          title: 'Calendar',
+          type: 'item',
+          icon: 'today',
+          url: '/apps/calendar',
+        },
         {
-            // User's shortcut items
-            this.shortcutItems = [
-                {
-                    title: 'Calendar',
-                    type : 'item',
-                    icon : 'today',
-                    url  : '/apps/calendar'
-                },
-                {
-                    title: 'Mail',
-                    type : 'item',
-                    icon : 'email',
-                    url  : '/apps/mail'
-                },
-                {
-                    title: 'Contacts',
-                    type : 'item',
-                    icon : 'account_box',
-                    url  : '/apps/contacts'
-                },
-                {
-                    title: 'To-Do',
-                    type : 'item',
-                    icon : 'check_box',
-                    url  : '/apps/todo'
-                }
-            ];
-        }
-
-    }
-
-    ngAfterViewInit(): void
-    {
-        // Subscribe to media changes
-        this._fuseMatchMediaService.onMediaChange
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-                if ( this._mediaObserver.isActive('gt-sm') )
-                {
-                    this.hideMobileShortcutsPanel();
-                }
-            });
-    }
-
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Search
-     *
-     * @param event
-     */
-    search(event): void
-    {
-        const value = event.target.value.toLowerCase();
-
-        if ( value === '' )
+          title: 'Mail',
+          type: 'item',
+          icon: 'email',
+          url: '/apps/mail',
+        },
         {
-            this.searching = false;
-            this.filteredNavigationItems = this.navigationItems;
+          title: 'Contacts',
+          type: 'item',
+          icon: 'account_box',
+          url: '/apps/contacts',
+        },
+        {
+          title: 'To-Do',
+          type: 'item',
+          icon: 'check_box',
+          url: '/apps/todo',
+        },
+      ];
+    }
+  }
 
-            return;
-        }
+  ngAfterViewInit(): void {
+    // Subscribe to media changes
+    this._fuseMatchMediaService.onMediaChange.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
+      if (this._mediaObserver.isActive('gt-sm')) {
+        this.hideMobileShortcutsPanel();
+      }
+    });
+  }
 
-        this.searching = true;
+  /**
+   * On destroy
+   */
+  ngOnDestroy(): void {
+    // Unsubscribe from all subscriptions
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
+  }
 
-        this.filteredNavigationItems = this.navigationItems.filter((navigationItem) => {
-            return navigationItem.title.toLowerCase().includes(value);
-        });
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
+
+  /**
+   * Search
+   *
+   * @param event
+   */
+  search(event): void {
+    const value = event.target.value.toLowerCase();
+
+    if (value === '') {
+      this.searching = false;
+      this.filteredNavigationItems = this.navigationItems;
+
+      return;
     }
 
-    /**
-     * Toggle shortcut
-     *
-     * @param event
-     * @param itemToToggle
-     */
-    toggleShortcut(event, itemToToggle): void
-    {
-        event.stopPropagation();
+    this.searching = true;
 
-        for ( let i = 0; i < this.shortcutItems.length; i++ )
-        {
-            if ( this.shortcutItems[i].url === itemToToggle.url )
-            {
-                this.shortcutItems.splice(i, 1);
+    this.filteredNavigationItems = this.navigationItems.filter(navigationItem => {
+      return navigationItem.title.toLowerCase().includes(value);
+    });
+  }
 
-                // Save to the cookies
-                this._cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
+  /**
+   * Toggle shortcut
+   *
+   * @param event
+   * @param itemToToggle
+   */
+  toggleShortcut(event, itemToToggle): void {
+    event.stopPropagation();
 
-                return;
-            }
-        }
-
-        this.shortcutItems.push(itemToToggle);
+    for (let i = 0; i < this.shortcutItems.length; i++) {
+      if (this.shortcutItems[i].url === itemToToggle.url) {
+        this.shortcutItems.splice(i, 1);
 
         // Save to the cookies
         this._cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
+
+        return;
+      }
     }
 
-    /**
-     * Is in shortcuts?
-     *
-     * @param navigationItem
-     * @returns {any}
-     */
-    isInShortcuts(navigationItem): any
-    {
-        return this.shortcutItems.find(item => {
-            return item.url === navigationItem.url;
-        });
-    }
+    this.shortcutItems.push(itemToToggle);
 
-    /**
-     * On menu open
-     */
-    onMenuOpen(): void
-    {
-        setTimeout(() => {
-            this.searchInputField.nativeElement.focus();
-        });
-    }
+    // Save to the cookies
+    this._cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
+  }
 
-    /**
-     * Show mobile shortcuts
-     */
-    showMobileShortcutsPanel(): void
-    {
-        this.mobileShortcutsPanelActive = true;
-        this._renderer.addClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
-    }
+  /**
+   * Is in shortcuts?
+   *
+   * @param navigationItem
+   * @returns {any}
+   */
+  isInShortcuts(navigationItem): any {
+    return this.shortcutItems.find(item => {
+      return item.url === navigationItem.url;
+    });
+  }
 
-    /**
-     * Hide mobile shortcuts
-     */
-    hideMobileShortcutsPanel(): void
-    {
-        this.mobileShortcutsPanelActive = false;
-        this._renderer.removeClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
-    }
+  /**
+   * On menu open
+   */
+  onMenuOpen(): void {
+    setTimeout(() => {
+      this.searchInputField.nativeElement.focus();
+    });
+  }
+
+  /**
+   * Show mobile shortcuts
+   */
+  showMobileShortcutsPanel(): void {
+    this.mobileShortcutsPanelActive = true;
+    this._renderer.addClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
+  }
+
+  /**
+   * Hide mobile shortcuts
+   */
+  hideMobileShortcutsPanel(): void {
+    this.mobileShortcutsPanelActive = false;
+    this._renderer.removeClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
+  }
 }

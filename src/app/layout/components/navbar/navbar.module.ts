@@ -8,20 +8,8 @@ import { NavbarVerticalStyle1Module } from 'app/layout/components/navbar/vertica
 import { NavbarVerticalStyle2Module } from 'app/layout/components/navbar/vertical/style-2/style-2.module';
 
 @NgModule({
-    declarations: [
-        NavbarComponent
-    ],
-    imports     : [
-        FuseSharedModule,
-
-        NavbarHorizontalStyle1Module,
-        NavbarVerticalStyle1Module,
-        NavbarVerticalStyle2Module
-    ],
-    exports     : [
-        NavbarComponent
-    ]
+  declarations: [NavbarComponent],
+  imports: [FuseSharedModule, NavbarHorizontalStyle1Module, NavbarVerticalStyle1Module, NavbarVerticalStyle2Module],
+  exports: [NavbarComponent],
 })
-export class NavbarModule
-{
-}
+export class NavbarModule {}

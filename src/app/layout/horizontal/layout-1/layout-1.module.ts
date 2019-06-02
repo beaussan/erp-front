@@ -13,26 +13,20 @@ import { ToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
 import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layout-1.component';
 
 @NgModule({
-    declarations: [
-        HorizontalLayout1Component
-    ],
-    imports     : [
-        MatSidenavModule,
+  declarations: [HorizontalLayout1Component],
+  imports: [
+    MatSidenavModule,
 
-        FuseSharedModule,
-        FuseSidebarModule,
-        FuseThemeOptionsModule,
+    FuseSharedModule,
+    FuseSidebarModule,
+    FuseThemeOptionsModule,
 
-        ContentModule,
-        FooterModule,
-        NavbarModule,
-        QuickPanelModule,
-        ToolbarModule
-    ],
-    exports     : [
-        HorizontalLayout1Component
-    ]
+    ContentModule,
+    FooterModule,
+    NavbarModule,
+    QuickPanelModule,
+    ToolbarModule,
+  ],
+  exports: [HorizontalLayout1Component],
 })
-export class HorizontalLayout1Module
-{
-}
+export class HorizontalLayout1Module {}

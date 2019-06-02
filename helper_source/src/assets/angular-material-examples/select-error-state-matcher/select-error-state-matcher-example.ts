@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -17,20 +17,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['select-error-state-matcher-example.css'],
 })
 export class SelectErrorStateMatcherExample {
-  selected = new FormControl('valid', [
-    Validators.required,
-    Validators.pattern('valid'),
-  ]);
+  selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
 
-  selectFormControl = new FormControl('valid', [
-    Validators.required,
-    Validators.pattern('valid'),
-  ]);
+  selectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
 
-  nativeSelectFormControl = new FormControl('valid', [
-    Validators.required,
-    Validators.pattern('valid'),
-  ]);
+  nativeSelectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
 
   matcher = new MyErrorStateMatcher();
 }

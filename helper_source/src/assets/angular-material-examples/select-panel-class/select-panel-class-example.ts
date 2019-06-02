@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Select with custom panel styling

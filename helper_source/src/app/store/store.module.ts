@@ -8,25 +8,20 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
 import { environment } from 'environments/environment';
 import { reducers, effects, CustomSerializer } from 'app/store';
 
-export const metaReducers: MetaReducer<any>[] = !environment.production
-    ? [storeFreeze]
-    : [];
+export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
 
 @NgModule({
-    imports  : [
-        StoreModule.forRoot(reducers, {metaReducers}),
-        EffectsModule.forRoot(effects),
-        !environment.production ? StoreDevtoolsModule.instrument() : [],
-        StoreRouterConnectingModule.forRoot()
-    ],
-    providers: [
-        {
-            provide : RouterStateSerializer,
-            useClass: CustomSerializer
-        }
-    ]
+  imports: [
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot(effects),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule.forRoot(),
+  ],
+  providers: [
+    {
+      provide: RouterStateSerializer,
+      useClass: CustomSerializer,
+    },
+  ],
 })
-
-export class AppStoreModule
-{
-}
+export class AppStoreModule {}

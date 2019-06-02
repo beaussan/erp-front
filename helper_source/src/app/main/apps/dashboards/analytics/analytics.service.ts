@@ -4,56 +4,42 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class AnalyticsDashboardService implements Resolve<any>
-{
-    widgets: any[];
+export class AnalyticsDashboardService implements Resolve<any> {
+  widgets: any[];
 
-    /**
-     * Constructor
-     *
-     * @param {HttpClient} _httpClient
-     */
-    constructor(
-        private _httpClient: HttpClient
-    )
-    {
-    }
+  /**
+   * Constructor
+   *
+   * @param {HttpClient} _httpClient
+   */
+  constructor(private _httpClient: HttpClient) {}
 
-    /**
-     * Resolver
-     *
-     * @param {ActivatedRouteSnapshot} route
-     * @param {RouterStateSnapshot} state
-     * @returns {Observable<any> | Promise<any> | any}
-     */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
-    {
-        return new Promise((resolve, reject) => {
+  /**
+   * Resolver
+   *
+   * @param {ActivatedRouteSnapshot} route
+   * @param {RouterStateSnapshot} state
+   * @returns {Observable<any> | Promise<any> | any}
+   */
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+    return new Promise((resolve, reject) => {
+      Promise.all([this.getWidgets()]).then(() => {
+        resolve();
+      }, reject);
+    });
+  }
 
-            Promise.all([
-                this.getWidgets()
-            ]).then(
-                () => {
-                    resolve();
-                },
-                reject
-            );
-        });
-    }
-
-    /**
-     * Get widgets
-     *
-     * @returns {Promise<any>}
-     */
-    getWidgets(): Promise<any>
-    {
-        return new Promise((resolve, reject) => {
-            this._httpClient.get('api/analytics-dashboard-widgets')
-                .subscribe((response: any) => {
-                    this.widgets = response;
-                    resolve(response);
-                }, reject);
-        });
-    }
+  /**
+   * Get widgets
+   *
+   * @returns {Promise<any>}
+   */
+  getWidgets(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._httpClient.get('api/analytics-dashboard-widgets').subscribe((response: any) => {
+        this.widgets = response;
+        resolve(response);
+      }, reject);
+    });
+  }
 }

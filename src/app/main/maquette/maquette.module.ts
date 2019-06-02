@@ -7,9 +7,6 @@ import { MaquetteDetailComponent } from './components/maquette-detail/maquette-d
 
 @NgModule({
   declarations: [MaquetteListComponent, MaquetteDetailComponent],
-  imports: [
-    CommonModule,
-    MaquetteRoutingModule
-  ]
+  imports: [CommonModule, MaquetteRoutingModule],
 })
-export class MaquetteModule { }
+export class MaquetteModule {}

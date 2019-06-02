@@ -9,16 +9,14 @@ import { UIPageLayoutsModule } from 'app/main/ui/page-layouts/page-layouts.modul
 import { UIColorsModule } from 'app/main/ui/colors/colors.module';
 
 @NgModule({
-    imports: [
-        UICardsModule,
-        UIFormsModule,
-        UIIconsModule,
-        UITypographyModule,
-        UIHelperClassesModule,
-        UIPageLayoutsModule,
-        UIColorsModule
-    ]
+  imports: [
+    UICardsModule,
+    UIFormsModule,
+    UIIconsModule,
+    UITypographyModule,
+    UIHelperClassesModule,
+    UIPageLayoutsModule,
+    UIColorsModule,
+  ],
 })
-export class UIModule
-{
-}
+export class UIModule {}

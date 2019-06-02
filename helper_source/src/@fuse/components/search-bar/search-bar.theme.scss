@@ -1,11 +1,9 @@
 @mixin fuse-search-bar-theme($theme) {
+  $background: map-get($theme, background);
 
-    $background: map-get($theme, background);
-
-    .fuse-search-bar {
-
-        &.expanded {
-            background-color: map-get($background, background);
-        }
+  .fuse-search-bar {
+    &.expanded {
+      background-color: map-get($background, background);
     }
+  }
 }

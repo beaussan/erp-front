@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { Component } from '@angular/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 /** @title Datepicker input and change events */
 @Component({

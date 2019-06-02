@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Stepper vertical
@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'stepper-vertical-example',
   templateUrl: 'stepper-vertical-example.html',
-  styleUrls: ['stepper-vertical-example.css']
+  styleUrls: ['stepper-vertical-example.css'],
 })
 export class StepperVerticalExample implements OnInit {
   isLinear = false;
@@ -18,10 +18,10 @@ export class StepperVerticalExample implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      secondCtrl: ['', Validators.required],
     });
   }
 }

@@ -1,9 +1,5 @@
-import {Component} from '@angular/core';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 /**
  * @title Snack-bar with configurable position
@@ -14,7 +10,6 @@ import {
   styleUrls: ['snack-bar-position-example.css'],
 })
 export class SnackBarPositionExample {
-
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 

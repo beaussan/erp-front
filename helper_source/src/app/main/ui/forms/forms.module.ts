@@ -12,29 +12,25 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { FormsComponent } from 'app/main/ui/forms/forms.component';
 
 const routes: Routes = [
-    {
-        path     : 'forms',
-        component: FormsComponent
-    }
+  {
+    path: 'forms',
+    component: FormsComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        FormsComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [FormsComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatSelectModule,
-        MatStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    MatStepperModule,
 
-        FuseSharedModule,
-    ]
+    FuseSharedModule,
+  ],
 })
-export class UIFormsModule
-{
-}
+export class UIFormsModule {}

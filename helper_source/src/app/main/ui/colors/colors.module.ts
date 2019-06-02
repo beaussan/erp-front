@@ -10,27 +10,23 @@ import { FuseDemoModule } from '@fuse/components/demo/demo.module';
 import { ColorsComponent } from 'app/main/ui/colors/colors.component';
 
 const routes: Routes = [
-    {
-        path     : 'colors',
-        component: ColorsComponent
-    }
+  {
+    path: 'colors',
+    component: ColorsComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        ColorsComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [ColorsComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatIconModule,
-        MatTabsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTabsModule,
 
-        FuseSharedModule,
-        FuseDemoModule
-    ]
+    FuseSharedModule,
+    FuseDemoModule,
+  ],
 })
-export class UIColorsModule
-{
-}
+export class UIColorsModule {}

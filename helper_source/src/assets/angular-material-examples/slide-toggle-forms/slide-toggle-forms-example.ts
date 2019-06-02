@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Slide-toggle with forms
@@ -16,7 +16,7 @@ export class SlideToggleFormsExample {
   constructor(formBuilder: FormBuilder) {
     this.formGroup = formBuilder.group({
       enableWifi: '',
-      acceptTerms: ['', Validators.requiredTrue]
+      acceptTerms: ['', Validators.requiredTrue],
     });
   }
 

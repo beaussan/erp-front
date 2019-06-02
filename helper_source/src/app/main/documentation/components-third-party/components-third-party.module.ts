@@ -11,30 +11,26 @@ import { GoogleMapsModule } from 'app/main/documentation/components-third-party/
 import { DocsComponentsThirdPartyNgxDatatableComponent } from 'app/main/documentation/components-third-party/datatable/ngx-datatable.component';
 
 const routes = [
-    {
-        path     : 'datatables/ngx-datatable',
-        component: DocsComponentsThirdPartyNgxDatatableComponent
-    }
+  {
+    path: 'datatables/ngx-datatable',
+    component: DocsComponentsThirdPartyNgxDatatableComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [
-        DocsComponentsThirdPartyNgxDatatableComponent
-    ],
-    imports     : [
-        RouterModule.forChild(routes),
+  declarations: [DocsComponentsThirdPartyNgxDatatableComponent],
+  imports: [
+    RouterModule.forChild(routes),
 
-        MatButtonModule,
-        MatCheckboxModule,
-        MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
 
-        NgxDatatableModule,
+    NgxDatatableModule,
 
-        FuseSharedModule,
+    FuseSharedModule,
 
-        GoogleMapsModule
-    ]
+    GoogleMapsModule,
+  ],
 })
-export class ComponentsThirdPartyModule
-{
-}
+export class ComponentsThirdPartyModule {}

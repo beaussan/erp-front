@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 /**
  * @title Dialog elements
@@ -16,7 +16,6 @@ export class DialogElementsExample {
     this.dialog.open(DialogElementsExampleDialog);
   }
 }
-
 
 @Component({
   selector: 'dialog-elements-example-dialog',

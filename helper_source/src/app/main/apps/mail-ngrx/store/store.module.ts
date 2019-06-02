@@ -6,12 +6,7 @@ import { reducers } from 'app/main/apps/mail-ngrx/store/reducers';
 import { effects } from 'app/main/apps/mail-ngrx/store/effects';
 
 @NgModule({
-    imports  : [
-        StoreModule.forFeature('mail-app', reducers),
-        EffectsModule.forFeature(effects)
-    ],
-    providers: []
+  imports: [StoreModule.forFeature('mail-app', reducers), EffectsModule.forFeature(effects)],
+  providers: [],
 })
-export class MailNgrxStoreModule
-{
-}
+export class MailNgrxStoreModule {}

@@ -11,35 +11,20 @@ import { AngularMaterialElementsComponent } from 'app/main/angular-material-elem
 import { ExampleViewerComponent } from 'app/main/angular-material-elements/example-viewer/example-viewer';
 
 const routes: Routes = [
-    {
-        path    : '',
-        children: [
-            {
-                path     : ':id',
-                component: AngularMaterialElementsComponent
-            }
-        ]
-    }
+  {
+    path: '',
+    children: [
+      {
+        path: ':id',
+        component: AngularMaterialElementsComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
-    declarations   : [
-        [...EXAMPLE_LIST],
-        AngularMaterialElementsComponent,
-        ExampleViewerComponent
-    ],
-    imports        : [
-        RouterModule.forChild(routes),
-
-        MaterialModule,
-
-        FuseSharedModule,
-        FuseHighlightModule,
-        FuseWidgetModule
-    ],
-    entryComponents: EXAMPLE_LIST,
+  declarations: [[...EXAMPLE_LIST], AngularMaterialElementsComponent, ExampleViewerComponent],
+  imports: [RouterModule.forChild(routes), MaterialModule, FuseSharedModule, FuseHighlightModule, FuseWidgetModule],
+  entryComponents: EXAMPLE_LIST,
 })
-export class AngularMaterialElementsModule
-{
-}
-
+export class AngularMaterialElementsModule {}

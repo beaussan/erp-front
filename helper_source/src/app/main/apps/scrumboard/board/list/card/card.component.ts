@@ -3,57 +3,50 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
-    selector     : 'scrumboard-board-card',
-    templateUrl  : './card.component.html',
-    styleUrls    : ['./card.component.scss'],
-    encapsulation: ViewEncapsulation.None
+  selector: 'scrumboard-board-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class ScrumboardBoardCardComponent implements OnInit
-{
-    @Input()
-    cardId;
+export class ScrumboardBoardCardComponent implements OnInit {
+  @Input()
+  cardId;
 
-    card: any;
-    board: any;
+  card: any;
+  board: any;
 
-    /**
-     * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     */
-    constructor(
-        private _activatedRoute: ActivatedRoute
-    )
-    {
-    }
+  /**
+   * Constructor
+   *
+   * @param {ActivatedRoute} _activatedRoute
+   */
+  constructor(private _activatedRoute: ActivatedRoute) {}
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------
+  // @ Lifecycle hooks
+  // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
-        this.board = this._activatedRoute.snapshot.data.board;
-        this.card = this.board.cards.filter((card) => {
-            return this.cardId === card.id;
-        })[0];
-    }
+  /**
+   * On init
+   */
+  ngOnInit(): void {
+    this.board = this._activatedRoute.snapshot.data.board;
+    this.card = this.board.cards.filter(card => {
+      return this.cardId === card.id;
+    })[0];
+  }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Is the card overdue?
-     *
-     * @param cardDate
-     * @returns {boolean}
-     */
-    isOverdue(cardDate): boolean
-    {
-        return moment() > moment(new Date(cardDate));
-    }
+  /**
+   * Is the card overdue?
+   *
+   * @param cardDate
+   * @returns {boolean}
+   */
+  isOverdue(cardDate): boolean {
+    return moment() > moment(new Date(cardDate));
+  }
 }
