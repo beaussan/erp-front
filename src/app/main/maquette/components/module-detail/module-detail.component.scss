@@ -1,0 +1,23 @@
+@import '../constants';
+
+:host {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: $columns-grid;
+  grid-gap: $column-gaps 0;
+}
+
+.name {
+  grid-column: #{$column-matiere} / #{$column-etu};
+}
+
+.total-etu {
+  grid-column: $column-etu;
+}
+.total-ects {
+  grid-column: $column-ects;
+}
+
+app-course-detail {
+  grid-column: 1 / -1;
+}

@@ -1,4 +1,8 @@
+<div class="header">Semestre {{ semester.number }}</div>
 <app-module-detail *ngFor="let module of semester.modules" [module]="module"></app-module-detail>
-<div>
-  {{ semester.totalEtu }}
-</div>
+<div class="total">Total</div>
+<div class="total-etu">{{ semester.totalEtu }}</div>
+<div class="total-cours">{{ semester.totalAmphi }}</div>
+<div class="total-td">{{ semester.totalTD }}</div>
+<div class="total-ects">{{ semester.ects }}</div>
+<div class="total-exam">{{ semester.totalExam }}</div>

@@ -1,4 +1,4 @@
+<div class="name">{{ module.name }}</div>
+<div class="total-etu">{{ module.totalEtu }}</div>
+<div class="total-ects">{{ module.ects }}</div>
 <app-course-detail *ngFor="let course of module.courses" [course]="course"></app-course-detail>
-<div>
-  {{ module.totalEtu }}
-</div>

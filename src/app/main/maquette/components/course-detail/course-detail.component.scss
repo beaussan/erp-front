@@ -1,0 +1,60 @@
+@import '../constants';
+
+:host {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: $columns-grid;
+  grid-gap: $column-gaps 0;
+}
+
+.mat {
+  grid-column: $column-matiere;
+}
+.teacher {
+  grid-column: $column-prof;
+}
+.com {
+  grid-column: $column-comun;
+}
+.total-prof {
+  grid-column: $column-total-prof;
+}
+.total-etu {
+  grid-column: $column-etu;
+}
+.total-cours {
+  grid-column: $column-cours;
+}
+.total-td {
+  grid-column: $column-td;
+}
+.nmb-group {
+  grid-column: $column-nmb-group;
+}
+.ects {
+  grid-column: $column-ects;
+}
+.coef-cc {
+  grid-column: $column-coef-cc;
+}
+.coef-exam {
+  grid-column: $column-coef-ex;
+}
+.length-exam {
+  grid-column: $column-exam-length;
+}
+.exam-type {
+  grid-column: $column-exam-type;
+}
+
+.is-in-english {
+  grid-column: $column-course-english;
+}
+
+.translation {
+  grid-column: $column-english-name;
+}
+
+.ratrappage {
+  grid-column: $column-ratrapage;
+}

@@ -1,0 +1,20 @@
+$column-gaps: 20px;
+$columns-grid: 3fr 3fr 2fr 2fr repeat(5, 1fr) $column-gaps repeat(3, 1fr) 2fr $column-gaps 30px 2fr
+  1fr;
+
+$column-matiere: 1;
+$column-prof: 2;
+$column-comun: 3;
+$column-total-prof: 4;
+$column-etu: 5;
+$column-cours: 6;
+$column-td: 7;
+$column-nmb-group: 8;
+$column-ects: 9;
+$column-coef-cc: 11;
+$column-coef-ex: 12;
+$column-exam-length: 13;
+$column-exam-type: 14;
+$column-course-english: 16;
+$column-english-name: 17;
+$column-ratrapage: 18;

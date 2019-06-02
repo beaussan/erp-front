@@ -1,0 +1,40 @@
+@import '../constants';
+
+:host {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: $columns-grid;
+  grid-gap: 20px 0;
+}
+
+.header {
+  grid-column: 1 / -1;
+}
+
+app-module-detail {
+  grid-column: 1 / -1;
+}
+
+.total {
+  grid-column: $column-comun;
+}
+
+.total-etu {
+  grid-column: $column-etu;
+}
+
+.total-cours {
+  grid-column: $column-cours;
+}
+
+.total-td {
+  grid-column: $column-td;
+}
+
+.total-ects {
+  grid-column: $column-ects;
+}
+
+.total-exam {
+  grid-column: $column-exam-length;
+}
