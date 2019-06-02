@@ -1,7 +1,31 @@
-<ng-container *ngIf="maquette$ | async as maquette">
-  <div>{{ maquette.master.name }} {{ maquette.schoolYear }}</div>
-  <app-year-detail *ngFor="let year of maquette.years" [year]="year"></app-year-detail>
-</ng-container>
+<div class="page-layout simple fullwidth" *ngIf="maquette$ | async as maquette">
+  <!-- HEADER -->
+  <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-mini-fab color="primary" class="mr-16" [routerLink]="['..', '..', 'list']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2>{{ maquette.master.name }}, années {{ maquette.schoolYear }}</h2>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content">
+    <mat-tab-group dynamicHeight="true">
+      <mat-tab [label]="year.level" *ngFor="let year of maquette.years">
+        <div class="p-24">
+          <app-year-detail [year]="year"></app-year-detail>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>add</mat-icon>
+        </ng-template>
+        To implement new
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- / CONTENT -->
+</div>
 
 <ng-template>
   Loading

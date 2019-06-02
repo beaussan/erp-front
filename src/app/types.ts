@@ -174,6 +174,7 @@ export class Year extends DefaultObject {
   static fromJs(apiObject: any): Year {
     const ret = new Year();
     ret._id = apiObject._id;
+    ret.level = apiObject.level;
     ret.semesters = apiObject.semesters.map(Semester.fromJs);
     ret.extras = apiObject.extras.map(ExtraModules.fromJs);
     return ret;
