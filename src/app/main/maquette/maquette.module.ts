@@ -10,6 +10,9 @@ import { ExtraModuleItemDetailComponent } from './components/extra-module-item-d
 import { SemesterDetailComponent } from './components/semester-detail/semester-detail.component';
 import { ModuleDetailComponent } from './components/module-detail/module-detail.component';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { NgxsModule } from '@ngxs/store';
+import { FuseSharedModule } from '../../../@fuse/shared.module';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,6 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
     ModuleDetailComponent,
     CourseDetailComponent,
   ],
-  imports: [CommonModule, MaquetteRoutingModule],
+  imports: [FuseSharedModule, MaquetteRoutingModule, NgxsModule, MatButtonModule],
 })
 export class MaquetteModule {}

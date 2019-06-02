@@ -1,3 +1,10 @@
-<p>
-  maquette-list works!
-</p>
+<ng-container *ngIf="all$ | async as all; else loading">
+  <div *ngFor="let maquette of all">
+    {{ maquette.master.name }} ({{ maquette.schoolYear }}) {{ maquette.inProduction }}
+    <button mat-button color="primary" [routerLink]="['..', 'detail', maquette.id]">Go to !</button>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  LOADING
+</ng-template>

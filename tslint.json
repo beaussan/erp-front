@@ -42,7 +42,7 @@
     "one-line": false,
     "ordered-imports": false,
     "quotemark": [true, "single"],
-    "typedef": [true, "call-signature", "property-declaration"],
+    "typedef": [false, "call-signature", "property-declaration"],
     "trailing-comma": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,

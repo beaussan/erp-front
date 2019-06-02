@@ -24,6 +24,10 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { AuthState } from './state/auth.state';
+import { MaquetteModule } from './main/maquette/maquette.module';
+import { MaquetteState } from './state/maquette.state';
+import { MasterState } from './state/master.state';
 
 const appRoutes: Routes = [
   {
@@ -61,7 +65,7 @@ const appRoutes: Routes = [
     FuseThemeOptionsModule,
 
     // NgXS
-    NgxsModule.forRoot([], {
+    NgxsModule.forRoot([AuthState, MaquetteState, MasterState], {
       developmentMode: !environment.production,
     }),
     NgxsDispatchPluginModule.forRoot(),
