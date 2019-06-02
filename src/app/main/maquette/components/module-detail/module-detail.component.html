@@ -1,4 +1,11 @@
 <div class="name">{{ module.name }}</div>
 <div class="total-etu">{{ module.totalEtu }}</div>
+<div class="background spacer-1"></div>
 <div class="total-ects">{{ module.ects }}</div>
-<app-course-detail *ngFor="let course of module.courses" [course]="course"></app-course-detail>
+<div class="background spacer-2"></div>
+<div class="background spacer-3"></div>
+<app-course-detail
+  *ngFor="let course of module.courses; let last = last"
+  [course]="course"
+  [last]="last"
+></app-course-detail>

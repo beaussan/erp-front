@@ -1,6 +1,5 @@
 $column-gaps: 20px;
-$columns-grid: 3fr 3fr 2fr 2fr repeat(5, 1fr) $column-gaps repeat(3, 1fr) 2fr $column-gaps 30px 2fr
-  1fr;
+$columns-grid: 3fr 3fr 2fr repeat(6, 1fr) $column-gaps repeat(3, 1fr) 2fr $column-gaps 1fr 2fr 1fr;
 
 $column-matiere: 1;
 $column-prof: 2;

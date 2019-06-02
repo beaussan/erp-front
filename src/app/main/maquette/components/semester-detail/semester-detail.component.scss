@@ -4,15 +4,118 @@
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: $columns-grid;
-  grid-gap: 20px 0;
+  // grid-gap: 20px 0;
 }
 
-.header {
+.header-block {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: $columns-grid;
   grid-column: 1 / -1;
-}
+  justify-content: center;
+  align-items: stretch;
 
+  .header-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgray;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+  }
+
+  .header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .enseignements {
+    grid-column: #{$column-matiere} / #{$column-ects + 1};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .evaluations {
+    grid-column: #{$column-coef-cc} / #{$column-exam-type + 1};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info {
+    grid-column: #{$column-course-english} / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mat {
+    grid-column: $column-matiere;
+  }
+  .teacher {
+    grid-column: $column-prof;
+  }
+  .com {
+    grid-column: $column-comun;
+  }
+  .total-prof {
+    grid-column: $column-total-prof;
+  }
+  .total-etu {
+    grid-column: $column-etu;
+  }
+  .total-cours {
+    grid-column: $column-cours;
+  }
+  .total-td {
+    grid-column: $column-td;
+  }
+  .nmb-group {
+    grid-column: $column-nmb-group;
+  }
+  .ects {
+    grid-column: $column-ects;
+    border-right: 1px solid black;
+  }
+  .coef-cc {
+    grid-column: $column-coef-cc;
+  }
+  .coef-exam {
+    grid-column: $column-coef-ex;
+  }
+  .length-exam {
+    grid-column: $column-exam-length;
+  }
+  .exam-type {
+    grid-column: $column-exam-type;
+    border-right: 1px solid black;
+  }
+
+  .is-in-english {
+    grid-column: $column-course-english;
+  }
+
+  .translation {
+    grid-column: $column-english-name;
+  }
+
+  .ratrappage {
+    grid-column: $column-ratrapage;
+    border-right: 1px solid black;
+  }
+}
 app-module-detail {
   grid-column: 1 / -1;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .total {

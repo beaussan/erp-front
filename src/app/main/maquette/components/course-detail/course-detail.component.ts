@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { Course } from '../../../../types';
 
 @Component({
@@ -8,6 +8,8 @@ import { Course } from '../../../../types';
 })
 export class CourseDetailComponent implements OnInit {
   @Input() course: Course;
+
+  @HostBinding('class.last') @Input() last = false;
 
   constructor() {}
 

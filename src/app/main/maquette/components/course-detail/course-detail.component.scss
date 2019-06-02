@@ -5,10 +5,24 @@
   grid-template-rows: auto;
   grid-template-columns: $columns-grid;
   grid-gap: $column-gaps 0;
+  align-items: stretch;
+
+  &.last > div {
+    border-bottom: 1px solid black;
+  }
+
+  > div {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .mat {
   grid-column: $column-matiere;
+  border-left: 1px solid black;
 }
 .teacher {
   grid-column: $column-prof;
@@ -36,6 +50,7 @@
 }
 .coef-cc {
   grid-column: $column-coef-cc;
+  border-left: 1px solid black;
 }
 .coef-exam {
   grid-column: $column-coef-ex;
@@ -49,6 +64,7 @@
 
 .is-in-english {
   grid-column: $column-course-english;
+  border-left: 1px solid black;
 }
 
 .translation {

@@ -4,18 +4,48 @@
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: $columns-grid;
-  grid-gap: $column-gaps 0;
+  // grid-gap: $column-gaps 0;
 }
 
 .name {
   grid-column: #{$column-matiere} / #{$column-etu};
+  background-color: #d3d3d3;
+  border-left: 1px solid black;
 }
 
 .total-etu {
   grid-column: $column-etu;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d3d3d3;
 }
 .total-ects {
   grid-column: $column-ects;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d3d3d3;
+  border-right: 1px solid black;
+}
+
+.background {
+  background-color: #d3d3d3;
+}
+
+.spacer-1 {
+  grid-column: #{$column-etu + 1} / #{$column-ects};
+}
+
+.spacer-2 {
+  grid-column: #{$column-coef-cc} / #{$column-exam-type + 1};
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.spacer-3 {
+  grid-column: #{$column-course-english} / -1;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 app-course-detail {
