@@ -23,7 +23,11 @@ export class FuseConfigService {
    * @param {Router} _router
    * @param _config
    */
-  constructor(private _platform: Platform, private _router: Router, @Inject(FUSE_CONFIG) private _config) {
+  constructor(
+    private _platform: Platform,
+    private _router: Router,
+    @Inject(FUSE_CONFIG) private _config,
+  ) {
     // Set the default config from the user provided config (from forRoot)
     this._defaultConfig = _config;
 

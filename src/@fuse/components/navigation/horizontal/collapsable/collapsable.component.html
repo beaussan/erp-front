@@ -29,7 +29,12 @@
   </a>
 
   <!-- item.function -->
-  <span class="nav-link" [ngClass]="item.classes" *ngIf="!item.url && item.function" (click)="item.function()">
+  <span
+    class="nav-link"
+    [ngClass]="item.classes"
+    *ngIf="!item.url && item.function"
+    (click)="item.function()"
+  >
     <ng-container *ngTemplateOutlet="itemContent"></ng-container>
   </span>
 
@@ -75,12 +80,18 @@
   <div class="children" [ngClass]="{ open: isOpen }">
     <div class="{{ fuseConfig.layout.navbar.primaryBackground }}">
       <ng-container *ngFor="let item of item.children">
-        <fuse-nav-horizontal-item *ngIf="item.type == 'item'" [item]="item"></fuse-nav-horizontal-item>
+        <fuse-nav-horizontal-item
+          *ngIf="item.type == 'item'"
+          [item]="item"
+        ></fuse-nav-horizontal-item>
         <fuse-nav-horizontal-collapsable
           *ngIf="item.type == 'collapsable'"
           [item]="item"
         ></fuse-nav-horizontal-collapsable>
-        <fuse-nav-horizontal-collapsable *ngIf="item.type == 'group'" [item]="item"></fuse-nav-horizontal-collapsable>
+        <fuse-nav-horizontal-collapsable
+          *ngIf="item.type == 'group'"
+          [item]="item"
+        ></fuse-nav-horizontal-collapsable>
       </ng-container>
     </div>
   </div>

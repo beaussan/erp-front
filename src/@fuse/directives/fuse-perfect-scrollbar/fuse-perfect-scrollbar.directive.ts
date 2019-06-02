@@ -1,4 +1,12 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { fromEvent, Subject } from 'rxjs';
@@ -388,7 +396,8 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
    * @param {number} speed
    */
   scrollToRight(offset?: number, speed?: number): void {
-    const left = this.elementRef.nativeElement.scrollWidth - this.elementRef.nativeElement.clientWidth;
+    const left =
+      this.elementRef.nativeElement.scrollWidth - this.elementRef.nativeElement.clientWidth;
     this.animateScrolling('scrollLeft', left - (offset || 0), speed);
   }
 
@@ -399,7 +408,8 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
    * @param {number} speed
    */
   scrollToBottom(offset?: number, speed?: number): void {
-    const top = this.elementRef.nativeElement.scrollHeight - this.elementRef.nativeElement.clientHeight;
+    const top =
+      this.elementRef.nativeElement.scrollHeight - this.elementRef.nativeElement.clientHeight;
     this.animateScrolling('scrollTop', top - (offset || 0), speed);
   }
 

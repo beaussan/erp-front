@@ -1,6 +1,11 @@
 <ng-container *ngIf="!item.hidden">
   <!-- normal collapsable -->
-  <a class="nav-link" [ngClass]="item.classes" *ngIf="!item.url && !item.function" (click)="toggleOpen($event)">
+  <a
+    class="nav-link"
+    [ngClass]="item.classes"
+    *ngIf="!item.url && !item.function"
+    (click)="toggleOpen($event)"
+  >
     <ng-container *ngTemplateOutlet="itemContent"></ng-container>
   </a>
 
@@ -82,7 +87,10 @@
   <div class="children" [@slideInOut]="isOpen">
     <ng-container *ngFor="let item of item.children">
       <fuse-nav-vertical-item *ngIf="item.type == 'item'" [item]="item"></fuse-nav-vertical-item>
-      <fuse-nav-vertical-collapsable *ngIf="item.type == 'collapsable'" [item]="item"></fuse-nav-vertical-collapsable>
+      <fuse-nav-vertical-collapsable
+        *ngIf="item.type == 'collapsable'"
+        [item]="item"
+      ></fuse-nav-vertical-collapsable>
       <fuse-nav-vertical-group *ngIf="item.type == 'group'" [item]="item"></fuse-nav-vertical-group>
     </ng-container>
   </div>

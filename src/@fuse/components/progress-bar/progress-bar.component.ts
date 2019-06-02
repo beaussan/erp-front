@@ -42,9 +42,11 @@ export class FuseProgressBarComponent implements OnInit, OnDestroy {
     // Subscribe to the progress bar service properties
 
     // Buffer value
-    this._fuseProgressBarService.bufferValue.pipe(takeUntil(this._unsubscribeAll)).subscribe(bufferValue => {
-      this.bufferValue = bufferValue;
-    });
+    this._fuseProgressBarService.bufferValue
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(bufferValue => {
+        this.bufferValue = bufferValue;
+      });
 
     // Mode
     this._fuseProgressBarService.mode.pipe(takeUntil(this._unsubscribeAll)).subscribe(mode => {
@@ -57,9 +59,11 @@ export class FuseProgressBarComponent implements OnInit, OnDestroy {
     });
 
     // Visible
-    this._fuseProgressBarService.visible.pipe(takeUntil(this._unsubscribeAll)).subscribe(visible => {
-      this.visible = visible;
-    });
+    this._fuseProgressBarService.visible
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(visible => {
+        this.visible = visible;
+      });
   }
 
   /**

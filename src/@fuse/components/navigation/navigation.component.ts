@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { merge, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -26,7 +33,10 @@ export class FuseNavigationComponent implements OnInit {
    * @param {ChangeDetectorRef} _changeDetectorRef
    * @param {FuseNavigationService} _fuseNavigationService
    */
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private _fuseNavigationService: FuseNavigationService) {
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _fuseNavigationService: FuseNavigationService,
+  ) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
   }
@@ -43,13 +53,15 @@ export class FuseNavigationComponent implements OnInit {
     this.navigation = this.navigation || this._fuseNavigationService.getCurrentNavigation();
 
     // Subscribe to the current navigation changes
-    this._fuseNavigationService.onNavigationChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
-      // Load the navigation
-      this.navigation = this._fuseNavigationService.getCurrentNavigation();
+    this._fuseNavigationService.onNavigationChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(() => {
+        // Load the navigation
+        this.navigation = this._fuseNavigationService.getCurrentNavigation();
 
-      // Mark for check
-      this._changeDetectorRef.markForCheck();
-    });
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+      });
 
     // Subscribe to navigation item
     merge(

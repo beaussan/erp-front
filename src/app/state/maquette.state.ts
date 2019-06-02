@@ -21,6 +21,11 @@ export class MaquetteState {
     return state.items;
   }
 
+  @Selector()
+  static byId(state: MaquetteStateModel): (id: string) => Maquette {
+    return (id: string) => state.items.find(val => val.id === id);
+  }
+
   constructor(private readonly maquetteService: MaquetteService) {}
 
   @Action(MaquetteAction)

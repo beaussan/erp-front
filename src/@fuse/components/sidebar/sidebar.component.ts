@@ -301,65 +301,67 @@ export class FuseSidebarComponent implements OnInit, OnDestroy {
     this._showSidebar();
 
     // Act on every media change
-    this._fuseMatchMediaService.onMediaChange.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
-      // Get the active status
-      const isActive = this._mediaObserver.isActive(this.lockedOpen);
+    this._fuseMatchMediaService.onMediaChange
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(() => {
+        // Get the active status
+        const isActive = this._mediaObserver.isActive(this.lockedOpen);
 
-      // If the both status are the same, don't act
-      if (this._wasActive === isActive) {
-        return;
-      }
-
-      // Activate the lockedOpen
-      if (isActive) {
-        // Set the lockedOpen status
-        this.isLockedOpen = true;
-
-        // Show the sidebar
-        this._showSidebar();
-
-        // Force the the opened status to true
-        this.opened = true;
-
-        // Emit the 'openedChanged' event
-        this.openedChanged.emit(this.opened);
-
-        // If the sidebar was folded, forcefully fold it again
-        if (this._wasFolded) {
-          // Enable the animations
-          this._enableAnimations();
-
-          // Fold
-          this.folded = true;
-
-          // Mark for check
-          this._changeDetectorRef.markForCheck();
+        // If the both status are the same, don't act
+        if (this._wasActive === isActive) {
+          return;
         }
 
-        // Hide the backdrop if any exists
-        this._hideBackdrop();
-      }
-      // De-Activate the lockedOpen
-      else {
-        // Set the lockedOpen status
-        this.isLockedOpen = false;
+        // Activate the lockedOpen
+        if (isActive) {
+          // Set the lockedOpen status
+          this.isLockedOpen = true;
 
-        // Unfold the sidebar in case if it was folded
-        this.unfold();
+          // Show the sidebar
+          this._showSidebar();
 
-        // Force the the opened status to close
-        this.opened = false;
+          // Force the the opened status to true
+          this.opened = true;
 
-        // Emit the 'openedChanged' event
-        this.openedChanged.emit(this.opened);
+          // Emit the 'openedChanged' event
+          this.openedChanged.emit(this.opened);
 
-        // Hide the sidebar
-        this._hideSidebar();
-      }
+          // If the sidebar was folded, forcefully fold it again
+          if (this._wasFolded) {
+            // Enable the animations
+            this._enableAnimations();
 
-      // Store the new active status
-      this._wasActive = isActive;
-    });
+            // Fold
+            this.folded = true;
+
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+          }
+
+          // Hide the backdrop if any exists
+          this._hideBackdrop();
+        }
+        // De-Activate the lockedOpen
+        else {
+          // Set the lockedOpen status
+          this.isLockedOpen = false;
+
+          // Unfold the sidebar in case if it was folded
+          this.unfold();
+
+          // Force the the opened status to close
+          this.opened = false;
+
+          // Emit the 'openedChanged' event
+          this.openedChanged.emit(this.opened);
+
+          // Hide the sidebar
+          this._hideSidebar();
+        }
+
+        // Store the new active status
+        this._wasActive = isActive;
+      });
   }
 
   /**
@@ -432,7 +434,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy {
     this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);
 
     // Create the enter animation and attach it to the player
-    this._player = this._animationBuilder.build([animate('300ms ease', style({ opacity: 1 }))]).create(this._backdrop);
+    this._player = this._animationBuilder
+      .build([animate('300ms ease', style({ opacity: 1 }))])
+      .create(this._backdrop);
 
     // Play the animation
     this._player.play();
@@ -457,7 +461,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy {
     }
 
     // Create the leave animation and attach it to the player
-    this._player = this._animationBuilder.build([animate('300ms ease', style({ opacity: 0 }))]).create(this._backdrop);
+    this._player = this._animationBuilder
+      .build([animate('300ms ease', style({ opacity: 0 }))])
+      .create(this._backdrop);
 
     // Play the animation
     this._player.play();

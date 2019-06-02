@@ -49,13 +49,15 @@ export class FuseInnerScrollDirective implements OnInit, OnDestroy {
     this._grandParent = this._renderer.parentNode(this._parent);
 
     // Register to the media query changes
-    this._fuseMediaMatchService.onMediaChange.pipe(takeUntil(this._unsubscribeAll)).subscribe(alias => {
-      if (alias === 'xs') {
-        this._removeClass();
-      } else {
-        this._addClass();
-      }
-    });
+    this._fuseMediaMatchService.onMediaChange
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(alias => {
+        if (alias === 'xs') {
+          this._removeClass();
+        } else {
+          this._addClass();
+        }
+      });
   }
 
   /**

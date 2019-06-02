@@ -277,16 +277,33 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 
         // If the contrast color is dark
         @if (rgba(black, 1) == rgba($contrast, 1)) {
-          $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}-#{$hue}'), 'comma');
+          $dark-contrasting-classes: append(
+            $dark-contrasting-classes,
+            unquote('.#{$paletteName}-#{$hue}'),
+            'comma'
+          );
         }
         // if the contrast color is light
         @else {
-          $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}-#{$hue}'), 'comma');
+          $light-contrasting-classes: append(
+            $light-contrasting-classes,
+            unquote('.#{$paletteName}-#{$hue}'),
+            'comma'
+          );
         }
 
         // Run the generator one more time for default values (500)
         // if we are not working with primary, accent or warn palettes
-        @if ($hue == 500 and $paletteName != 'primary' and $paletteName != 'accent' and $paletteName != 'warn') {
+        @if (
+          $hue ==
+            500 and
+            $paletteName !=
+            'primary' and
+            $paletteName !=
+            'accent' and
+            $paletteName !=
+            'warn'
+        ) {
           // Generate color classes
           @include generate-color-classes($paletteName, $color, $contrast, '');
 
@@ -294,11 +311,19 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 
           // If the contrast color is dark
           @if (rgba(black, 1) == rgba($contrast, 1)) {
-            $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+            $dark-contrasting-classes: append(
+              $dark-contrasting-classes,
+              unquote('.#{$paletteName}'),
+              'comma'
+            );
           }
           // if the contrast color is light
           @else {
-            $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+            $light-contrasting-classes: append(
+              $light-contrasting-classes,
+              unquote('.#{$paletteName}'),
+              'comma'
+            );
           }
         }
       }
@@ -322,11 +347,19 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 
       // If the contrast color is dark
       @if (rgba(black, 1) == rgba($contrast, 1)) {
-        $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+        $dark-contrasting-classes: append(
+          $dark-contrasting-classes,
+          unquote('.#{$paletteName}'),
+          'comma'
+        );
       }
       // if the contrast color is light
       @else {
-        $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+        $light-contrasting-classes: append(
+          $light-contrasting-classes,
+          unquote('.#{$paletteName}'),
+          'comma'
+        );
       }
     }
   }

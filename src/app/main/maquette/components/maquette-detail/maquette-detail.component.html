@@ -1,3 +1,7 @@
-<p>
-  maquette-detail works!
-</p>
+<ng-container *ngIf="maquette$ | async as maquette">
+  {{ maquette.master.name }}
+</ng-container>
+
+<ng-template>
+  Loading
+</ng-template>

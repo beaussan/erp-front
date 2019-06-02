@@ -43,8 +43,14 @@ export const fuseAnimations = [
     state('200', style('*')),
 
     transition('void => 50', query('@*', [stagger('50ms', [animateChild()])], { optional: true })),
-    transition('void => 100', query('@*', [stagger('100ms', [animateChild()])], { optional: true })),
-    transition('void => 200', query('@*', [stagger('200ms', [animateChild()])], { optional: true })),
+    transition(
+      'void => 100',
+      query('@*', [stagger('100ms', [animateChild()])], { optional: true }),
+    ),
+    transition(
+      'void => 200',
+      query('@*', [stagger('200ms', [animateChild()])], { optional: true }),
+    ),
   ]),
 
   trigger('fadeInOut', [

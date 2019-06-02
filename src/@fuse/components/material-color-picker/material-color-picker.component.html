@@ -25,7 +25,9 @@
       <mat-icon class="s-20">arrow_back</mat-icon>
     </button>
 
-    <span *ngIf="selectedColor?.palette"> {{ selectedColor.palette }} {{ selectedColor.hue }} </span>
+    <span *ngIf="selectedColor?.palette">
+      {{ selectedColor.palette }} {{ selectedColor.hue }}
+    </span>
 
     <span *ngIf="!selectedColor?.palette">
       Select a Color
@@ -65,7 +67,8 @@
           fxLayoutAlign="center center"
           *ngFor="let hue of hues"
           [fxHide]="
-            (selectedPalette === 'fuse-white' && hue !== '500') || (selectedPalette === 'fuse-black' && hue !== '500')
+            (selectedPalette === 'fuse-white' && hue !== '500') ||
+            (selectedPalette === 'fuse-black' && hue !== '500')
           "
           [ngClass]="selectedPalette + '-' + hue"
           [class.selected]="selectedHue === hue"

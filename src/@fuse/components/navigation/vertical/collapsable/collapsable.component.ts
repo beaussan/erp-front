@@ -67,26 +67,28 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy {
       });
 
     // Listen for collapsing of any navigation item
-    this._fuseNavigationService.onItemCollapsed.pipe(takeUntil(this._unsubscribeAll)).subscribe(clickedItem => {
-      if (clickedItem && clickedItem.children) {
-        // Check if the clicked item is one
-        // of the children of this item
-        if (this.isChildrenOf(this.item, clickedItem)) {
-          return;
-        }
+    this._fuseNavigationService.onItemCollapsed
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(clickedItem => {
+        if (clickedItem && clickedItem.children) {
+          // Check if the clicked item is one
+          // of the children of this item
+          if (this.isChildrenOf(this.item, clickedItem)) {
+            return;
+          }
 
-        // Check if the url can be found in
-        // one of the children of this item
-        if (this.isUrlInChildren(this.item, this._router.url)) {
-          return;
-        }
+          // Check if the url can be found in
+          // one of the children of this item
+          if (this.isUrlInChildren(this.item, this._router.url)) {
+            return;
+          }
 
-        // If the clicked item is not this item, collapse...
-        if (this.item !== clickedItem) {
-          this.collapse();
+          // If the clicked item is not this item, collapse...
+          if (this.item !== clickedItem) {
+            this.collapse();
+          }
         }
-      }
-    });
+      });
 
     // Check if the url can be found in
     // one of the children of this item

@@ -29,7 +29,10 @@ export class FuseNavVerticalItemComponent implements OnInit, OnDestroy {
    * @param {ChangeDetectorRef} _changeDetectorRef
    * @param {FuseNavigationService} _fuseNavigationService
    */
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private _fuseNavigationService: FuseNavigationService) {
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _fuseNavigationService: FuseNavigationService,
+  ) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
   }

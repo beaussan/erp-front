@@ -1,4 +1,11 @@
-import { Component, EventEmitter, forwardRef, Input, Output, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
 import { MatColors } from '@fuse/mat-colors';
@@ -42,7 +49,22 @@ export class FuseMaterialColorPickerComponent implements ControlValueAccessor {
     // Set the defaults
     this.colorChanged = new EventEmitter();
     this.colors = MatColors.all;
-    this.hues = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', 'A100', 'A200', 'A400', 'A700'];
+    this.hues = [
+      '50',
+      '100',
+      '200',
+      '300',
+      '400',
+      '500',
+      '600',
+      '700',
+      '800',
+      '900',
+      'A100',
+      'A200',
+      'A400',
+      'A700',
+    ];
     this.selectedHue = '500';
     this.view = 'palettes';
 
@@ -205,8 +227,14 @@ export class FuseMaterialColorPickerComponent implements ControlValueAccessor {
       palette: this.selectedPalette,
       hue: this.selectedHue,
       class: this.selectedPalette + '-' + this.selectedHue,
-      bg: this.selectedPalette === '' ? '' : MatColors.getColor(this.selectedPalette)[this.selectedHue],
-      fg: this.selectedPalette === '' ? '' : MatColors.getColor(this.selectedPalette).contrast[this.selectedHue],
+      bg:
+        this.selectedPalette === ''
+          ? ''
+          : MatColors.getColor(this.selectedPalette)[this.selectedHue],
+      fg:
+        this.selectedPalette === ''
+          ? ''
+          : MatColors.getColor(this.selectedPalette).contrast[this.selectedHue],
     };
 
     // Emit the color changed event

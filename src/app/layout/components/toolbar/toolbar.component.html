@@ -56,7 +56,13 @@
 
       <div class="toolbar-separator"></div>
 
-      <button mat-button fxHide fxShow.gt-xs class="language-button" [matMenuTriggerFor]="languageMenu">
+      <button
+        mat-button
+        fxHide
+        fxShow.gt-xs
+        class="language-button"
+        [matMenuTriggerFor]="languageMenu"
+      >
         <div fxLayout="row" fxLayoutAlign="center center">
           <img class="flag mr-8" [src]="'assets/icons/flags/' + selectedLanguage.flag + '.png'" />
           <span class="iso text-uppercase">{{ selectedLanguage.id }}</span>

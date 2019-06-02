@@ -65,17 +65,19 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy {
       this._matSidenav.toggle(false);
     }
 
-    this._fuseMatchMediaService.onMediaChange.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
-      if (this.matIsLockedOpen && this._mediaObserver.isActive(this.matIsLockedOpen)) {
-        this.isLockedOpen = true;
-        this._matSidenav.mode = 'side';
-        this._matSidenav.toggle(true);
-      } else {
-        this.isLockedOpen = false;
-        this._matSidenav.mode = 'over';
-        this._matSidenav.toggle(false);
-      }
-    });
+    this._fuseMatchMediaService.onMediaChange
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(() => {
+        if (this.matIsLockedOpen && this._mediaObserver.isActive(this.matIsLockedOpen)) {
+          this.isLockedOpen = true;
+          this._matSidenav.mode = 'side';
+          this._matSidenav.toggle(true);
+        } else {
+          this.isLockedOpen = false;
+          this._matSidenav.mode = 'over';
+          this._matSidenav.toggle(false);
+        }
+      });
   }
 
   /**

@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
@@ -104,11 +113,13 @@ export class FuseShortcutsComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngAfterViewInit(): void {
     // Subscribe to media changes
-    this._fuseMatchMediaService.onMediaChange.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
-      if (this._mediaObserver.isActive('gt-sm')) {
-        this.hideMobileShortcutsPanel();
-      }
-    });
+    this._fuseMatchMediaService.onMediaChange
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(() => {
+        if (this._mediaObserver.isActive('gt-sm')) {
+          this.hideMobileShortcutsPanel();
+        }
+      });
   }
 
   /**

@@ -1,4 +1,10 @@
-import { AfterContentChecked, Directive, ElementRef, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  AfterContentChecked,
+  Directive,
+  ElementRef,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Directive({
   selector: '[fuseIfOnDom]',

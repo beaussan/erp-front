@@ -128,6 +128,10 @@ export class FuseHighlightComponent implements OnInit, OnDestroy {
 
     // Replace the innerHTML of the component with the highlighted code
     this._elementRef.nativeElement.innerHTML =
-      '<pre><code class="highlight language-' + this.lang + '">' + highlightedCode + '</code></pre>';
+      '<pre><code class="highlight language-' +
+      this.lang +
+      '">' +
+      highlightedCode +
+      '</code></pre>';
   }
 }
