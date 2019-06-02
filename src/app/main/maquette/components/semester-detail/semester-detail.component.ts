@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Semester } from '../../../../types';
 
 @Component({
   selector: 'app-semester-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./semester-detail.component.scss'],
 })
 export class SemesterDetailComponent implements OnInit {
+  @Input() semester: Semester;
+
   constructor() {}
 
   ngOnInit() {}

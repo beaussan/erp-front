@@ -1,3 +1,5 @@
-<p>
-  extra-module-detail works!
-</p>
+<div>{{ extraModule.name }}</div>
+<app-extra-module-item-detail
+  *ngFor="let item of extraModule.items"
+  [extraModuleDetail]="item"
+></app-extra-module-item-detail>

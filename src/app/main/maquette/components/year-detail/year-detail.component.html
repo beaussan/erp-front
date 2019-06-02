@@ -1,3 +1,7 @@
-<p>
-  year-detail works!
-</p>
+<app-semester-detail *ngFor="let semester of year.semesters" [semester]="semester">
+</app-semester-detail>
+
+<app-extra-module-detail
+  *ngFor="let extra of year.extras"
+  [extraModule]="extra"
+></app-extra-module-detail>

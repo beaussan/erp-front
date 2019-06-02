@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Module } from '../../../../types';
 
 @Component({
   selector: 'app-module-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./module-detail.component.scss'],
 })
 export class ModuleDetailComponent implements OnInit {
+  @Input() module: Module;
+
   constructor() {}
 
   ngOnInit() {}

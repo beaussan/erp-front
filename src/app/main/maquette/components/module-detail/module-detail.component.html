@@ -1,3 +1,4 @@
-<p>
-  module-detail works!
-</p>
+<app-course-detail *ngFor="let course of module.courses" [course]="course"></app-course-detail>
+<div>
+  {{ module.totalEtu }}
+</div>

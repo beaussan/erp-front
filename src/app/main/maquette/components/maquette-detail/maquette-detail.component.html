@@ -1,5 +1,6 @@
 <ng-container *ngIf="maquette$ | async as maquette">
-  {{ maquette.master.name }}
+  <div>{{ maquette.master.name }} {{ maquette.schoolYear }}</div>
+  <app-year-detail *ngFor="let year of maquette.years" [year]="year"></app-year-detail>
 </ng-container>
 
 <ng-template>

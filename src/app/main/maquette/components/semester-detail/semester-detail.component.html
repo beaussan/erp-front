@@ -1,3 +1,4 @@
-<p>
-  semester-detail works!
-</p>
+<app-module-detail *ngFor="let module of semester.modules" [module]="module"></app-module-detail>
+<div>
+  {{ semester.totalEtu }}
+</div>

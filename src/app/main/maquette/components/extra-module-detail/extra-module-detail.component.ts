@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ExtraModules } from '../../../../types';
 
 @Component({
   selector: 'app-extra-module-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./extra-module-detail.component.scss'],
 })
 export class ExtraModuleDetailComponent implements OnInit {
+  @Input() extraModule: ExtraModules;
+
   constructor() {}
 
   ngOnInit() {}
