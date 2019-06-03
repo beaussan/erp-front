@@ -141,3 +141,7 @@ app-module-detail {
 .total-exam {
   grid-column: $column-exam-length;
 }
+
+div {
+  word-break: break-all;
+}
