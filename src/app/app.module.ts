@@ -32,7 +32,11 @@ import { MasterState } from './state/master.state';
 const appRoutes: Routes = [
   {
     path: 'maquette',
-    loadChildren: () => import('./main/maquette/maquette.module').then(val => val.MaquetteModule),
+    loadChildren: () => import('./main/maquette/maquette.module').then(m => m.MaquetteModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./main/auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: '**',
