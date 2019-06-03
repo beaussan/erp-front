@@ -1,9 +1,21 @@
-<ng-container *ngIf="all$ | async as all; else loading">
-  <div *ngFor="let maquette of all">
-    {{ maquette.master.name }} ({{ maquette.schoolYear }}) {{ maquette.inProduction }}
-    <button mat-button color="primary" [routerLink]="['..', 'detail', maquette.id]">Go to !</button>
+<div class="page-layout simple fullwidth">
+  <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+    <h2>Maquettes</h2>
   </div>
-</ng-container>
+
+  <div class="content p-24">
+    <ng-container *ngIf="all$ | async as all; else loading">
+      <mat-list role="list" *ngFor="let maquette of all">
+        <mat-list-item role="listitem">
+          {{ maquette.master.name }} ({{ maquette.schoolYear }}) {{ maquette.inProduction }}
+          <button mat-button color="primary" [routerLink]="['..', 'detail', maquette.id]">
+            Go to !
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+  </div>
+</div>
 
 <ng-template #loading>
   LOADING
