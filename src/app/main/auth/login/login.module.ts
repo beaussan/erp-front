@@ -10,17 +10,10 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 import { LoginComponent } from './login.component';
 
-const routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-];
-
 @NgModule({
   declarations: [LoginComponent],
   imports: [
-    RouterModule.forChild(routes),
+    RouterModule,
 
     MatButtonModule,
     MatCheckboxModule,

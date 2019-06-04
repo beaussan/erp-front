@@ -11,6 +11,34 @@ abstract class DefaultObject {
   // _v: string;
 }
 
+/*
+{
+  "roles": [
+    "USER_ROLE"
+  ],
+  "_id": "5cf3d9f93839b7199778af1a",
+  "password": "$argon2id$v=19$m=4096,t=3,p=1$cZwAcleOJrPT3UrBCRDPfA$9lO+e7/BxA/KOEkTqDSa9rOfZbJ8Oh2SKE+OgCjNSc8",
+  "email": "foo@bar.fr",
+  "lastName": "bar",
+  "firstName": "foo",
+  "__v": 0
+}
+ */
+
+export class User extends DefaultObject {
+  roles: string[];
+  email: string;
+  lastName: string;
+  firstName: string;
+
+  static fromJs(apiObject: any): User {
+    return {
+      ...new User(),
+      ...apiObject,
+    };
+  }
+}
+
 export class Master extends DefaultObject {
   maquettes: string[];
   name: string;

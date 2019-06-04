@@ -42,6 +42,7 @@
         "@ngxs/hmr-plugin": "^3.4.3",
         "@ngxs/logger-plugin": "^3.4.3",
         "@ngxs/router-plugin": "^3.4.3",
+        "@ngxs/storage-plugin": "^3.4.3",
         "@ngxs/store": "^3.4.3",
         "@schuchard/prettier": "3.1.0",
         "@swimlane/dragula": "3.8.0",

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { LoginUser } from '../../../state/auth.actions';
 
 @Component({
   selector: 'login',
@@ -14,12 +16,6 @@ import { fuseAnimations } from '@fuse/animations';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  /**
-   * Constructor
-   *
-   * @param {FuseConfigService} _fuseConfigService
-   * @param {FormBuilder} _formBuilder
-   */
   constructor(private _fuseConfigService: FuseConfigService, private _formBuilder: FormBuilder) {
     // Configure the layout
     this._fuseConfigService.config = {
@@ -53,4 +49,10 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
+
+  @Dispatch()
+  submitForm = () => {
+    const { email, password } = this.loginForm.getRawValue();
+    return new LoginUser(email, password);
+  };
 }

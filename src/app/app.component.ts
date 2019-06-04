@@ -14,6 +14,9 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { navigation } from 'app/navigation/navigation';
 import { locale as navigationEnglish } from 'app/navigation/i18n/en';
 import { locale as navigationTurkish } from 'app/navigation/i18n/tr';
+import { Store } from '@ngxs/store';
+import { FetchUser } from './state/auth.actions';
+import { ToasterService } from './services/toaster.service';
 
 @Component({
   selector: 'app',
@@ -38,6 +41,8 @@ export class AppComponent implements OnInit, OnDestroy {
    * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
    * @param {Platform} _platform
    * @param {TranslateService} _translateService
+   * @param store
+   * @param toaster
    */
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -48,7 +53,15 @@ export class AppComponent implements OnInit, OnDestroy {
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private _translateService: TranslateService,
     private _platform: Platform,
+    private readonly store: Store,
+    private readonly toaster: ToasterService,
   ) {
+    // Try get user
+    this.store.dispatch(new FetchUser());
+
+    // Setup toaster
+    this.toaster.setupToaster();
+
     // Get default navigation
     this.navigation = navigation;
 

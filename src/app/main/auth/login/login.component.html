@@ -7,7 +7,7 @@
 
       <div class="title">LOGIN TO YOUR ACCOUNT</div>
 
-      <form name="loginForm" [formGroup]="loginForm" novalidate>
+      <form name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="submitForm()">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" />
