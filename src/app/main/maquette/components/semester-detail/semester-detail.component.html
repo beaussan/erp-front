@@ -24,8 +24,8 @@
 </div>
 <app-module-detail *ngFor="let module of semester.modules" [module]="module"></app-module-detail>
 <div class="total legend-item">Total</div>
-<div class="total-etu legend-item">{{ semester.totalEtu }}</div>
-<div class="total-cours legend-item">{{ semester.totalAmphi }}</div>
-<div class="total-td legend-item">{{ semester.totalTD }}</div>
-<div class="total-ects legend-item">{{ semester.ects }}</div>
-<div class="total-exam legend-item">{{ semester.totalExam }}</div>
+<div class="total-etu legend-item">{{ getTotalEtu() }}</div>
+<div class="total-cours legend-item">{{ getTotalAmphi() }}</div>
+<div class="total-td legend-item">{{ getTotalTD() }}</div>
+<div class="total-ects legend-item">{{ getEcts() }}</div>
+<div class="total-exam legend-item">{{ getTotalExam() }}</div>

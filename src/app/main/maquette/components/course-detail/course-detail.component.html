@@ -1,49 +1,87 @@
-<app-editable class="mat">
+<app-editable class="mat" (update)="update('name')">
   <ng-template appViewMode>{{ course.name }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('name')" appFocusable appEditableOnEnter
+  /></ng-template>
 </app-editable>
+
 <app-editable class="teacher">
   <ng-template appViewMode>TBD</ng-template>
   <ng-template appEditMode>WIP</ng-template>
 </app-editable>
-<app-editable class="com">
+
+<app-editable class="com" (update)="update('commun')">
   <ng-template appViewMode>{{ course.commun }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('commun')" appFocusable appEditableOnEnter />
+  </ng-template>
 </app-editable>
-<div class="total-prof">{{ course.totalProf }}</div>
-<div class="total-etu">{{ course.totalEtu }}</div>
-<app-editable class="total-cours">
+
+<div class="total-prof">{{ getTotalProf() }}</div>
+
+<div class="total-etu">{{ getTotalEtu() }}</div>
+
+<app-editable class="total-cours" (update)="update('nmbAmphiHour')">
   <ng-template appViewMode>{{ course.nmbAmphiHour }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input
+      [formControl]="getControl('nmbAmphiHour')"
+      appFocusable
+      appEditableOnEnter
+      type="number"
+    />
+  </ng-template>
 </app-editable>
-<app-editable class="total-td">
+
+<app-editable class="total-td" (update)="update('nmbTdHour')">
   <ng-template appViewMode>{{ course.nmbTdHour }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('nmbTdHour')" appFocusable appEditableOnEnter type="number" />
+  </ng-template>
 </app-editable>
-<app-editable class="nmb-group">
+
+<app-editable class="nmb-group" (update)="update('nmbGroupTd')">
   <ng-template appViewMode>{{ course.nmbGroupTd }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('nmbGroupTd')" appFocusable appEditableOnEnter type="number" />
+  </ng-template>
 </app-editable>
-<app-editable class="ects">
+
+<app-editable class="ects" (update)="update('nmbEcts')">
   <ng-template appViewMode>{{ course.nmbEcts }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('nmbEcts')" appFocusable appEditableOnEnter type="number" />
+  </ng-template>
 </app-editable>
-<app-editable class="coef-cc">
+
+<app-editable class="coef-cc" (update)="update('coefCC')">
   <ng-template appViewMode>{{ course.coefCC }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('coefCC')" appFocusable appEditableOnEnter type="number" />
+  </ng-template>
 </app-editable>
-<app-editable class="coef-exam">
+
+<app-editable class="coef-exam" (update)="update('coefExam')">
   <ng-template appViewMode>{{ course.coefExam }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('coefExam')" appFocusable appEditableOnEnter type="number" />
+  </ng-template>
 </app-editable>
-<app-editable class="length-exam">
+
+<app-editable class="length-exam" (update)="update('lengthExam')">
   <ng-template appViewMode>{{ course.lengthExam }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('lengthExam')" appFocusable appEditableOnEnter type="number" />
+  </ng-template>
 </app-editable>
-<app-editable class="exam-type">
+
+<app-editable class="exam-type" (update)="update('examType')">
   <ng-template appViewMode>{{ course.examType }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('examType')" appFocusable appEditableOnEnter />
+  </ng-template>
 </app-editable>
+
 <app-editable class="is-in-english" (update)="update('courseEnglish')">
   <ng-template appViewMode>{{ course.courseEnglish }}</ng-template>
   <ng-template appEditMode>
@@ -51,9 +89,11 @@
   </ng-template>
 </app-editable>
 
-<app-editable class="translation">
+<app-editable class="translation" (update)="update('englishTranslation')">
   <ng-template appViewMode>{{ course.englishTranslation }}</ng-template>
-  <ng-template appEditMode>EDIT MODE</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('englishTranslation')" appFocusable appEditableOnEnter />
+  </ng-template>
 </app-editable>
 
 <app-editable class="ratrappage" (update)="update('ratrappage')">

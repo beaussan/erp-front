@@ -12,5 +12,7 @@ export class YearDetailComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('Year inited');
+  }
 }

@@ -48,13 +48,13 @@ export interface Course extends DefaultObject {
 
 export const CourseHelpers = {
   totalProf: (course: Course): number =>
-    (this.nmbGroupTd || 0) * (this.nmbTdHour || 0) + (this.nmbAmphiHour || 0),
-  totalEtu: (course: Course): number => (this.nmbTdHour || 0) + (this.nmbAmphiHour || 0),
+    (course.nmbGroupTd || 0) * (course.nmbTdHour || 0) + (course.nmbAmphiHour || 0),
+  totalEtu: (course: Course): number => (course.nmbTdHour || 0) + (course.nmbAmphiHour || 0),
 };
 
 const reduceWithProperty = <K extends object>(array: K[], call: (K) => number): number =>
   // @ts-ignore needed since the object value can be another thing than a number..
-  array.reduce((prev, curr) => (curr[key] || 0) + prev, 0);
+  array.reduce((prev, curr) => (call(curr) || 0) + prev, 0);
 
 export interface Module extends DefaultObject {
   name: string;

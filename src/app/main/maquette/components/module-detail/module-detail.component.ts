@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Module } from '../../../../types';
+import { Module, ModuleHelpers } from '../../../../types';
 
 @Component({
   selector: 'app-module-detail',
@@ -12,4 +12,12 @@ export class ModuleDetailComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  getTotalEtu(): number {
+    return ModuleHelpers.totalEtu(this.module);
+  }
+
+  getTotalEcts(): number {
+    return ModuleHelpers.ects(this.module);
+  }
 }

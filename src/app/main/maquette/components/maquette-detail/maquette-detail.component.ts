@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Maquette } from '../../../../types';
+import { ObjectUnsubscribedError, Observable } from 'rxjs';
+import { Maquette, Master, Year } from '../../../../types';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { MaquetteState } from '../../../../state/maquette.state';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
@@ -28,6 +28,10 @@ export class MaquetteDetailComponent implements OnInit {
     if (this.store.selectSnapshot(MaquetteState.all).length === 0) {
       this.fetchMaquettes();
     }
+  }
+
+  trackByYear(idx: number, year: Year) {
+    return year.id;
   }
 
   @Dispatch()
