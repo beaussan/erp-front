@@ -13,6 +13,7 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
 import { NgxsModule } from '@ngxs/store';
 import { FuseSharedModule } from '../../../@fuse/shared.module';
 import { MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
+    MatListModule,
   ],
 })
 export class MaquetteModule {}
