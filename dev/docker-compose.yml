@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: bitnami/mongodb:latest
+    ports:
+      - 27017:27017
+    # volumes:
+    #     - ~/volumes/erp/mongo/:/bitnami/mongodb
+    environment:
+      MONGODB_USERNAME: onionBoilerplate
+      MONGODB_PASSWORD: someNotSecurePassword
+      MONGODB_DATABASE: erp
+      MONGODB_ROOT_PASSWORD: therootpassword
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    environment:
+      #ME_CONFIG_BASICAUTH_USERNAME: onionBoilerplate
+      #ME_CONFIG_BASICAUTH_PASSWORD: someNotSecurePassword
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: therootpassword
+
+
+  server:
+    image: beaussart/erp-back:latest
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    environment:
+      ## API
+      API_PORT: 3000
+      API_HOST: server
+      API_PROTOCOL: http
+      ## LOGGER
+      LOG_LEVEL: debug
+      LOG_SQL_REQUEST: 'false'
+      ## DB
+      MONGODB_URL: mongodb://onionBoilerplate:someNotSecurePassword@mongo:27017/erp
+      ## AUTHENTICATION [JWT]
+      JWT_SECRET: bananana
