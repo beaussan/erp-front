@@ -17,6 +17,6 @@ export class AuthService {
   }
 
   fetchUser(): Observable<User> {
-    return this.http.get('/auth/me').pipe(map(User.fromJs));
+    return this.http.get<User>('/auth/me');
   }
 }

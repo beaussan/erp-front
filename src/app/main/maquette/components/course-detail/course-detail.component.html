@@ -1,16 +1,64 @@
-<div class="mat">{{ course.name }}</div>
-<div class="teacher">TBD</div>
-<div class="com">{{ course.commun }}</div>
+<app-editable class="mat">
+  <ng-template appViewMode>{{ course.name }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="teacher">
+  <ng-template appViewMode>TBD</ng-template>
+  <ng-template appEditMode>WIP</ng-template>
+</app-editable>
+<app-editable class="com">
+  <ng-template appViewMode>{{ course.commun }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
 <div class="total-prof">{{ course.totalProf }}</div>
 <div class="total-etu">{{ course.totalEtu }}</div>
-<div class="total-cours">{{ course.nmbAmphiHour }}</div>
-<div class="total-td">{{ course.nmbTdHour }}</div>
-<div class="nmb-group">{{ course.nmbGroupTd }}</div>
-<div class="ects">{{ course.nmbEcts }}</div>
-<div class="coef-cc">{{ course.coefCC }}</div>
-<div class="coef-exam">{{ course.coefExam }}</div>
-<div class="length-exam">{{ course.lengthExam }}</div>
-<div class="exam-type">{{ course.examType }}</div>
-<div class="is-in-english">{{ course.courseEnglish }}</div>
-<div class="translation">{{ course.englishTranslation }}</div>
-<div class="ratrappage">{{ course.ratrappage }}</div>
+<app-editable class="total-cours">
+  <ng-template appViewMode>{{ course.nmbAmphiHour }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="total-td">
+  <ng-template appViewMode>{{ course.nmbTdHour }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="nmb-group">
+  <ng-template appViewMode>{{ course.nmbGroupTd }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="ects">
+  <ng-template appViewMode>{{ course.nmbEcts }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="coef-cc">
+  <ng-template appViewMode>{{ course.coefCC }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="coef-exam">
+  <ng-template appViewMode>{{ course.coefExam }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="length-exam">
+  <ng-template appViewMode>{{ course.lengthExam }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="exam-type">
+  <ng-template appViewMode>{{ course.examType }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+<app-editable class="is-in-english" (update)="update('courseEnglish')">
+  <ng-template appViewMode>{{ course.courseEnglish }}</ng-template>
+  <ng-template appEditMode>
+    <mat-checkbox [formControl]="getControl('courseEnglish')"></mat-checkbox>
+  </ng-template>
+</app-editable>
+
+<app-editable class="translation">
+  <ng-template appViewMode>{{ course.englishTranslation }}</ng-template>
+  <ng-template appEditMode>EDIT MODE</ng-template>
+</app-editable>
+
+<app-editable class="ratrappage" (update)="update('ratrappage')">
+  <ng-template appViewMode>{{ course.ratrappage }}</ng-template>
+  <ng-template appEditMode>
+    <mat-checkbox [formControl]="getControl('ratrappage')"></mat-checkbox>
+  </ng-template>
+</app-editable>

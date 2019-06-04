@@ -7,17 +7,20 @@
   grid-gap: $column-gaps 0;
   align-items: stretch;
 
-  &.last > div {
+  &.last > * {
     border-bottom: 1px solid black;
   }
 
-  > div {
+  > * {
     border-top: 1px solid black;
     border-right: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+}
+div {
+  word-break: break-all;
 }
 
 .mat {
@@ -73,8 +76,4 @@
 
 .ratrappage {
   grid-column: $column-ratrapage;
-}
-
-div {
-  word-break: break-all;
 }

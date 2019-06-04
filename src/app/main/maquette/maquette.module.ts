@@ -12,8 +12,16 @@ import { ModuleDetailComponent } from './components/module-detail/module-detail.
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { NgxsModule } from '@ngxs/store';
 import { FuseSharedModule } from '../../../@fuse/shared.module';
-import { MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatTabsModule,
+} from '@angular/material';
 import { MatListModule } from '@angular/material/list';
+import { EditableModule } from '../../modules/editable/editable.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +42,10 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatTabsModule,
     MatListModule,
+    EditableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
   ],
 })
 export class MaquetteModule {}

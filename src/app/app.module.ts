@@ -124,5 +124,6 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BearerInterceptor, multi: true },
   ],
+  exports: [],
 })
 export class AppModule {}

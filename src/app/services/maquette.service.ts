@@ -11,6 +11,6 @@ export class MaquetteService {
   constructor(private readonly http: HttpClient) {}
 
   getAll(): Observable<Maquette[]> {
-    return this.http.get<any[]>('/maquette').pipe(map(arr => arr.map(Maquette.fromJs)));
+    return this.http.get<Maquette[]>('/maquette');
   }
 }

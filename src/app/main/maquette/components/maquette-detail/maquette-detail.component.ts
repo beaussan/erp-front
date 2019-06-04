@@ -3,7 +3,7 @@ import { Store } from '@ngxs/store';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Maquette } from '../../../../types';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { MaquetteState } from '../../../../state/maquette.state';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { MaquetteFetch } from '../../../../state/maquette.actions';
