@@ -25,7 +25,9 @@ export class MaquetteDetailComponent implements OnInit {
         this.store.select(MaquetteState.byId).pipe(map(fn => fn(params.get('id')))),
       ),
     );
-    this.fetchMaquettes();
+    if (this.store.selectSnapshot(MaquetteState.all).length === 0) {
+      this.fetchMaquettes();
+    }
   }
 
   @Dispatch()
