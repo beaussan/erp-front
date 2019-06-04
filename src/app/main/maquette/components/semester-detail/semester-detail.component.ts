@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Semester, SemesterHelpers } from '../../../../types';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { EditFieldCourse, EditSemesterName } from '../../../../state/maquette.actions';
 
 @Component({
   selector: 'app-semester-detail',
@@ -7,29 +10,57 @@ import { Semester, SemesterHelpers } from '../../../../types';
   styleUrls: ['./semester-detail.component.scss'],
 })
 export class SemesterDetailComponent implements OnInit {
-  @Input() semester: Semester;
+  get semester(): Semester {
+    return this._semester;
+  }
 
-  constructor() {}
+  @Input() set semester(value: Semester) {
+    this._semester = value;
+    this.form.setValue({
+      number: value.number,
+    });
+  }
+  private _semester: Semester;
+
+  form: FormGroup;
+
+  constructor(private readonly fb: FormBuilder) {
+    this.form = this.fb.group({
+      number: [0, Validators.min(0)],
+    });
+  }
 
   ngOnInit() {}
 
   getTotalEtu(): number {
-    return SemesterHelpers.totalEtu(this.semester);
+    return SemesterHelpers.totalEtu(this._semester);
   }
 
   getTotalAmphi(): number {
-    return SemesterHelpers.totalAmphi(this.semester);
+    return SemesterHelpers.totalAmphi(this._semester);
   }
 
   getTotalTD(): number {
-    return SemesterHelpers.totalTD(this.semester);
+    return SemesterHelpers.totalTD(this._semester);
   }
 
   getEcts(): number {
-    return SemesterHelpers.ects(this.semester);
+    return SemesterHelpers.ects(this._semester);
   }
 
   getTotalExam(): number {
-    return SemesterHelpers.totalExam(this.semester);
+    return SemesterHelpers.totalExam(this._semester);
   }
+
+  getControl(): FormControl {
+    return this.form.get('number') as FormControl;
+  }
+
+  updateName() {
+    const value = this.form.value.number;
+    this.sendUpdate(this.semester.id, value);
+  }
+
+  @Dispatch()
+  sendUpdate = (course: string, value: any) => new EditSemesterName(course, value);
 }

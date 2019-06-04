@@ -1,5 +1,12 @@
 <div class="header-block">
-  <div class="header">Semestre {{ semester.number }}</div>
+  <div class="header">
+    <app-editable (update)="updateName()">
+      <ng-template appViewMode>Semestre {{ semester.number }}</ng-template>
+      <ng-template appEditMode>
+        <input [formControl]="getControl()" appFocusable appEditableOnEnter type="number" />
+      </ng-template>
+    </app-editable>
+  </div>
 
   <div class="enseignements">Enseignements</div>
   <div class="evaluations">Evaluations</div>

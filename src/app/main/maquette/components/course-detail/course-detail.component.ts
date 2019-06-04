@@ -71,9 +71,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   update(name: string) {
-    const raw = this.form.value;
     const value = this.form.value[name];
-    console.log({ value, name, data: this.form.get(name), raw });
     this.sendUpdate(this.course.id, name, value);
   }
 

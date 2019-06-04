@@ -1,4 +1,11 @@
-<div class="name">{{ module.name }}</div>
+<div class="name">
+  <app-editable (update)="updateName()">
+    <ng-template appViewMode>{{ module.name }}</ng-template>
+    <ng-template appEditMode>
+      <input [formControl]="getControl()" appFocusable appEditableOnEnter />
+    </ng-template>
+  </app-editable>
+</div>
 <div class="total-etu">{{ getTotalEtu() }}</div>
 <div class="background spacer-1"></div>
 <div class="total-ects">{{ getTotalEcts() }}</div>
