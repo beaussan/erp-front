@@ -17,10 +17,9 @@ export class DeleteModalService {
       })
       .afterClosed()
       .pipe(
-        tap(v => console.log('TOTO', v)),
         filter(val => val === true),
         switchMap(() => this.store.dispatch(action)),
       )
-      .subscribe(() => console.log('TOOOO'));
+      .subscribe();
   }
 }
