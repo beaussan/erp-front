@@ -84,7 +84,7 @@ export class EditableComponent implements OnInit, OnDestroy {
     fromEvent(this.element, 'dblclick')
       .pipe(
         untilDestroyed(this),
-        switchMapTo(this.isCurrentMaquetteReadOnly$),
+        switchMapTo(this.isCurrentMaquetteReadOnly$.pipe(take(1))),
         filter(val => val === false),
       )
       .subscribe(() => {
