@@ -22,3 +22,18 @@ export class EditModuleName {
   static readonly type = '[Maquette] update module name';
   constructor(public moduleId: string, public value: any) {}
 }
+
+export class DeleteModule {
+  static readonly type = '[Maquette] delete one module';
+  constructor(public moduleId: string) {}
+}
+
+export class DeleteCourse {
+  static readonly type = '[Maquette] delete one course';
+  constructor(public courseId: string) {}
+}
+
+export class AddEmptyCourseToModule {
+  static readonly type = '[Maquette] add empty course to module';
+  constructor(public moduleId: string) {}
+}

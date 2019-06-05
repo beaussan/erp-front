@@ -22,6 +22,7 @@ import {
 } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { EditableModule } from '../../modules/editable/editable.module';
+import { ContextMenuModule } from 'ngx-contextmenu';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,9 @@ import { EditableModule } from '../../modules/editable/editable.module';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    ContextMenuModule.forRoot({
+      autoFocus: true,
+    }),
   ],
 })
 export class MaquetteModule {}

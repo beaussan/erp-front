@@ -1,8 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Module, ModuleHelpers } from '../../../../types';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { EditFieldCourse, EditModuleName } from '../../../../state/maquette.actions';
+import {
+  AddEmptyCourseToModule,
+  DeleteCourse,
+  DeleteModule,
+  EditFieldCourse,
+  EditModuleName,
+} from '../../../../state/maquette.actions';
+import { ContextMenuComponent } from 'ngx-contextmenu';
 
 @Component({
   selector: 'app-module-detail',
@@ -48,6 +55,15 @@ export class ModuleDetailComponent implements OnInit {
     const value = this.form.value.name;
     this.sendUpdate(this.module.id, value);
   }
+
+  @Dispatch()
+  deleteSelf = (id: string) => new DeleteModule(id);
+
+  @Dispatch()
+  deleteCourse = (id: string) => new DeleteCourse(id);
+
+  @Dispatch()
+  addCourse = (id: string) => new AddEmptyCourseToModule(id);
 
   @Dispatch()
   sendUpdate = (moduleId: string, value: string) => new EditModuleName(moduleId, value);

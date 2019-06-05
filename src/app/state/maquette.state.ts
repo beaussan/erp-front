@@ -1,12 +1,26 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import {
+  AddEmptyCourseToModule,
+  DeleteCourse,
+  DeleteModule,
   EditFieldCourse,
   EditModuleName,
   EditSemesterName,
   MaquetteAction,
   MaquetteFetch,
 } from './maquette.actions';
-import { Maquette, MaquetteHelpers, ModuleHelpers, SemesterHelpers, YearHelpers } from '../types';
+import {
+  Course,
+  Maquette,
+  MaquetteHelpers,
+  Module,
+  ModuleHelpers,
+  Semester,
+  SemesterHelpers,
+  Year,
+  YearHelpers,
+} from '../types';
+import { v4 as uuid } from 'uuid';
 import { MaquetteService } from '../services/maquette.service';
 import { tap } from 'rxjs/operators';
 import { patch, updateItem } from '@ngxs/store/operators';
@@ -93,6 +107,67 @@ export class MaquetteState {
       reduceChain(state.items, ['years', 'semesters', 'modules', 'courses']).find(
         val => val.id === courseId,
       )[field] = value;
+      return state;
+    });
+  }
+
+  @Action(AddEmptyCourseToModule)
+  @ImmutableContext()
+  public addEmptyCourseToModule(
+    ctx: StateContext<MaquetteStateModel>,
+    { moduleId }: AddEmptyCourseToModule,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const module: Module = reduceChain(state.items, ['years', 'semesters', 'modules']).find(
+        val => val.id === moduleId,
+      );
+      const newID = uuid();
+      const newCourse: Course = {
+        lengthExam: 0,
+        commun: '',
+        name: '',
+        nmbGroupTd: 1,
+        nmbAmphiHour: 0,
+        nmbTdHour: 0,
+        nmbEcts: 0,
+        coefCC: 0,
+        coefExam: 0,
+        examType: '',
+        courseEnglish: false,
+        englishTranslation: '',
+        ratrappage: true,
+        _id: newID,
+        id: newID,
+      };
+      console.log(module.courses.length);
+      module.courses = [...module.courses, newCourse];
+      console.log(module.courses.length);
+      return state;
+    });
+  }
+
+  @Action(DeleteModule)
+  @ImmutableContext()
+  public deleteModule(ctx: StateContext<MaquetteStateModel>, { moduleId }: DeleteModule) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const semester: Semester = reduceChain(state.items, ['years', 'semesters']).find(
+        (sem: Semester) => !!sem.modules.find(module => module.id === moduleId),
+      );
+      const moduleIdx = semester.modules.findIndex(mod => mod.id === moduleId);
+      semester.modules.splice(moduleIdx, 1);
+      return state;
+    });
+  }
+
+  @Action(DeleteCourse)
+  @ImmutableContext()
+  public deleteCourse(ctx: StateContext<MaquetteStateModel>, { courseId }: DeleteCourse) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const module: Module = reduceChain(state.items, ['years', 'semesters', 'modules']).find(
+        (mod: Module) => !!mod.courses.find(course => course.id === courseId),
+      );
+      const courseIdx = module.courses.findIndex(course => course.id === courseId);
+      module.courses.splice(courseIdx, 1);
       return state;
     });
   }
