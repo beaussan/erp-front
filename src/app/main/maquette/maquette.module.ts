@@ -23,6 +23,7 @@ import {
 import { MatListModule } from '@angular/material/list';
 import { EditableModule } from '../../modules/editable/editable.module';
 import { ContextMenuModule } from 'ngx-contextmenu';
+import { BooleanDisplayModule } from '../../../@fuse/components/boolean-display/boolean-display.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ContextMenuModule } from 'ngx-contextmenu';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    BooleanDisplayModule,
     ContextMenuModule.forRoot({
       autoFocus: true,
     }),
