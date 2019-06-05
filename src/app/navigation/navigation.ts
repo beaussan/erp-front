@@ -28,6 +28,13 @@ export const navigation: FuseNavigation[] = [
         icon: 'dashboard',
         url: '/maquette',
       },
+      {
+        id: 'master',
+        title: 'Master',
+        type: 'item',
+        icon: 'dashboard',
+        url: '/master',
+      },
     ],
   },
 ];

@@ -8,6 +8,11 @@ export class MaquetteFetch {
   constructor() {}
 }
 
+export class MaquetteDelete {
+  static readonly type = '[Maquette] delete by id';
+  constructor(public maquetteId: string) {}
+}
+
 export class EditFieldCourse {
   static readonly type = '[Maquette] update field in course';
   constructor(public courseId: string, public field: string, public value: any) {}

@@ -5,11 +5,12 @@ import {
   EditSemesterName,
   MaquetteAction,
   MaquetteFetch,
+  MaquetteDelete,
 } from './maquette.actions';
 import { Maquette, MaquetteHelpers, ModuleHelpers, SemesterHelpers, YearHelpers } from '../types';
 import { MaquetteService } from '../services/maquette.service';
 import { tap } from 'rxjs/operators';
-import { patch, updateItem } from '@ngxs/store/operators';
+import { patch, updateItem, removeItem } from '@ngxs/store/operators';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import * as _ from 'lodash';
 
@@ -54,6 +55,19 @@ export class MaquetteState {
   @Action(MaquetteFetch)
   fetchAll(ctx: StateContext<MaquetteStateModel>) {
     return this.maquetteService.getAll().pipe(tap(val => ctx.setState(patch({ items: val }))));
+  }
+
+  @Action(MaquetteDelete)
+  deleteById(ctx: StateContext<MaquetteStateModel>, { maquetteId }: MaquetteDelete) {
+    return this.maquetteService.deleteById(maquetteId).pipe(
+      tap(() =>
+        ctx.setState(
+          patch({
+            items: removeItem(maquette => maquette.id === maquetteId),
+          }),
+        ),
+      ),
+    );
   }
 
   @Action(EditModuleName)

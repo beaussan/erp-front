@@ -52,6 +52,10 @@ const appRoutes: Routes = [
         path: 'maquette',
         loadChildren: () => import('./main/maquette/maquette.module').then(m => m.MaquetteModule),
       },
+      {
+        path: 'master',
+        loadChildren: () => import('./main/master/master.module').then(m => m.MasterModule),
+      },
 
       {
         path: '**',

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { MaquetteFetch } from '../../../../state/maquette.actions';
+import { MaquetteFetch, MaquetteDelete } from '../../../../state/maquette.actions';
 import { Select } from '@ngxs/store';
 import { MaquetteState } from '../../../../state/maquette.state';
 import { Observable } from 'rxjs';
@@ -25,4 +25,11 @@ export class MaquetteListComponent implements OnInit {
   fetchMaquettes() {
     return new MaquetteFetch();
   }
+
+  @Dispatch()
+  deleteMaquette(idMaquette: string) {
+    return new MaquetteDelete(idMaquette);
+  }
+
+  displayedColumns: string[] = ['name', 'prod', 'actions'];
 }

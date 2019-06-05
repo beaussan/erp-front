@@ -19,8 +19,10 @@ import {
   MatIconModule,
   MatInputModule,
   MatTabsModule,
+  MatTableModule,
+  MatMenuModule,
+  MatDialogModule,
 } from '@angular/material';
-import { MatListModule } from '@angular/material/list';
 import { EditableModule } from '../../modules/editable/editable.module';
 
 @NgModule({
@@ -41,11 +43,13 @@ import { EditableModule } from '../../modules/editable/editable.module';
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
-    MatListModule,
     EditableModule,
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatTableModule,
+    MatMenuModule,
+    MatDialogModule,
   ],
 })
 export class MaquetteModule {}

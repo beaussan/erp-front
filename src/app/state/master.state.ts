@@ -1,8 +1,13 @@
-import { State, Action, StateContext } from '@ngxs/store';
-import { MasterAction } from './master.actions';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { MasterAction, MasterFetch, MasterDelete } from './master.actions';
+import { Master } from '../types';
+import { MasterService } from '../services/master.service';
+import { tap } from 'rxjs/operators';
+import { patch, updateItem, removeItem } from '@ngxs/store/operators';
+import * as _ from 'lodash';
 
 export class MasterStateModel {
-  public items: string[];
+  public items: Master[];
 }
 
 @State<MasterStateModel>({
@@ -12,9 +17,15 @@ export class MasterStateModel {
   },
 })
 export class MasterState {
-  @Action(MasterAction)
-  add(ctx: StateContext<MasterStateModel>, action: MasterAction) {
-    const state = ctx.getState();
-    ctx.setState({ items: [...state.items, action.payload] });
+  @Selector()
+  static all(state: MasterStateModel): Master[] {
+    return state.items;
+  }
+
+  constructor(private readonly masterService: MasterService) {}
+
+  @Action(MasterFetch)
+  fetchAll(ctx: StateContext<MasterStateModel>) {
+    return this.masterService.getAll().pipe(tap(val => ctx.setState(patch({ items: val }))));
   }
 }
