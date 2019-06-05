@@ -12,9 +12,7 @@
   <div class="content">
     <mat-tab-group dynamicHeight="true">
       <mat-tab [label]="year.level" *ngFor="let year of maquette.years; trackBy: trackByYear">
-        <div class="p-24">
-          <app-year-detail [year]="year"></app-year-detail>
-        </div>
+        <app-year-detail [year]="year"></app-year-detail>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>

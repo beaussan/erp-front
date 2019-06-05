@@ -1,7 +1,22 @@
-<app-semester-detail *ngFor="let semester of year.semesters" [semester]="semester">
-</app-semester-detail>
+<div class="p-24" [contextMenu]="ctxMenu">
+  <app-semester-detail *ngFor="let semester of year.semesters" [semester]="semester">
+  </app-semester-detail>
 
-<app-extra-module-detail
-  *ngFor="let extra of year.extras"
-  [extraModule]="extra"
-></app-extra-module-detail>
+  <app-extra-module-detail
+    *ngFor="let extra of year.extras"
+    [extraModule]="extra"
+  ></app-extra-module-detail>
+</div>
+
+<context-menu #ctxMenu>
+  <ng-template contextMenuItem (execute)="addNewSemester(year.id)">
+    <!-- (execute)="addModule(semester.id)" -->
+    <mat-icon>add</mat-icon>
+    <span>Ajouter un semestre</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem>
+    <mat-icon>add</mat-icon>
+    <span>Ajouter un group d'extra</span>
+  </ng-template>
+</context-menu>

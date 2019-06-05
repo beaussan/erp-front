@@ -11,6 +11,7 @@ import {
   MaquetteAction,
   MaquetteFetch,
   MaquetteDelete,
+  AddNewSemesterToYear,
 } from './maquette.actions';
 import {
   Course,
@@ -125,6 +126,27 @@ export class MaquetteState {
       )[field] = value;
       const id = state.items.find(maquette => MaquetteHelpers.hasCourse(maquette, courseId)).id;
       state.dirtyIds = [...state.dirtyIds, id];
+      return state;
+    });
+  }
+
+  @Action(AddNewSemesterToYear)
+  @ImmutableContext()
+  public addSemesterToYEar(
+    ctx: StateContext<MaquetteStateModel>,
+    { yearId }: AddNewSemesterToYear,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const year: Year = reduceChain(state.items, ['years']).find(ye => ye.id === yearId);
+      const uid = uuid();
+      const newSem: Semester = {
+        modules: [],
+        id: uid,
+        _id: uid,
+        number: year.semesters.length + 1,
+      };
+      year.semesters = [...year.semesters, newSem];
+
       return state;
     });
   }
