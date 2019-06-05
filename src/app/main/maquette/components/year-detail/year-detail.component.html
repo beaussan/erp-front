@@ -1,7 +1,13 @@
 <div class="p-24" [contextMenu]="ctxMenu">
+  <h2 class="label-extras">Semestres</h2>
   <app-semester-detail *ngFor="let semester of year.semesters" [semester]="semester">
   </app-semester-detail>
 
+  <h2 class="label-extras">Extras</h2>
+
+  <div class="header label-name">Nom</div>
+  <div class="header label-length">Durée</div>
+  <div class="header label-date">Date</div>
   <app-extra-module-detail
     *ngFor="let extra of year.extras"
     [extraModule]="extra"

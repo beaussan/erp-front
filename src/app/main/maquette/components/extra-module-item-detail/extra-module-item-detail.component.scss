@@ -1,0 +1,17 @@
+@import '../constants';
+
+:host {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: $columns-grid;
+  // grid-gap: $column-gaps 0;
+}
+
+div {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.date {
+  border-right: 1px solid black;
+}

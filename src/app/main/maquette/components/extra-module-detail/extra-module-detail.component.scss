@@ -1,0 +1,20 @@
+@import '../constants';
+
+:host {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: $columns-grid;
+  // grid-gap: $column-gaps 0;
+}
+
+.name {
+  grid-column: #{$column-matiere} / #{$column-total-prof};
+  background-color: #d3d3d3;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+app-extra-module-item-detail {
+  grid-column: 1 / -1;
+}
