@@ -12,9 +12,14 @@ import {
   MaquetteFetch,
   MaquetteDelete,
   AddNewSemesterToYear,
+  EditExtraNameById,
+  DeleteExtraById,
+  AddNewExtraToYear,
+  EditExtraItemField,
 } from './maquette.actions';
 import {
   Course,
+  ExtraModules,
   Maquette,
   MaquetteHelpers,
   Module,
@@ -113,6 +118,60 @@ export class MaquetteState {
         semester => semester.id === semesterId,
       ).name = value;
 
+      return state;
+    });
+  }
+
+  @Action(EditExtraNameById)
+  @ImmutableContext()
+  public updateExtraName(
+    ctx: StateContext<MaquetteStateModel>,
+    { name, extraId }: EditExtraNameById,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const extra = this.findExtraModule(extraId, state);
+      extra.name = name;
+      return state;
+    });
+  }
+
+  @Action(DeleteExtraById)
+  @ImmutableContext()
+  public deleteExtraGroup(ctx: StateContext<MaquetteStateModel>, { extraId }: DeleteExtraById) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const yer: Year = reduceChain(state.items, ['years']).find(
+        (year: Year) => !!year.extras.find(extra => extra.id === extraId),
+      );
+      yer.extras = yer.extras.filter(val => val.id !== extraId);
+      return state;
+    });
+  }
+
+  @Action(AddNewExtraToYear)
+  @ImmutableContext()
+  public addNewExtraToYear(ctx: StateContext<MaquetteStateModel>, { yearId }: AddNewExtraToYear) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const year = this.findYearById(yearId, state);
+      const id = uuid();
+      const newExtra: ExtraModules = {
+        _id: id,
+        id,
+        items: [],
+        name: '',
+      };
+      year.extras = [...year.extras, newExtra];
+      return state;
+    });
+  }
+
+  @Action(EditExtraItemField)
+  @ImmutableContext()
+  public editFieldItemExtra(
+    ctx: StateContext<MaquetteStateModel>,
+    { field, value, itemId }: EditExtraItemField,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      this.findExtraModuleItem(itemId, state)[field] = value;
       return state;
     });
   }
@@ -250,5 +309,33 @@ export class MaquetteState {
       semester.modules.push(module);
       return state;
     });
+  }
+
+  private findYearById(id: string, state: MaquetteStateModel): Year {
+    return this.findDeep(id, ['years'], state);
+  }
+
+  private findSemesterById(id: string, state: MaquetteStateModel): Semester {
+    return this.findDeep(id, ['years', 'semesters'], state);
+  }
+
+  private findModuleById(id: string, state: MaquetteStateModel): Module {
+    return this.findDeep(id, ['years', 'semesters', 'modules'], state);
+  }
+
+  private findCourseById(id: string, state: MaquetteStateModel): Course {
+    return this.findDeep(id, ['years', 'semesters', 'modules', 'courses'], state);
+  }
+
+  private findExtraModule(id: string, state: MaquetteStateModel): ExtraModules {
+    return this.findDeep(id, ['years', 'extras'], state);
+  }
+
+  private findExtraModuleItem(id: string, state: MaquetteStateModel): ExtraModules {
+    return this.findDeep(id, ['years', 'extras', 'items'], state);
+  }
+
+  private findDeep(id: string, keys: string[], state: MaquetteStateModel) {
+    return reduceChain(state.items, keys).find(item => item.id === id);
   }
 }

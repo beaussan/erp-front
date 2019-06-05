@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Year } from '../../../../types';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { AddNewSemesterToYear } from '../../../../state/maquette.actions';
+import { AddNewExtraToYear, AddNewSemesterToYear } from '../../../../state/maquette.actions';
 
 @Component({
   selector: 'app-year-detail',
@@ -18,4 +18,7 @@ export class YearDetailComponent implements OnInit {
 
   @Dispatch()
   addNewSemester = (id: string) => new AddNewSemesterToYear(id);
+
+  @Dispatch()
+  addNewExtra = (id: string) => new AddNewExtraToYear(id);
 }

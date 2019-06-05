@@ -21,7 +21,7 @@
     <span>Ajouter un semestre</span>
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem>
+  <ng-template contextMenuItem (execute)="addNewExtra(year.id)">
     <mat-icon>add</mat-icon>
     <span>Ajouter un group d'extra</span>
   </ng-template>

@@ -57,3 +57,23 @@ export class AddNewSemesterToYear {
   static readonly type = '[Maquette] Add a empty semester to a year';
   constructor(public yearId: string) {}
 }
+
+export class AddNewExtraToYear {
+  static readonly type = '[Maquette] Add an empty extra to the year';
+  constructor(public yearId: string) {}
+}
+
+export class EditExtraNameById {
+  static readonly type = '[Maquette] Edit extra name by id';
+  constructor(public extraId: string, public name: string) {}
+}
+
+export class DeleteExtraById {
+  static readonly type = '[Maquette] Delete extra name by id';
+  constructor(public extraId: string) {}
+}
+
+export class EditExtraItemField {
+  static readonly type = '[Maquette] Edit field of extra item';
+  constructor(public itemId: string, public field: string, public value: string) {}
+}

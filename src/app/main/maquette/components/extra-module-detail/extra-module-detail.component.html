@@ -1,5 +1,22 @@
-<div class="name">{{ extraModule.name }}</div>
+<app-editable (update)="updateName()" class="name" [contextMenu]="ctxMenu">
+  <ng-template appViewMode>{{ extraModule.name }}</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl()" appFocusable appEditableOnEnter />
+  </ng-template>
+</app-editable>
 <app-extra-module-item-detail
   *ngFor="let item of extraModule.items"
   [extraModuleDetail]="item"
 ></app-extra-module-item-detail>
+
+<context-menu #ctxMenu>
+  <ng-template contextMenuItem (execute)="addExtra(extraModule.id)">
+    <mat-icon>add</mat-icon>
+    <span>Ajouter un item</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem (execute)="deleteSelf(extraModule.id)">
+    <mat-icon>delete</mat-icon>
+    <span>Suprimer le groupe d'extra</span>
+  </ng-template>
+</context-menu>
