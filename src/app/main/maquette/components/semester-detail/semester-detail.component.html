@@ -1,4 +1,4 @@
-<div class="header-block">
+<div class="header-block" [contextMenu]="ctxMenu">
   <div class="header">
     <app-editable (update)="updateName()">
       <ng-template appViewMode>Semestre {{ semester.number }}</ng-template>
@@ -30,9 +30,21 @@
   <div class="ratrappage header-item">Ratrapage</div>
 </div>
 <app-module-detail *ngFor="let module of semester.modules" [module]="module"></app-module-detail>
-<div class="total legend-item">Total</div>
-<div class="total-etu legend-item">{{ getTotalEtu() }}</div>
-<div class="total-cours legend-item">{{ getTotalAmphi() }}</div>
-<div class="total-td legend-item">{{ getTotalTD() }}</div>
-<div class="total-ects legend-item">{{ getEcts() }}</div>
-<div class="total-exam legend-item">{{ getTotalExam() }}</div>
+<div class="total legend-item" [contextMenu]="ctxMenu">Total</div>
+<div class="total-etu legend-item" [contextMenu]="ctxMenu">{{ getTotalEtu() }}</div>
+<div class="total-cours legend-item" [contextMenu]="ctxMenu">{{ getTotalAmphi() }}</div>
+<div class="total-td legend-item" [contextMenu]="ctxMenu">{{ getTotalTD() }}</div>
+<div class="total-ects legend-item" [contextMenu]="ctxMenu">{{ getEcts() }}</div>
+<div class="total-exam legend-item" [contextMenu]="ctxMenu">{{ getTotalExam() }}</div>
+
+<context-menu #ctxMenu>
+  <ng-template contextMenuItem (execute)="addModule(semester.id)">
+    <mat-icon>add</mat-icon>
+    <span>Ajouter un module</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem (execute)="deleteSelf(semester.id)">
+    <mat-icon>delete</mat-icon>
+    <span>Suprimer le semestre</span>
+  </ng-template>
+</context-menu>

@@ -2,7 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Semester, SemesterHelpers } from '../../../../types';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { EditFieldCourse, EditSemesterName } from '../../../../state/maquette.actions';
+import {
+  AddModuleToSemester,
+  DeleteSemesterById,
+  EditFieldCourse,
+  EditSemesterName,
+} from '../../../../state/maquette.actions';
 
 @Component({
   selector: 'app-semester-detail',
@@ -60,6 +65,12 @@ export class SemesterDetailComponent implements OnInit {
     const value = this.form.value.number;
     this.sendUpdate(this.semester.id, value);
   }
+
+  @Dispatch()
+  addModule = (id: string) => new AddModuleToSemester(id);
+
+  @Dispatch()
+  deleteSelf = (id: string) => new DeleteSemesterById(id);
 
   @Dispatch()
   sendUpdate = (course: string, value: any) => new EditSemesterName(course, value);

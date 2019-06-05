@@ -1,8 +1,10 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import {
   AddEmptyCourseToModule,
+  AddModuleToSemester,
   DeleteCourse,
   DeleteModule,
+  DeleteSemesterById,
   EditFieldCourse,
   EditModuleName,
   EditSemesterName,
@@ -107,6 +109,8 @@ export class MaquetteState {
       reduceChain(state.items, ['years', 'semesters', 'modules', 'courses']).find(
         val => val.id === courseId,
       )[field] = value;
+      const id = state.items.find(maquette => MaquetteHelpers.hasCourse(maquette, courseId)).id;
+      state.dirtyIds = [...state.dirtyIds, id];
       return state;
     });
   }
@@ -168,6 +172,46 @@ export class MaquetteState {
       );
       const courseIdx = module.courses.findIndex(course => course.id === courseId);
       module.courses.splice(courseIdx, 1);
+
+      const id = state.items.find(maquette => MaquetteHelpers.hasCourse(maquette, courseId)).id;
+      state.dirtyIds = [...state.dirtyIds, id];
+      return state;
+    });
+  }
+
+  @Action(DeleteSemesterById)
+  @ImmutableContext()
+  public deleteSemesterById(
+    ctx: StateContext<MaquetteStateModel>,
+    { semesterId }: DeleteSemesterById,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const year: Year = reduceChain(state.items, ['years']).find(
+        (ye: Year) => !!ye.semesters.find(sem => sem.id === semesterId),
+      );
+      year.semesters = year.semesters.filter(sem => sem.id !== semesterId);
+      return state;
+    });
+  }
+
+  @Action(AddModuleToSemester)
+  @ImmutableContext()
+  public addModuleToSemester(
+    ctx: StateContext<MaquetteStateModel>,
+    { semesterId }: AddModuleToSemester,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const semester: Semester = reduceChain(state.items, ['years', 'semesters']).find(
+        (sem: Semester) => sem.id === semesterId,
+      );
+      const uid = uuid();
+      const module: Module = {
+        id: uid,
+        _id: uid,
+        name: '',
+        courses: [],
+      };
+      semester.modules.push(module);
       return state;
     });
   }

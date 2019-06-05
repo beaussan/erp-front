@@ -37,3 +37,18 @@ export class AddEmptyCourseToModule {
   static readonly type = '[Maquette] add empty course to module';
   constructor(public moduleId: string) {}
 }
+
+export class DeleteSemesterById {
+  static readonly type = '[Maquette] Delete semester by id';
+  constructor(public semesterId: string) {}
+}
+
+export class AddModuleToSemester {
+  static readonly type = '[Maquette] Add module to semester';
+  constructor(public semesterId: string) {}
+}
+
+export class AddNewSemesterToYear {
+  static readonly type = '[Maquette] Add a empty semester to a year';
+  constructor(public yearId: string) {}
+}
