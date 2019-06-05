@@ -1,11 +1,10 @@
-<div class="name" [contextMenu]="ctxMenu">
-  <app-editable (update)="updateName()">
-    <ng-template appViewMode>{{ module.name }}</ng-template>
-    <ng-template appEditMode>
-      <input [formControl]="getControl()" appFocusable appEditableOnEnter />
-    </ng-template>
-  </app-editable>
-</div>
+<app-editable (update)="updateName()" class="name" [contextMenu]="ctxMenu">
+  <ng-template appViewMode>{{ module.name }}</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl()" appFocusable appEditableOnEnter />
+  </ng-template>
+</app-editable>
+
 <div class="total-etu" [contextMenu]="ctxMenu">{{ getTotalEtu() }}</div>
 <div class="background spacer-1" [contextMenu]="ctxMenu"></div>
 <div class="total-ects" [contextMenu]="ctxMenu">{{ getTotalEcts() }}</div>
