@@ -8,6 +8,7 @@ import {
   EditFieldCourse,
   EditSemesterName,
 } from '../../../../state/maquette.actions';
+import { DeleteModalService } from '../../../../modules/delete-modal/delete-modal.service';
 
 @Component({
   selector: 'app-semester-detail',
@@ -29,7 +30,7 @@ export class SemesterDetailComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder, private readonly delServ: DeleteModalService) {
     this.form = this.fb.group({
       number: [0, Validators.min(0)],
     });
@@ -69,8 +70,9 @@ export class SemesterDetailComponent implements OnInit {
   @Dispatch()
   addModule = (id: string) => new AddModuleToSemester(id);
 
-  @Dispatch()
-  deleteSelf = (id: string) => new DeleteSemesterById(id);
+  deleteSelf(id: string) {
+    this.delServ.askForConfirmation('Semestre', new DeleteSemesterById(id));
+  }
 
   @Dispatch()
   sendUpdate = (course: string, value: any) => new EditSemesterName(course, value);

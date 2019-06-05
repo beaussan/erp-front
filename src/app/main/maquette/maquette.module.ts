@@ -24,6 +24,7 @@ import { MatListModule } from '@angular/material/list';
 import { EditableModule } from '../../modules/editable/editable.module';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { BooleanDisplayModule } from '../../../@fuse/components/boolean-display/boolean-display.module';
+import { DeleteModalModule } from '../../modules/delete-modal/delete-modal.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { BooleanDisplayModule } from '../../../@fuse/components/boolean-display/
     MatInputModule,
     MatCheckboxModule,
     BooleanDisplayModule,
+    DeleteModalModule,
     ContextMenuModule.forRoot({
       autoFocus: true,
     }),
