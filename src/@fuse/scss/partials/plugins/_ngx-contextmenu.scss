@@ -1,0 +1,80 @@
+.ngx-contextmenu.cdk-overlay-pane {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: white;
+  border-radius: 2px;
+
+  .dropdown-menu {
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    display: block;
+    background-color: #eee;
+    content: '';
+    margin-left: auto;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .divider ~ .divider {
+    width: calc(100% - 30px);
+  }
+
+  li:not(.divider) {
+    color: black;
+    font-size: 14px;
+    line-height: 14px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    outline: 0;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    text-decoration: none;
+    position: relative;
+
+    .mat-icon {
+      font-size: 18px;
+      line-height: 18px;
+      min-height: 18px;
+      min-width: 18px;
+      height: 18px;
+      width: 18px;
+      color: black;
+      margin-right: 10px;
+    }
+
+    span {
+      color: black;
+    }
+
+    span.passive {
+      padding: 10px 25px 10px 14px;
+    }
+
+    a {
+      min-height: 30px;
+      padding: 0 25px 0 14px;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none !important;
+
+      &:hover {
+        background-color: #f9f9f9;
+        text-decoration: none !important;
+      }
+    }
+  }
+}

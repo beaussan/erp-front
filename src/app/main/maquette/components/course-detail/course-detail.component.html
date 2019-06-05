@@ -83,7 +83,9 @@
 </app-editable>
 
 <app-editable class="is-in-english" (update)="update('courseEnglish')">
-  <ng-template appViewMode>{{ course.courseEnglish }}</ng-template>
+  <ng-template appViewMode
+    ><app-boolean-display [value]="course.courseEnglish"></app-boolean-display
+  ></ng-template>
   <ng-template appEditMode>
     <mat-checkbox [formControl]="getControl('courseEnglish')"></mat-checkbox>
   </ng-template>
@@ -97,7 +99,9 @@
 </app-editable>
 
 <app-editable class="ratrappage" (update)="update('ratrappage')">
-  <ng-template appViewMode>{{ course.ratrappage }}</ng-template>
+  <ng-template appViewMode
+    ><app-boolean-display [value]="course.ratrappage"></app-boolean-display
+  ></ng-template>
   <ng-template appEditMode>
     <mat-checkbox [formControl]="getControl('ratrappage')"></mat-checkbox>
   </ng-template>

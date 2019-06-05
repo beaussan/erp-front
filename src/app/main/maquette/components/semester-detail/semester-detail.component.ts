@@ -2,7 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Semester, SemesterHelpers } from '../../../../types';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { EditFieldCourse, EditSemesterName } from '../../../../state/maquette.actions';
+import {
+  AddModuleToSemester,
+  DeleteSemesterById,
+  EditFieldCourse,
+  EditSemesterName,
+} from '../../../../state/maquette.actions';
+import { DeleteModalService } from '../../../../modules/delete-modal/delete-modal.service';
 
 @Component({
   selector: 'app-semester-detail',
@@ -24,7 +30,7 @@ export class SemesterDetailComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder, private readonly delServ: DeleteModalService) {
     this.form = this.fb.group({
       number: [0, Validators.min(0)],
     });
@@ -59,6 +65,13 @@ export class SemesterDetailComponent implements OnInit {
   updateName() {
     const value = this.form.value.number;
     this.sendUpdate(this.semester.id, value);
+  }
+
+  @Dispatch()
+  addModule = (id: string) => new AddModuleToSemester(id);
+
+  deleteSelf(id: string) {
+    this.delServ.askForConfirmation('Semestre', new DeleteSemesterById(id));
   }
 
   @Dispatch()

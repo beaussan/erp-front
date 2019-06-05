@@ -1,4 +1,4 @@
-<div class="name">
+<div class="name" [contextMenu]="ctxMenu">
   <app-editable (update)="updateName()">
     <ng-template appViewMode>{{ module.name }}</ng-template>
     <ng-template appEditMode>
@@ -6,13 +6,44 @@
     </ng-template>
   </app-editable>
 </div>
-<div class="total-etu">{{ getTotalEtu() }}</div>
-<div class="background spacer-1"></div>
-<div class="total-ects">{{ getTotalEcts() }}</div>
-<div class="background spacer-2"></div>
-<div class="background spacer-3"></div>
+<div class="total-etu" [contextMenu]="ctxMenu">{{ getTotalEtu() }}</div>
+<div class="background spacer-1" [contextMenu]="ctxMenu"></div>
+<div class="total-ects" [contextMenu]="ctxMenu">{{ getTotalEcts() }}</div>
+<div class="background spacer-2" [contextMenu]="ctxMenu"></div>
+<div class="background spacer-3" [contextMenu]="ctxMenu"></div>
 <app-course-detail
   *ngFor="let course of module.courses; let last = last"
   [course]="course"
   [last]="last"
+  [contextMenu]="ctxCourse"
+  [contextMenuSubject]="course"
 ></app-course-detail>
+
+<context-menu #ctxMenu>
+  <ng-template contextMenuItem (execute)="addCourse(module.id)">
+    <mat-icon>add</mat-icon>
+    <span>Ajouter un cours</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem (execute)="deleteSelf(module.id)">
+    <mat-icon>delete</mat-icon>
+    <span>Suprimer le module</span>
+  </ng-template>
+</context-menu>
+
+<context-menu #ctxCourse>
+  <ng-template contextMenuItem (execute)="addCourse(module.id)">
+    <mat-icon>add</mat-icon>
+    <span>Ajouter un cours</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem (execute)="deleteCourse($event.item.id)">
+    <mat-icon>delete</mat-icon>
+    <span>Suprimer le cours</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem (execute)="deleteSelf(module.id)">
+    <mat-icon>delete</mat-icon>
+    <span>Suprimer le module</span>
+  </ng-template>
+</context-menu>
