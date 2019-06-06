@@ -1,3 +1,5 @@
+import { Master } from '../types';
+
 export class MaquetteAction {
   static readonly type = '[Maquette] Add item';
   constructor(public payload: string) {}
@@ -106,4 +108,14 @@ export class LockOrUnlock {
 export class SaveMaquetteById {
   static readonly type = '[Maquette] Save maquette';
   constructor(public id: string) {}
+}
+
+export class NewMaquette {
+  static readonly type = '[Maquette] Create new maquette';
+  constructor(public master: Master, public schoolYear: string) {}
+}
+
+export class SaveNewMaquette {
+  static readonly type = '[Maquette] Save a new maquette';
+  constructor() {}
 }

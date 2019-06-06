@@ -34,6 +34,13 @@ export class MaquetteService {
     removeProps(out, ['_id', 'id']);
     return this.http.put<Maquette>(`/maquette/${id}`, out);
   }
+  saveNew(data: Maquette): Observable<Maquette> {
+    let out = { ...data } as any;
+    out.master = data.master.id;
+    out = JSON.parse(JSON.stringify(out));
+    removeProps(out, ['_id', 'id']);
+    return this.http.post<Maquette>(`/maquette/`, out);
+  }
 }
 
 function removeProps(obj, keys) {

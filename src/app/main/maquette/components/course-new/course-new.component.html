@@ -1,0 +1,36 @@
+<div class="page-layout simple fullwidth" *ngIf="maquette$ | async as maquette">
+  <!-- HEADER -->
+  <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-mini-fab color="primary" class="mr-16" [routerLink]="['..', '..', 'list']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2>{{ maquette.master.name }}, années {{ maquette.schoolYear }}</h2>
+    <div class="spacer" fxFlex></div>
+    <div class="lock">
+      <button mat-raised-button color="accent" *ngIf="isDirty$ | async" (click)="save()">
+        Sauvegarder
+      </button>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content">
+    <mat-tab-group dynamicHeight="true">
+      <mat-tab [label]="year.level" *ngFor="let year of maquette.years; trackBy: trackByYear">
+        <app-year-detail [year]="year"></app-year-detail>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>add</mat-icon>
+        </ng-template>
+        <app-new-year-ui [maquetteId]="maquette.id"></app-new-year-ui>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- / CONTENT -->
+</div>
+
+<ng-template>
+  Loading
+</ng-template>

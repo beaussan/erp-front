@@ -22,12 +22,14 @@ import {
   MatTableModule,
   MatMenuModule,
   MatDialogModule,
+  MatSelectModule,
 } from '@angular/material';
 import { EditableModule } from '../../modules/editable/editable.module';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { BooleanDisplayModule } from '../../../@fuse/components/boolean-display/boolean-display.module';
 import { DeleteModalModule } from '../../modules/delete-modal/delete-modal.module';
 import { NewYearUiComponent } from './components/new-year-ui/new-year-ui.component';
+import { CourseNewComponent } from './components/course-new/course-new.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { NewYearUiComponent } from './components/new-year-ui/new-year-ui.compone
     ModuleDetailComponent,
     CourseDetailComponent,
     NewYearUiComponent,
+    CourseNewComponent,
   ],
   imports: [
     FuseSharedModule,
@@ -48,6 +51,7 @@ import { NewYearUiComponent } from './components/new-year-ui/new-year-ui.compone
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
+    MatSelectModule,
     EditableModule,
     MatFormFieldModule,
     MatInputModule,

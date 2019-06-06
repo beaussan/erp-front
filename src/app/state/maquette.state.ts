@@ -22,6 +22,8 @@ import {
   MarkAsDirty,
   LockOrUnlock,
   SaveMaquetteById,
+  NewMaquette,
+  SaveNewMaquette,
 } from './maquette.actions';
 import {
   Course,
@@ -38,10 +40,11 @@ import {
 } from '../types';
 import { v4 as uuid } from 'uuid';
 import { MaquetteService } from '../services/maquette.service';
-import { tap } from 'rxjs/operators';
-import { patch, updateItem, removeItem } from '@ngxs/store/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { patch, updateItem, removeItem, insertItem } from '@ngxs/store/operators';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import * as _ from 'lodash';
+import { Navigate } from '@ngxs/router-plugin';
 
 export class MaquetteStateModel {
   public items: Maquette[];
@@ -70,6 +73,11 @@ export class MaquetteState {
   @Selector()
   static byId(state: MaquetteStateModel): (id: string) => Maquette {
     return (id: string) => state.items.find(val => val._id === id);
+  }
+
+  @Selector()
+  static newMaquette(state: MaquetteStateModel): Maquette {
+    return MaquetteState.byId(state)('new');
   }
 
   @Selector()
@@ -345,6 +353,47 @@ export class MaquetteState {
         );
       }),
     );
+  }
+
+  @Action(SaveNewMaquette)
+  public saveNew(ctx: StateContext<MaquetteStateModel>) {
+    const maq = ctx.getState().items.find(obj => obj.id === 'new');
+
+    return this.maquetteService.saveNew(maq).pipe(
+      tap(val => {
+        ctx.setState(
+          patch<MaquetteStateModel>({
+            // @ts-ignore
+            items: insertItem(val),
+            dirtyIds: arr => arr.filter(fafa => fafa !== 'new'),
+          }),
+        );
+      }),
+      switchMap(val => ctx.dispatch(new Navigate(['maquette', 'detail', val.id]))),
+    );
+  }
+
+  @Action(NewMaquette)
+  @ImmutableContext()
+  public newMaquette(ctx: StateContext<MaquetteStateModel>, { master, schoolYear }: NewMaquette) {
+    ctx.setState(state => {
+      const maybeNew = state.items.findIndex(val => val.id === 'new');
+      if (maybeNew) {
+        state.items.splice(maybeNew, 1);
+      }
+      const newMaqu: Maquette = {
+        id: 'new',
+        _id: 'new',
+        master,
+        inProduction: false,
+        years: [],
+        schoolYear,
+      };
+      state.items.push(newMaqu);
+
+      return state;
+    });
+    return ctx.dispatch(new Navigate(['maquette', 'detail', 'new']));
   }
 
   @Action(LockOrUnlock)

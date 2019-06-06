@@ -1,10 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { MaquetteFetch, MaquetteDelete } from '../../../../state/maquette.actions';
-import { Select } from '@ngxs/store';
+import { MaquetteFetch, MaquetteDelete, NewMaquette } from '../../../../state/maquette.actions';
+import { Select, Store } from '@ngxs/store';
 import { MaquetteState } from '../../../../state/maquette.state';
 import { Observable } from 'rxjs';
-import { Maquette } from '../../../../types';
+import { Maquette, Master } from '../../../../types';
+import { MasterFetch } from '../../../../state/master.actions';
+import { MasterState } from '../../../../state/master.state';
+import { DeleteModalService } from '../../../../modules/delete-modal/delete-modal.service';
 
 @Component({
   selector: 'app-maquette-list',
@@ -14,11 +17,23 @@ import { Maquette } from '../../../../types';
 })
 export class MaquetteListComponent implements OnInit {
   @Select(MaquetteState.all) all$: Observable<Maquette[]>;
+  @Select(MasterState.all) allMasters$: Observable<Master[]>;
 
-  constructor() {}
+  master: Master;
+  year = '';
+
+  constructor(private readonly store: Store, private readonly delServ: DeleteModalService) {}
 
   ngOnInit() {
     this.fetchMaquettes();
+    this.fetchMasters();
+  }
+
+  submitYear() {
+    if (!this.master || this.year.trim().length === 0) {
+      return;
+    }
+    this.store.dispatch(new NewMaquette(this.master, this.year));
   }
 
   @Dispatch()
@@ -27,8 +42,12 @@ export class MaquetteListComponent implements OnInit {
   }
 
   @Dispatch()
+  fetchMasters() {
+    return new MasterFetch();
+  }
+
   deleteMaquette(idMaquette: string) {
-    return new MaquetteDelete(idMaquette);
+    this.delServ.askForConfirmation('Maquette', new MaquetteDelete(idMaquette));
   }
 
   displayedColumns: string[] = ['name', 'prod', 'actions'];

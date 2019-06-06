@@ -11,7 +11,7 @@ import {
   Output,
 } from '@angular/core';
 import { EditModeDirective } from '../../directives/edit-mode.directive';
-import { fromEvent, Observable, Subject } from 'rxjs';
+import { fromEvent, Observable, of, Subject } from 'rxjs';
 import { filter, map, pluck, switchMap, switchMapTo, take, tap } from 'rxjs/operators';
 import { ViewModeDirective } from '../../directives/view-mode.directive';
 import { untilDestroyed } from 'ngx-take-until-destroy';
@@ -58,15 +58,33 @@ export class EditableComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private readonly store: Store,
   ) {
-    this.maquetteId$ = this.route.paramMap.pipe(
-      map(params => params.get('id')),
-      switchMap(params => this.store.select(MaquetteState.byId).pipe(map(fn => fn(params)))),
-      pluck('id'),
+    this.isCurrentMaquetteReadOnly$ = this.route.url.pipe(
+      map(val => val[val.length - 1]),
+      switchMap(val =>
+        val.path === 'new'
+          ? of(false)
+          : this.route.paramMap.pipe(
+              map(params => params.get('id')),
+              switchMap(params =>
+                this.store.select(MaquetteState.byId).pipe(map(fn => fn(params))),
+              ),
+              pluck('inProduction'),
+            ),
+      ),
     );
-    this.isCurrentMaquetteReadOnly$ = this.route.paramMap.pipe(
-      map(params => params.get('id')),
-      switchMap(params => this.store.select(MaquetteState.byId).pipe(map(fn => fn(params)))),
-      pluck('inProduction'),
+    this.maquetteId$ = this.route.url.pipe(
+      map(val => val[val.length - 1]),
+      switchMap(val =>
+        val.path === 'new'
+          ? of('new')
+          : this.route.paramMap.pipe(
+              map(params => params.get('id')),
+              switchMap(params =>
+                this.store.select(MaquetteState.byId).pipe(map(fn => fn(params))),
+              ),
+              pluck('id'),
+            ),
+      ),
     );
     this.isCurrentMaquetteReadOnly$.pipe(untilDestroyed(this)).subscribe(val => {
       this.isWriteMode = val === false;

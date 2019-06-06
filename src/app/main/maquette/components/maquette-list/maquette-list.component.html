@@ -1,11 +1,14 @@
-<div class="content -24">
-  <div class="page-layout simple fullwidth">
-    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
-      <h2>Maquettes</h2>
-    </div>
+<div class="page-layout simple fullwidth">
+  <!-- HEADER -->
+  <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+    <h2>Maquettes</h2>
+  </div>
+  <!-- / HEADER -->
 
-    <div class="content">
-      <table mat-table [dataSource]="all$" class="mat-elevation-z8">
+  <!-- CONTENT -->
+  <div class="content p-24" fxLayout="column" fxLayoutAlign="stretch">
+    <div class="mat-elevation-z8 item" fxFlex fxLayout="row">
+      <table mat-table [dataSource]="all$" fxFlex>
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Maquette</th>
           <td mat-cell *matCellDef="let maquette">
@@ -35,7 +38,35 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
+
+    <div class="mat-elevation-z8 item p-12" fxFlex *ngIf="allMasters$ | async as masters">
+      <h3>Nouvelle maquette</h3>
+      <div fxLayout="row" fxLayoutAlign="space-around">
+        <div>
+          Master :
+          <mat-form-field>
+            <mat-label>Master</mat-label>
+            <mat-select [(ngModel)]="master">
+              <mat-option *ngFor="let master of masters" [value]="master">
+                {{ master.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          Années :
+          <mat-form-field>
+            <input matInput placeholder="Années" [(ngModel)]="year" />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button mat-raised-button (click)="submitYear()">Ajouter</button>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- / CONTENT -->
 </div>
 
 <ng-template #loading>
