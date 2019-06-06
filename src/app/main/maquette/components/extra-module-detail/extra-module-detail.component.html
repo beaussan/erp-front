@@ -7,12 +7,31 @@
 <app-extra-module-item-detail
   *ngFor="let item of extraModule.items"
   [extraModuleDetail]="item"
+  [contextMenu]="ctxMenuItem"
+  [contextMenuSubject]="item"
 ></app-extra-module-item-detail>
 
 <context-menu #ctxMenu>
   <ng-template contextMenuItem (execute)="addExtra(extraModule.id)">
     <mat-icon>add</mat-icon>
     <span>Ajouter un item</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem (execute)="deleteSelf(extraModule.id)">
+    <mat-icon>delete</mat-icon>
+    <span>Suprimer le groupe d'extra</span>
+  </ng-template>
+</context-menu>
+
+<context-menu #ctxMenuItem>
+  <ng-template contextMenuItem (execute)="addExtra(extraModule.id)">
+    <mat-icon>add</mat-icon>
+    <span>Ajouter un item</span>
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem (execute)="deleteItem(extraModule.id, $event.item.id)">
+    <mat-icon>delete</mat-icon>
+    <span>Suprimer l'item d'extra</span>
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
   <ng-template contextMenuItem (execute)="deleteSelf(extraModule.id)">

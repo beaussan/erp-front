@@ -1,3 +1,20 @@
-<div class="name">{{ extraModuleDetail.name }}</div>
-<div class="hour">{{ extraModuleDetail.hour }}</div>
-<div class="date">{{ extraModuleDetail.date }}</div>
+<app-editable class="name" (update)="update('name')">
+  <ng-template appViewMode>{{ extraModuleDetail.name }}</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('name')" appFocusable appEditableOnEnter
+  /></ng-template>
+</app-editable>
+
+<app-editable class="hour" (update)="update('hour')">
+  <ng-template appViewMode>{{ extraModuleDetail.hour }}</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('hour')" appFocusable appEditableOnEnter type="number" />
+  </ng-template>
+</app-editable>
+
+<app-editable class="date" (update)="update('date')">
+  <ng-template appViewMode>{{ extraModuleDetail.date }}</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('date')" appFocusable appEditableOnEnter
+  /></ng-template>
+</app-editable>

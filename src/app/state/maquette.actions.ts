@@ -77,3 +77,13 @@ export class EditExtraItemField {
   static readonly type = '[Maquette] Edit field of extra item';
   constructor(public itemId: string, public field: string, public value: string) {}
 }
+
+export class AddExtraEmptyToModule {
+  static readonly type = '[Maquette] Add extra empty to module';
+  constructor(public extraId: string) {}
+}
+
+export class DeleteExtraItem {
+  static readonly type = '[Maquette] Delete extra item in group';
+  constructor(public groupId: string, public itemId: string) {}
+}

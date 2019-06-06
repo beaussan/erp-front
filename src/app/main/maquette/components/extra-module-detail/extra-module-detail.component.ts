@@ -3,7 +3,9 @@ import { ExtraModules } from '../../../../types';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import {
+  AddExtraEmptyToModule,
   DeleteExtraById,
+  DeleteExtraItem,
   EditExtraNameById,
   EditModuleName,
 } from '../../../../state/maquette.actions';
@@ -48,9 +50,12 @@ export class ExtraModuleDetailComponent implements OnInit {
   @Dispatch()
   sendUpdate = (moduleId: string, value: string) => new EditExtraNameById(moduleId, value);
 
-  // @Dispatch()
-  addExtra = (id: string) => {};
+  @Dispatch()
+  addExtra = (id: string) => new AddExtraEmptyToModule(id);
 
   @Dispatch()
   deleteSelf = (moduleId: string) => new DeleteExtraById(moduleId);
+
+  @Dispatch()
+  deleteItem = (moduleId: string, itemId: string) => new DeleteExtraItem(moduleId, itemId);
 }

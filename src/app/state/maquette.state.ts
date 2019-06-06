@@ -16,10 +16,13 @@ import {
   DeleteExtraById,
   AddNewExtraToYear,
   EditExtraItemField,
+  AddExtraEmptyToModule,
+  DeleteExtraItem,
 } from './maquette.actions';
 import {
   Course,
   ExtraModules,
+  ItemExtra,
   Maquette,
   MaquetteHelpers,
   Module,
@@ -160,6 +163,40 @@ export class MaquetteState {
         name: '',
       };
       year.extras = [...year.extras, newExtra];
+      return state;
+    });
+  }
+
+  @Action(AddExtraEmptyToModule)
+  @ImmutableContext()
+  public addExtraEmptyToModule(
+    ctx: StateContext<MaquetteStateModel>,
+    { extraId }: AddExtraEmptyToModule,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const id = uuid();
+      const newExtraItem: ItemExtra = {
+        _id: id,
+        id,
+        hour: 0,
+        name: '',
+        date: '',
+      };
+      this.findExtraModule(extraId, state).items.push(newExtraItem);
+
+      return state;
+    });
+  }
+
+  @Action(DeleteExtraItem)
+  @ImmutableContext()
+  public deleteExtraItem(
+    ctx: StateContext<MaquetteStateModel>,
+    { itemId, groupId }: DeleteExtraItem,
+  ) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const group = this.findExtraModule(groupId, state);
+      group.items = group.items.filter(val => val.id !== itemId);
       return state;
     });
   }
@@ -331,7 +368,7 @@ export class MaquetteState {
     return this.findDeep(id, ['years', 'extras'], state);
   }
 
-  private findExtraModuleItem(id: string, state: MaquetteStateModel): ExtraModules {
+  private findExtraModuleItem(id: string, state: MaquetteStateModel): ItemExtra {
     return this.findDeep(id, ['years', 'extras', 'items'], state);
   }
 

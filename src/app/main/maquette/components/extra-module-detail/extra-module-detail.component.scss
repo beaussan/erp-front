@@ -4,6 +4,7 @@
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: $columns-grid;
+  min-height: 19px;
   // grid-gap: $column-gaps 0;
 }
 
@@ -13,6 +14,7 @@
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 
 app-extra-module-item-detail {
