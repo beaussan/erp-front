@@ -10,5 +10,5 @@ export class MasterFetch {
 
 export class MasterDelete {
   static readonly type = '[Master] delete by id';
-  constructor(public MasterId: string) {}
+  constructor(public masterId: string) {}
 }

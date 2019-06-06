@@ -28,4 +28,18 @@ export class MasterState {
   fetchAll(ctx: StateContext<MasterStateModel>) {
     return this.masterService.getAll().pipe(tap(val => ctx.setState(patch({ items: val }))));
   }
+
+  @Action(MasterDelete)
+  deleteById(ctx: StateContext<MasterStateModel>, { masterId }: MasterDelete) {
+    return this.masterService.deleteById(masterId).pipe(
+      tap(() =>
+        ctx.setState(
+          patch({
+            items: removeItem(master => master.id === masterId),
+          }),
+        ),
+      ),
+    );
+  }
+
 }
