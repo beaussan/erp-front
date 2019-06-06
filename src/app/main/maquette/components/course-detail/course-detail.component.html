@@ -5,9 +5,11 @@
   /></ng-template>
 </app-editable>
 
-<app-editable class="teacher">
-  <ng-template appViewMode>TBD</ng-template>
-  <ng-template appEditMode>WIP</ng-template>
+<app-editable class="teacher" (update)="update('teacher')">
+  <ng-template appViewMode>{{ course.teacher }}</ng-template>
+  <ng-template appEditMode>
+    <input [formControl]="getControl('teacher')" appFocusable appEditableOnEnter />
+  </ng-template>
 </app-editable>
 
 <app-editable class="com" (update)="update('commun')">

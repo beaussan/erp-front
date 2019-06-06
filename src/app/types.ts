@@ -41,6 +41,7 @@ export interface Course extends DefaultObject {
   coefCC: number;
   coefExam: number;
   examType: string;
+  teacher: string;
   courseEnglish: boolean;
   englishTranslation: string;
   ratrappage: boolean;

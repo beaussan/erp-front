@@ -30,6 +30,7 @@ export class CourseDetailComponent implements OnInit {
       courseEnglish: value.courseEnglish,
       englishTranslation: value.englishTranslation,
       ratrappage: value.ratrappage,
+      teacher: value.teacher,
     });
   }
   private _course: Course;
@@ -52,6 +53,7 @@ export class CourseDetailComponent implements OnInit {
       examType: [''],
       courseEnglish: [false],
       englishTranslation: [''],
+      teacher: [''],
       ratrappage: [false],
     });
   }
