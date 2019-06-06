@@ -260,6 +260,7 @@ export class MaquetteState {
       const newID = uuid();
       const newCourse: Course = {
         lengthExam: 0,
+        teacher: '',
         commun: '',
         name: '',
         nmbGroupTd: 1,
