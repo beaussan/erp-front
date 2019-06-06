@@ -1,12 +1,10 @@
-# Fuse - Angular
+# Erp front
 
-Material Design Admin Template with Angular 8 and Angular Material
+[![CircleCI](https://circleci.com/gh/beaussart/erp-front/tree/master.svg?style=svg)](https://circleci.com/gh/beaussart/erp-front/tree/master)
 
-## The Community
+This is the front-end of the erp project.
 
-Share your ideas, discuss Fuse and help each other.
-
-[Click here](http://fusetheme.com/community) to see our Community page.
+it's purpose is to help manager and have an archive of old masters maquettes and a place to manage them.
 
 ## Development server
 
