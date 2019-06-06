@@ -12,6 +12,7 @@
         "build-stats": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --dev --stats-json",
         "build-prod": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
         "build-prod-stats": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
+        "format:check": "prettier --list-different \"src/**/*{.ts,.scss,.html}\"",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
