@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Year } from '../../../../types';
+import { SemesterHelpers, Year, YearHelpers } from '../../../../types';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { AddNewExtraToYear, AddNewSemesterToYear } from '../../../../state/maquette.actions';
 
@@ -15,6 +15,18 @@ export class YearDetailComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  getTotalCours() {
+    return YearHelpers.totalHour(this.year);
+  }
+
+  getTotalTD() {
+    return YearHelpers.cours(this.year);
+  }
+
+  getTotalExam() {
+    return YearHelpers.exam(this.year);
+  }
 
   @Dispatch()
   addNewSemester = (id: string) => new AddNewSemesterToYear(id);

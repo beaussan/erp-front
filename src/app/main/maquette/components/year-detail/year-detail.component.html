@@ -12,6 +12,14 @@
     *ngFor="let extra of year.extras"
     [extraModule]="extra"
   ></app-extra-module-detail>
+
+  <h2 class="total-header">Total</h2>
+  <div class="cours-label">Cours</div>
+  <div class="cours-data">{{ getTotalTD() }}</div>
+  <div class="exam-label">Exam</div>
+  <div class="exam-data">{{ getTotalExam() }}</div>
+  <div class="total-label">Total</div>
+  <div class="total-data">{{ getTotalCours() }}</div>
 </div>
 
 <context-menu #ctxMenu>

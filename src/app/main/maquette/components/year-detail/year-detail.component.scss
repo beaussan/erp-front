@@ -28,3 +28,18 @@ app-extra-module-detail {
 .label-date {
   border-right: 1px solid black;
 }
+
+.total-header {
+  grid-column: 1 / -1;
+}
+
+.cours-label,
+.exam-label,
+.total-label {
+  grid-column: 1;
+}
+.cours-data,
+.exam-data,
+.total-data {
+  grid-column: 2;
+}

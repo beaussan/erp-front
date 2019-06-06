@@ -125,8 +125,10 @@ export const YearHelpers = {
     ),
   totalHour: (year: Year): number =>
     reduceWithProperty(year.extras, ExtraModuleHelpers.totalHour) +
-    reduceWithProperty(year.semesters, SemesterHelpers.totalEtu) +
-    reduceWithProperty(year.semesters, SemesterHelpers.totalExam),
+    YearHelpers.exam(year) +
+    YearHelpers.cours(year),
+  exam: (year: Year): number => reduceWithProperty(year.semesters, SemesterHelpers.totalExam),
+  cours: (year: Year): number => reduceWithProperty(year.semesters, SemesterHelpers.totalEtu),
 };
 
 export interface Maquette extends DefaultObject {
