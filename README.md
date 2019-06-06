@@ -10,6 +10,10 @@ it's purpose is to help manager and have an archive of old masters maquettes and
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Running dev back-end
+
+Run `docker-compose -f dev/docker-compose.yml up -d` to start a dev server and a database.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
