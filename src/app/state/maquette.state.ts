@@ -18,6 +18,7 @@ import {
   EditExtraItemField,
   AddExtraEmptyToModule,
   DeleteExtraItem,
+  MaquetteNewYear,
 } from './maquette.actions';
 import {
   Course,
@@ -327,6 +328,24 @@ export class MaquetteState {
     });
   }
 
+  @Action(MaquetteNewYear)
+  @ImmutableContext()
+  public newYear(ctx: StateContext<MaquetteStateModel>, { name, maquetteId }: MaquetteNewYear) {
+    ctx.setState((state: MaquetteStateModel) => {
+      const maquette = state.items.find(maq => maq.id === maquetteId);
+      const newID = uuid();
+      const newYear: Year = {
+        semesters: [],
+        extras: [],
+        level: name,
+        id: newID,
+        _id: newID,
+      };
+      maquette.years.push(newYear);
+      return state;
+    });
+  }
+
   @Action(AddModuleToSemester)
   @ImmutableContext()
   public addModuleToSemester(
@@ -374,6 +393,6 @@ export class MaquetteState {
   }
 
   private findDeep(id: string, keys: string[], state: MaquetteStateModel) {
-    return reduceChain(state.items, keys).find(item => item.id === id);
+    return reduceChain(state.items, keys).find(item => item._id === id);
   }
 }

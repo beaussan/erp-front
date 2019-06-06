@@ -27,6 +27,7 @@ import { EditableModule } from '../../modules/editable/editable.module';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { BooleanDisplayModule } from '../../../@fuse/components/boolean-display/boolean-display.module';
 import { DeleteModalModule } from '../../modules/delete-modal/delete-modal.module';
+import { NewYearUiComponent } from './components/new-year-ui/new-year-ui.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DeleteModalModule } from '../../modules/delete-modal/delete-modal.modul
     SemesterDetailComponent,
     ModuleDetailComponent,
     CourseDetailComponent,
+    NewYearUiComponent,
   ],
   imports: [
     FuseSharedModule,

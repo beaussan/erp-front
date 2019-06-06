@@ -87,3 +87,8 @@ export class DeleteExtraItem {
   static readonly type = '[Maquette] Delete extra item in group';
   constructor(public groupId: string, public itemId: string) {}
 }
+
+export class MaquetteNewYear {
+  static readonly type = '[Maquette] New empty year';
+  constructor(public maquetteId: string, public name: string) {}
+}

@@ -47,7 +47,7 @@ export class ExtraModuleItemDetailComponent implements OnInit {
 
   update(name: string) {
     const value = this.form.value[name];
-    this.sendUpdate(this.extraModuleDetail.id, name, value);
+    this.sendUpdate(this.extraModuleDetail._id, name, value);
   }
 
   @Dispatch()
