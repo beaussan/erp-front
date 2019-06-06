@@ -2,7 +2,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
-FROM node:9 as builder
+FROM node:dubnium as builder
 
 COPY package.json yarn.lock ./
 
