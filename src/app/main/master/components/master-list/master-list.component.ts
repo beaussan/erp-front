@@ -16,7 +16,7 @@ import { DeleteModalService } from '../../../../modules/delete-modal/delete-moda
 export class MasterListComponent implements OnInit {
   @Select(MasterState.all) all$: Observable<Master[]>;
 
-   form: FormGroup;
+  form: FormGroup;
 
   constructor(private readonly fb: FormBuilder, private readonly delServ: DeleteModalService) {
     this.form = this.fb.group({
