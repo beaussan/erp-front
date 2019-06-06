@@ -19,6 +19,7 @@ import { ActivatedRoute, Route } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Maquette } from '../../../../types';
 import { MaquetteState } from '../../../../state/maquette.state';
+import { MarkAsDirty } from '../../../../state/maquette.actions';
 
 @Component({
   selector: 'app-editable',
@@ -42,6 +43,7 @@ export class EditableComponent implements OnInit, OnDestroy {
   @Output() update = new EventEmitter();
 
   isCurrentMaquetteReadOnly$: Observable<boolean>;
+  maquetteId$: Observable<string>;
 
   editMode = new Subject();
   editMode$ = this.editMode.asObservable();
@@ -56,6 +58,11 @@ export class EditableComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private readonly store: Store,
   ) {
+    this.maquetteId$ = this.route.paramMap.pipe(
+      map(params => params.get('id')),
+      switchMap(params => this.store.select(MaquetteState.byId).pipe(map(fn => fn(params)))),
+      pluck('id'),
+    );
     this.isCurrentMaquetteReadOnly$ = this.route.paramMap.pipe(
       map(params => params.get('id')),
       switchMap(params => this.store.select(MaquetteState.byId).pipe(map(fn => fn(params)))),
@@ -90,6 +97,11 @@ export class EditableComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.mode = 'edit';
         this.editMode.next(true);
+
+        // Sorry for that shitty code, kind of in a rush...
+        this.maquetteId$.pipe(take(1)).subscribe(val => {
+          this.store.dispatch(new MarkAsDirty(val));
+        });
 
         this.cdr.detectChanges();
       });

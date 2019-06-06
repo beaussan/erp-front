@@ -5,6 +5,20 @@
       <mat-icon>arrow_back</mat-icon>
     </button>
     <h2>{{ maquette.master.name }}, années {{ maquette.schoolYear }}</h2>
+    <div class="spacer" fxFlex></div>
+    <div class="lock">
+      <button mat-raised-button color="accent" *ngIf="isDirty$ | async" (click)="save(maquette.id)">
+        Sauvegarder
+      </button>
+
+      <button
+        mat-icon-button
+        aria-label="Lock or unlock maquette"
+        (click)="toggleLock(maquette.id)"
+      >
+        <mat-icon>{{ maquette.inProduction ? 'lock' : 'lock_open' }}</mat-icon>
+      </button>
+    </div>
   </div>
   <!-- / HEADER -->
 

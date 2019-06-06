@@ -19,6 +19,9 @@ import {
   AddExtraEmptyToModule,
   DeleteExtraItem,
   MaquetteNewYear,
+  MarkAsDirty,
+  LockOrUnlock,
+  SaveMaquetteById,
 } from './maquette.actions';
 import {
   Course,
@@ -324,6 +327,57 @@ export class MaquetteState {
         (ye: Year) => !!ye.semesters.find(sem => sem.id === semesterId),
       );
       year.semesters = year.semesters.filter(sem => sem.id !== semesterId);
+      return state;
+    });
+  }
+
+  @Action(SaveMaquetteById)
+  public save(ctx: StateContext<MaquetteStateModel>, { id }: SaveMaquetteById) {
+    const maq = ctx.getState().items.find(obj => obj.id === id);
+    return this.maquetteService.save(id, maq).pipe(
+      tap(val => {
+        ctx.setState(
+          patch<MaquetteStateModel>({
+            // @ts-ignore
+            items: updateItem(ita => ita.id === id, val),
+            dirtyIds: arr => arr.filter(fafa => fafa !== id),
+          }),
+        );
+      }),
+    );
+  }
+
+  @Action(LockOrUnlock)
+  public lockOrUnlock(ctx: StateContext<MaquetteStateModel>, { id }: LockOrUnlock) {
+    const maq = ctx.getState().items.find(obj => obj.id === id);
+    let obs;
+    if (maq.inProduction) {
+      obs = this.maquetteService.unlock(id);
+    } else {
+      obs = this.maquetteService.lock(id);
+    }
+    return obs.pipe(
+      tap(val => {
+        ctx.setState(
+          patch<MaquetteStateModel>({
+            // @ts-ignore
+            items: updateItem(ita => ita.id === id, val),
+            dirtyIds: arr => arr.filter(fafa => fafa !== id),
+          }),
+        );
+      }),
+    );
+  }
+
+  @Action(MarkAsDirty)
+  @ImmutableContext()
+  public markDirty(ctx: StateContext<MaquetteStateModel>, { id }: MarkAsDirty) {
+    ctx.setState((state: MaquetteStateModel) => {
+      if (state.dirtyIds.includes(id)) {
+        return state;
+      }
+      state.dirtyIds = [...state.dirtyIds, id];
+
       return state;
     });
   }

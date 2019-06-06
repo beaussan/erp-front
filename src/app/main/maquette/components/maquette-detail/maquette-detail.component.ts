@@ -6,7 +6,7 @@ import { Maquette, Master, Year } from '../../../../types';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { MaquetteState } from '../../../../state/maquette.state';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { MaquetteFetch } from '../../../../state/maquette.actions';
+import { LockOrUnlock, MaquetteFetch, SaveMaquetteById } from '../../../../state/maquette.actions';
 
 @Component({
   selector: 'app-maquette-detail',
@@ -17,6 +17,8 @@ import { MaquetteFetch } from '../../../../state/maquette.actions';
 export class MaquetteDetailComponent implements OnInit {
   maquette$: Observable<Maquette>;
 
+  isDirty$: Observable<boolean>;
+
   constructor(private readonly store: Store, private readonly route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -25,10 +27,19 @@ export class MaquetteDetailComponent implements OnInit {
         this.store.select(MaquetteState.byId).pipe(map(fn => fn(params.get('id')))),
       ),
     );
+    this.isDirty$ = this.maquette$.pipe(
+      switchMap(val => this.store.select(MaquetteState.dirtyById).pipe(map(fn => fn(val.id)))),
+    );
     if (this.store.selectSnapshot(MaquetteState.all).length === 0) {
       this.fetchMaquettes();
     }
   }
+
+  save(id: string) {
+    this.saveById(id);
+  }
+
+  @Dispatch() saveById = (id: string) => new SaveMaquetteById(id);
 
   trackByYear(idx: number, year: Year) {
     return year.id;
@@ -38,4 +49,7 @@ export class MaquetteDetailComponent implements OnInit {
   fetchMaquettes() {
     return new MaquetteFetch();
   }
+
+  @Dispatch()
+  toggleLock = (id: string) => new LockOrUnlock(id);
 }

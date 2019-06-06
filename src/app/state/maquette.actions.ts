@@ -92,3 +92,18 @@ export class MaquetteNewYear {
   static readonly type = '[Maquette] New empty year';
   constructor(public maquetteId: string, public name: string) {}
 }
+
+export class MarkAsDirty {
+  static readonly type = '[Maquette] Mark as dirty';
+  constructor(public id: string) {}
+}
+
+export class LockOrUnlock {
+  static readonly type = '[Maquette] Lock or unlock';
+  constructor(public id: string) {}
+}
+
+export class SaveMaquetteById {
+  static readonly type = '[Maquette] Save maquette';
+  constructor(public id: string) {}
+}
