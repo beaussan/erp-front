@@ -17,20 +17,20 @@ export class CourseDetailComponent implements OnInit {
   @Input() set course(value: Course) {
     this._course = value;
     this.form.setValue({
-      name: value.name,
-      commun: value.commun,
-      nmbAmphiHour: value.nmbAmphiHour,
-      nmbTdHour: value.nmbTdHour,
-      nmbGroupTd: value.nmbGroupTd,
-      nmbEcts: value.nmbEcts,
-      coefCC: value.coefCC,
-      coefExam: value.coefExam,
-      lengthExam: value.lengthExam,
-      examType: value.examType,
-      courseEnglish: value.courseEnglish,
-      englishTranslation: value.englishTranslation,
-      ratrappage: value.ratrappage,
-      teacher: value.teacher,
+      name: value.name || '',
+      commun: value.commun || '',
+      nmbAmphiHour: value.nmbAmphiHour || 0,
+      nmbTdHour: value.nmbTdHour || 0,
+      nmbGroupTd: value.nmbGroupTd || 0,
+      nmbEcts: value.nmbEcts || 0,
+      coefCC: value.coefCC || 0,
+      coefExam: value.coefExam || 0,
+      lengthExam: value.lengthExam || 0,
+      examType: value.examType || '',
+      courseEnglish: value.courseEnglish || '',
+      englishTranslation: value.englishTranslation || '',
+      ratrappage: value.ratrappage || false,
+      teacher: value.teacher || '',
     });
   }
   private _course: Course;
